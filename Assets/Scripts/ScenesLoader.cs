@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Purchasing;
 using UnityEngine.SceneManagement;
 
 public class ScenesLoader : MonoBehaviour
@@ -32,6 +34,12 @@ public class ScenesLoader : MonoBehaviour
         
     }
 
+    public void Quit()
+    {
+        Application.Quit();
+        Debug.Log("Quit");
+    }
+
     private IEnumerator SceneLoad(int sceneIndex)
     {
         transitionAnimator.SetTrigger("StartTransition");
@@ -45,4 +53,6 @@ public class ScenesLoader : MonoBehaviour
         yield return new WaitForSecondsRealtime(transitionTime);
         SceneManager.LoadScene(sceneName);
     }
+
+
 }
