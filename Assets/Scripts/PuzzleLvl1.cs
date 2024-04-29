@@ -6,7 +6,7 @@ public class PuzzleLvl1 : MonoBehaviour
 {
     [SerializeField] private GameObject[] buttons;
     [SerializeField] private GameObject door;
-    [SerializeField] private Button button;
+   
     private Button[] buttonScripts;
    
 

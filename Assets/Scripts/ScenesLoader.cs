@@ -7,13 +7,15 @@ using UnityEngine.SceneManagement;
 
 public class ScenesLoader : MonoBehaviour
 {
+   
     private Animator transitionAnimator;
     [SerializeField] private float transitionTime = 1;
 
 
     private void Start()
     {
-            transitionAnimator = GetComponentInChildren<Animator>();
+       
+        transitionAnimator = GetComponentInChildren<Animator>();
     }
     public void SceneLoader(string sceneName)
     {

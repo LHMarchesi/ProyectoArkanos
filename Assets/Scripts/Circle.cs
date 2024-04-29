@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class Circle : MonoBehaviour
 {
 
-    private GameManager gameManager;
+    private BattleManager battleManager;
 
     [SerializeField] private string inputLetter;
     [SerializeField] private int points;
@@ -17,7 +17,7 @@ public class Circle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        battleManager = GameObject.Find("BattleManager").GetComponent<BattleManager>();
     }
 
     // Update is called once per frame
@@ -33,7 +33,7 @@ public class Circle : MonoBehaviour
         if (deSpawnTime <= 0)
         {
             Destroy(gameObject);
-            gameManager.PointsManager(-penaltyPoints);
+            battleManager.PointsManager(-penaltyPoints);
 
         }
 
@@ -44,12 +44,12 @@ public class Circle : MonoBehaviour
                 if (Input.inputString.ToUpper() == inputLetter.ToUpper())
                 {
                 Destroy(gameObject);
-                gameManager.PointsManager(points);
+                battleManager.PointsManager(points);
                 }
                 else
                 {
                     Destroy(gameObject);
-                    gameManager.PointsManager(-penaltyPoints);
+                    battleManager.PointsManager(-penaltyPoints);
                 }
                
             }
