@@ -7,25 +7,15 @@ using UnityEngine.U2D;
 public class Button : MonoBehaviour
 {
    
-    [SerializeField] public bool buttonPress;
-    private SpriteRenderer spriteRenderer;
-    
+    [SerializeField] public bool buttonPress;  
     void Start()
-    { 
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        
-
+    {   
         buttonPress = false;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-            if (collision.gameObject.CompareTag("Player") && !IsButtonPress()) {
-
-                buttonPress = true;
-            gameObject.SetActive(false);
-                
-
-             }
+            if (collision.gameObject.CompareTag("Player") && !IsButtonPress()) 
+                buttonPress = true;    
     }
 
     public bool IsButtonPress()

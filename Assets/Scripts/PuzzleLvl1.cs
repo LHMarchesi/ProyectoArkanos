@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class PuzzleLvl1 : MonoBehaviour
 {
+    private Button[] buttonScripts;
     [SerializeField] private GameObject[] buttons;
     [SerializeField] private GameObject door;
-   
-    private Button[] buttonScripts;
-   
 
     void Start()
     {
@@ -21,8 +19,6 @@ public class PuzzleLvl1 : MonoBehaviour
             buttonScripts[i] = buttons[i].GetComponent<Button>();
         }
     }
-
-    // Update is called once per frame
     void Update()
     {
         bool allButtonsPressed = true;
@@ -40,7 +36,7 @@ public class PuzzleLvl1 : MonoBehaviour
         if (allButtonsPressed)
         {
             door.SetActive(false);
-        }
+        } 
     } 
 
 

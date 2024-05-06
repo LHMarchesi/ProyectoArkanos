@@ -11,6 +11,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private bool isEnemy;
+    
 
     private bool isPlayerOnRange = false;
     private bool didDialogueStart;
@@ -112,4 +113,6 @@ public class Dialogue : MonoBehaviour
 
         }
     }
+
+   
 }
