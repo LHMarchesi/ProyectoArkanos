@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -13,11 +14,15 @@ public class Circle : MonoBehaviour
     [SerializeField] private int points;
     [SerializeField] private int penaltyPoints;
     [SerializeField] private float deSpawnTime;
+    [SerializeField] private Animator animator;
     
+    private bool coroutineStarted = false;
+
     // Start is called before the first frame update
     void Start()
     {
         battleManager = GameObject.Find("BattleManager").GetComponent<BattleManager>();
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -32,8 +37,14 @@ public class Circle : MonoBehaviour
     {
         if (deSpawnTime <= 0)
         {
-            Destroy(gameObject);
+            if (!coroutineStarted)
+            {
+            coroutineStarted = true;
+            animator.SetBool("HitOut", true);
+            StartCoroutine(enumerator());
             battleManager.PointsManager(-penaltyPoints);
+
+            }
 
         }
 
@@ -43,15 +54,25 @@ public class Circle : MonoBehaviour
             {
                 if (Input.inputString.ToUpper() == inputLetter.ToUpper())
                 {
-                Destroy(gameObject);
-                battleManager.PointsManager(points);
+                    if (!coroutineStarted)
+                    {
+                        coroutineStarted = true;
+                        animator.SetBool("HitIn", true);    
+                    StartCoroutine(enumerator());
+                    battleManager.PointsManager(points);
+                    }
                 }
                 else
                 {
-                    Destroy(gameObject);
-                    battleManager.PointsManager(-penaltyPoints);
+                    if (!coroutineStarted) 
+                    {
+                        coroutineStarted = true;
+                        animator.SetBool("HitOut", true);
+                    StartCoroutine(enumerator());
+                    battleManager.PointsManager(-points);
+                    }
                 }
-               
+
             }
             
         }
@@ -70,6 +91,15 @@ public class Circle : MonoBehaviour
         return distanceToCircle < GetComponent<CircleCollider2D>().radius;
     }
 
-    
 
+   
+
+    private IEnumerator enumerator() {
+     
+            yield return new WaitForSeconds(1f);
+             Destroy(gameObject);
+        coroutineStarted = false;
+
+
+    }
 }

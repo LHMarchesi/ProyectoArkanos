@@ -825,11 +825,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 1c4b895a-213e-46f1-9742-48581e06d283
+  cloudProjectId: dfac032b-e91a-4ec4-a9f5-51df1b9cc7dc
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Prototipo01
-  organizationId: lautimarchesi6
+  projectName: Arkanos
+  organizationId: lautarohm
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
