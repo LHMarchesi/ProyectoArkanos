@@ -5,12 +5,12 @@ using TMPro;
 
 public class Dialogue : MonoBehaviour
 {
+    
     ScenesLoader scenesLoader;
     private Player player;
     [SerializeField] private GameObject dialogueMark;
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text dialogueText;
-    [SerializeField] private bool isEnemy;
     
 
     private bool isPlayerOnRange = false;
@@ -72,10 +72,7 @@ public class Dialogue : MonoBehaviour
             dialoguePanel.SetActive(false);
             dialogueMark.SetActive(true);
             player.PlayerCanMove(true);
-             if (isEnemy)
-             {
-                scenesLoader.LoadNextScene();
-             }
+            GameManager.Instance.IsEnemy(gameObject);
         }
     }
 

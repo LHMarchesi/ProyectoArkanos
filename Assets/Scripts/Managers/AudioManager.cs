@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
+   
 
     private void Awake()
     {
@@ -16,15 +18,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource SFXSource;
-
-    public AudioClip[] SFX;
-    public AudioClip background;
+    public AudioSource musicSource;
+    public AudioSource SFXSource;
 
     private void Start()
     {
-        musicSource.clip = background;
+       
         musicSource.Play();
     }
 
@@ -32,4 +31,6 @@ public class AudioManager : MonoBehaviour
 
         SFXSource.PlayOneShot(clip);    
     }
+
+    
 }
