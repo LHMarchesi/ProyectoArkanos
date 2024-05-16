@@ -24,7 +24,8 @@ public class BattleManager : MonoBehaviour
 
     public TextMeshProUGUI pointsText;
     public TextMeshProUGUI pointsTextWinMenu;
-    public TextMeshProUGUI pointsTextWLoseMenu;
+    public TextMeshProUGUI pointsTextLoseMenu;
+    public TextMeshProUGUI timerTxt;
 
     void Start()
     {
@@ -42,14 +43,15 @@ public class BattleManager : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
-
-        Win(winingPoints);
         Lose(losingPoints);
-
-        Difficulty();
+        Win();
 
         progessBar.UpdateProgess(totalpoints,winingPoints);
+
+        timer += Time.deltaTime;
+        timerTxt.text = timer.ToString();
+
+        spawner.EnemySpawner(timer);
     }
 
     public void PointsManager(int points)  // maneja el puntaje y lo muestra en texto
@@ -58,9 +60,9 @@ public class BattleManager : MonoBehaviour
         pointsText.text = totalpoints.ToString();
     }
 
-    private void Win(int points) {
+    private void Win() {
 
-        if (totalpoints > points) //si los puntos totales son menor que los puntos, gana y se activa el canvas 
+        if (timer > 87) //si los puntos totales son menor que los puntos, gana y se activa el canvas 
         {
             pointsTextWinMenu.text = "Puntos totales : " + totalpoints.ToString();
             Time.timeScale = 0;
@@ -76,7 +78,7 @@ public class BattleManager : MonoBehaviour
         if (totalpoints < points ) //si los puntos totales son menor que los puntos, pierde y se activa el canvas 
         {
             Time.timeScale = 0;
-            pointsTextWLoseMenu.text = "Puntos totales : " + totalpoints.ToString();
+            pointsTextLoseMenu.text = "Puntos totales : " + totalpoints.ToString();
             spawner.StopSpawning(false);
             losingCanvas.SetActive(true); 
 
@@ -85,16 +87,7 @@ public class BattleManager : MonoBehaviour
 
     }
 
-    private void Difficulty()
-    {
-       
-            spawner.ChangeSpawnTime(.7f);
-
-        
-        
-        
-        
-    }
+    
 
    
 
