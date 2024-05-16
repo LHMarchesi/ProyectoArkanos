@@ -9,13 +9,12 @@ public class Button : MonoBehaviour
    
     private SpriteRenderer spriteRenderer;
     [SerializeField] private bool buttonPress;
-    [SerializeField] private Sprite spriteDefault;
     [SerializeField] private Sprite spritePress;
 
     void Start()
     {   
         spriteRenderer = GetComponent<SpriteRenderer>();    
-        spriteRenderer.sprite = spriteDefault;
+        spriteRenderer.sprite = spriteRenderer.sprite;
         buttonPress = false;
     }
     private void OnTriggerEnter2D(Collider2D collision)
