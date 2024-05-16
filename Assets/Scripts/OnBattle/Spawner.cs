@@ -8,12 +8,13 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] Circles;
     [SerializeField] private float spawnTime;
-    private float nextSpawn;       
     [SerializeField] private bool canSpawn;       
-
-
+    private float nextSpawn;
+    private GameObject lastCircle;
     private Vector2 spawnPos;
     private Coroutine spawnCoroutine;
+
+
 
     void Start()
     {
@@ -54,7 +55,20 @@ public class Spawner : MonoBehaviour
 
         spawnPos = new Vector2(randomX, randomY);
 
-        Instantiate(Circles[randomValue], spawnPos, Quaternion.identity);
+        GameObject newCircle = Instantiate(Circles[randomValue], spawnPos, Quaternion.identity);
+
+        if (lastCircle != null)
+        {
+            DrawGuidingLine(lastCircle.transform.position, newCircle.transform.position);
+        }
+
+        lastCircle = newCircle;
+
+    }
+
+    private void DrawGuidingLine(Vector3 start, Vector3 end)
+    {
+        Debug.DrawLine(start, end, Color.red, 1.0f);
     }
 
 }

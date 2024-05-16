@@ -358,6 +358,7 @@ MonoBehaviour:
   points: 20
   penaltyPoints: 20
   deSpawnTime: 1
+  animator: {fileID: 7373393870978200298}
 --- !u!95 &7373393870978200298
 Animator:
   serializedVersion: 5
