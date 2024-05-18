@@ -12,31 +12,28 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private ScenesLoader scenesLoader;
     [SerializeField] private ProgessBar progessBar;
     
-
-    [SerializeField]private int winingPoints;
-    [SerializeField]private int losingPoints;
-
     [SerializeField] private GameObject winingCanvas;
     [SerializeField] private GameObject losingCanvas;
 
+    [SerializeField]private int winingPoints;
+    [SerializeField]private int losingPoints;
+    [SerializeField] private float songTime;
     private int totalpoints;
     private float timer;
 
     public TextMeshProUGUI pointsText;
     public TextMeshProUGUI pointsTextWinMenu;
     public TextMeshProUGUI pointsTextLoseMenu;
-    public TextMeshProUGUI timerTxt;
 
     void Start()
     {
-        timer = 0;
-
         Time.timeScale = 1;
 
-       winingCanvas.SetActive(false);
-       losingCanvas.SetActive(false);
-
+        timer = 0;
         totalpoints = 0;
+
+        winingCanvas.SetActive(false);
+       losingCanvas.SetActive(false);
 
        PointsManager(totalpoints);
     }
@@ -46,12 +43,10 @@ public class BattleManager : MonoBehaviour
         Lose(losingPoints);
         Win();
 
-        progessBar.UpdateProgess(totalpoints,winingPoints);
+        progessBar.UpdateProgess(timer, songTime);  // Barra de progeso
 
         timer += Time.deltaTime;
-        timerTxt.text = timer.ToString();
-
-        spawner.EnemySpawner(timer);
+        spawner.EnemySpawner(timer);  // Instancia de enemigos
     }
 
     public void PointsManager(int points)  // maneja el puntaje y lo muestra en texto
