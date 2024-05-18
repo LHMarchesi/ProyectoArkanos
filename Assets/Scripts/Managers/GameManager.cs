@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     {
         scenesLoader = GameObject.Find("SceneLoadManager").GetComponent<ScenesLoader>();
     }
-    public void IsEnemy(GameObject gameObject)
+    public void IsEnemy(GameObject gameObject)  // Interaccion con enemigos
     {
         if (gameObject.CompareTag("Enemy"))
         {

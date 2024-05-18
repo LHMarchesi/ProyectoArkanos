@@ -42,17 +42,6 @@ public class Spawner : MonoBehaviour
 
 
             // Compara la diferencia entre el temporizador y los valores deseados con el margen de error
-            if (Mathf.Abs(timer - 3f) <= errorMargin)
-            {
-                AddEnemy();
-                canSpawn = false;
-                Invoke("ResumeSpawning", timeToResume);
-            }if (Mathf.Abs(timer - 7f) <= errorMargin)
-            {
-                AddEnemy();
-                canSpawn = false;
-                Invoke("ResumeSpawning", timeToResume);
-            }
             if (Mathf.Abs(timer - 11.21862f) <= errorMargin)
             {
                 AddEnemy();

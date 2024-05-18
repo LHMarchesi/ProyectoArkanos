@@ -9,7 +9,7 @@ public class Circle : MonoBehaviour
 {
 
     private BattleManager battleManager;
-
+    public bool isDestroy = false;
     [SerializeField] private string inputLetter;
     [SerializeField] private int points;
     [SerializeField] private int penaltyPoints;
@@ -39,6 +39,7 @@ public class Circle : MonoBehaviour
         {
             if (!coroutineStarted)
             {
+            isDestroy = true;
             coroutineStarted = true;
             animator.SetBool("HitOut", true);
             StartCoroutine(enumerator());
@@ -56,6 +57,7 @@ public class Circle : MonoBehaviour
                 {
                     if (!coroutineStarted)
                     {
+                        isDestroy = true;
                         coroutineStarted = true;
                         animator.SetBool("HitIn", true);    
                     StartCoroutine(enumerator());
@@ -66,6 +68,7 @@ public class Circle : MonoBehaviour
                 {
                     if (!coroutineStarted) 
                     {
+                        isDestroy = true;
                         coroutineStarted = true;
                         animator.SetBool("HitOut", true);
                     StartCoroutine(enumerator());

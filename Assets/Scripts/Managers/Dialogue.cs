@@ -7,13 +7,13 @@ public class Dialogue : MonoBehaviour
 {
     
     ScenesLoader scenesLoader;
-    private Player player;
-    [SerializeField] private GameObject dialogueMark;
+    //private Player player;
+    //[SerializeField] private GameObject dialogueMark;
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text dialogueText;
     
 
-    private bool isPlayerOnRange = false;
+    //private bool isPlayerOnRange = false;
     private bool didDialogueStart;
     private int lineIndex;
     private float chTime;
@@ -22,38 +22,50 @@ public class Dialogue : MonoBehaviour
     private void Start()
     {
         scenesLoader = GameObject.Find("SceneLoadManager").GetComponent<ScenesLoader>();
-        player = GameObject.Find("Player").GetComponent<Player>();
+        //player = GameObject.Find("Player").GetComponent<Player>();
 
     }
 
     void Update()
     {
-        if (isPlayerOnRange && Input.GetKeyDown(KeyCode.E)) // si el jugador se encuentra en el rango
+        //if (isPlayerOnRange && Input.GetKeyDown(KeyCode.E)) // si el jugador se encuentra en el rango
+        //{
+        //    StartDialogueSecuence();
+        //}
+    }
+
+
+    public void StartDialogueSecuence()
+    {
+        if (!didDialogueStart)
         {
-            if (!didDialogueStart)
-            {
-                StartDialogue();
-            }
-            else if (dialogueText.text == dialogueLines[lineIndex]) // si el texto termino de mostrarse completo
-            {
-                NextDialogue();
-            }
-           
-            else // saltear texto
-            {
-                StopAllCoroutines();
-                dialogueText.text = dialogueLines[lineIndex];
-            }
+            StartDialogue();
         }
+        else if (dialogueText.text == dialogueLines[lineIndex]) // si el texto termino de mostrarse completo
+        {
+            NextDialogue();
+        }
+
+        else // saltear texto
+        {
+            StopAllCoroutines();
+            dialogueText.text = dialogueLines[lineIndex];
+        }
+    }
+
+    public void EndDialogueSecuence()
+    {
+        didDialogueStart = false;
+        dialoguePanel.SetActive(false);
     }
 
     private void StartDialogue()  // Inicia la secuencia de dialogo
     {
         didDialogueStart = true;
         dialoguePanel.SetActive(true);
-        dialogueMark.SetActive(false);
         lineIndex = 0;
-        player.PlayerCanMove(false);
+        //dialogueMark.SetActive(false);
+        //player.PlayerCanMove(false);
         StartCoroutine(ShowLine());
         
     }
@@ -70,14 +82,11 @@ public class Dialogue : MonoBehaviour
         {
             didDialogueStart = false;
             dialoguePanel.SetActive(false);
-            dialogueMark.SetActive(true);
-            player.PlayerCanMove(true);
-            GameManager.Instance.IsEnemy(gameObject);
+            //dialogueMark.SetActive(true);
+            //player.PlayerCanMove(true);
+            //GameManager.Instance.IsEnemy(gameObject);
         }
     }
-
-  
-
 
     private IEnumerator ShowLine() // muestra letra por letra lo que haya en las lineas de dialogo
     {
@@ -92,24 +101,24 @@ public class Dialogue : MonoBehaviour
 
 
    
-    private void OnTriggerEnter2D(Collider2D collision) // Triggers para saber si esta dentro del rango
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isPlayerOnRange = true;
-            dialogueMark.SetActive(true);
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision) // Triggers para saber si esta dentro del rango
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //        isPlayerOnRange = true;
+    //        dialogueMark.SetActive(true);
+    //    }
+    //}
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isPlayerOnRange = false;
-            dialogueMark.SetActive(false);
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //        isPlayerOnRange = false;
+    //        dialogueMark.SetActive(false);
 
-        }
-    }
+    //    }
+    //}
 
    
 }
