@@ -5,35 +5,15 @@ using TMPro;
 
 public class Dialogue : MonoBehaviour
 {
-    
-    ScenesLoader scenesLoader;
-    //private Player player;
-    //[SerializeField] private GameObject dialogueMark;
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text dialogueText;
-    
+    [SerializeField, TextArea(4, 6)] private string[] dialogueLines;
 
-    //private bool isPlayerOnRange = false;
-    private bool didDialogueStart;
+    public bool didDialogueStart { get; private set; } = false;
+    public bool didDialogueEnd { get; private set; } = false;
+
     private int lineIndex;
     private float chTime;
-        
-    [SerializeField, TextArea(4,6)] private string[] dialogueLines;
-    private void Start()
-    {
-        scenesLoader = GameObject.Find("SceneLoadManager").GetComponent<ScenesLoader>();
-        //player = GameObject.Find("Player").GetComponent<Player>();
-
-    }
-
-    void Update()
-    {
-        //if (isPlayerOnRange && Input.GetKeyDown(KeyCode.E)) // si el jugador se encuentra en el rango
-        //{
-        //    StartDialogueSecuence();
-        //}
-    }
-
 
     public void StartDialogueSecuence()
     {
@@ -55,6 +35,7 @@ public class Dialogue : MonoBehaviour
 
     public void EndDialogueSecuence()
     {
+        didDialogueEnd = true;
         didDialogueStart = false;
         dialoguePanel.SetActive(false);
     }
@@ -62,12 +43,11 @@ public class Dialogue : MonoBehaviour
     private void StartDialogue()  // Inicia la secuencia de dialogo
     {
         didDialogueStart = true;
+        didDialogueEnd = false;
         dialoguePanel.SetActive(true);
         lineIndex = 0;
-        //dialogueMark.SetActive(false);
-        //player.PlayerCanMove(false);
+
         StartCoroutine(ShowLine());
-        
     }
 
     private void NextDialogue() // Secuencia de mostrado de lineas, y desactiva dialogos 
@@ -76,16 +56,12 @@ public class Dialogue : MonoBehaviour
         if (lineIndex < dialogueLines.Length)
         {
             StartCoroutine(ShowLine());
-
         }
         else
         {
-            didDialogueStart = false;
-            dialoguePanel.SetActive(false);
-            //dialogueMark.SetActive(true);
-            //player.PlayerCanMove(true);
-            //GameManager.Instance.IsEnemy(gameObject);
+            EndDialogueSecuence();
         }
+
     }
 
     private IEnumerator ShowLine() // muestra letra por letra lo que haya en las lineas de dialogo
@@ -98,27 +74,4 @@ public class Dialogue : MonoBehaviour
             yield return new WaitForSecondsRealtime(chTime);
         }
     }
-
-
-   
-    //private void OnTriggerEnter2D(Collider2D collision) // Triggers para saber si esta dentro del rango
-    //{
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-    //        isPlayerOnRange = true;
-    //        dialogueMark.SetActive(true);
-    //    }
-    //}
-
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-    //        isPlayerOnRange = false;
-    //        dialogueMark.SetActive(false);
-
-    //    }
-    //}
-
-   
 }
