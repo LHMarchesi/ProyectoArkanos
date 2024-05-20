@@ -74,4 +74,5 @@ public class Dialogue : MonoBehaviour
             yield return new WaitForSecondsRealtime(chTime);
         }
     }
+
 }

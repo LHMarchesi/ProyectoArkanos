@@ -9,7 +9,9 @@ public class Circle : MonoBehaviour
 {
 
     private BattleManager battleManager;
-    public bool isDestroy = false;
+    public bool hitOut = false;
+    public bool hitIn = false;
+    public bool destroy = false;
     [SerializeField] private string inputLetter;
     [SerializeField] private int points;
     [SerializeField] private int penaltyPoints;
@@ -39,10 +41,13 @@ public class Circle : MonoBehaviour
         {
             if (!coroutineStarted)
             {
-                isDestroy = true;
                 coroutineStarted = true;
-                animator.SetBool("HitOut", true);
                 StartCoroutine(enumerator());
+
+                animator.SetBool("HitOut", true);
+                hitOut = true;
+                destroy = true;
+
                 battleManager.PointsManager(-penaltyPoints);
                 battleManager.LostHp();
 
@@ -58,10 +63,13 @@ public class Circle : MonoBehaviour
                 {
                     if (!coroutineStarted)
                     {
-                        isDestroy = true;
                         coroutineStarted = true;
-                        animator.SetBool("HitIn", true);
                         StartCoroutine(enumerator());
+
+                        hitIn = true;
+                        animator.SetBool("HitIn", true);
+                        destroy = true;
+
                         battleManager.PointsManager(points);
                     }
                 }
@@ -69,10 +77,13 @@ public class Circle : MonoBehaviour
                 {
                     if (!coroutineStarted)
                     {
-                        isDestroy = true;
                         coroutineStarted = true;
-                        animator.SetBool("HitOut", true);
                         StartCoroutine(enumerator());
+
+                        animator.SetBool("HitOut", true);
+                        hitOut = true;
+                        destroy = true;
+
                         battleManager.PointsManager(-points);
                         battleManager.LostHp();
                     }
