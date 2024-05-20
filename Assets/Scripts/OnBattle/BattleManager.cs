@@ -59,7 +59,7 @@ public class BattleManager : MonoBehaviour
 
     private void Win() {
 
-        if (timer > 87) //si los puntos totales son menor que los puntos, gana y se activa el canvas 
+        if (timer > songTime) //si los puntos totales son menor que los puntos, gana y se activa el canvas 
         {
             pointsTextWinMenu.text = "Puntos totales : " + totalpoints.ToString();
             Time.timeScale = 0;
