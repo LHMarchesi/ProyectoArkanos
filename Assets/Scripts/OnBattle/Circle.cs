@@ -15,7 +15,7 @@ public class Circle : MonoBehaviour
     [SerializeField] private int penaltyPoints;
     [SerializeField] private float deSpawnTime;
     [SerializeField] private Animator animator;
-    
+
     private bool coroutineStarted = false;
 
     // Start is called before the first frame update
@@ -39,11 +39,12 @@ public class Circle : MonoBehaviour
         {
             if (!coroutineStarted)
             {
-            isDestroy = true;
-            coroutineStarted = true;
-            animator.SetBool("HitOut", true);
-            StartCoroutine(enumerator());
-            battleManager.PointsManager(-penaltyPoints);
+                isDestroy = true;
+                coroutineStarted = true;
+                animator.SetBool("HitOut", true);
+                StartCoroutine(enumerator());
+                battleManager.PointsManager(-penaltyPoints);
+                battleManager.LostHp();
 
             }
 
@@ -59,28 +60,29 @@ public class Circle : MonoBehaviour
                     {
                         isDestroy = true;
                         coroutineStarted = true;
-                        animator.SetBool("HitIn", true);    
-                    StartCoroutine(enumerator());
-                    battleManager.PointsManager(points);
+                        animator.SetBool("HitIn", true);
+                        StartCoroutine(enumerator());
+                        battleManager.PointsManager(points);
                     }
                 }
                 else
                 {
-                    if (!coroutineStarted) 
+                    if (!coroutineStarted)
                     {
                         isDestroy = true;
                         coroutineStarted = true;
                         animator.SetBool("HitOut", true);
-                    StartCoroutine(enumerator());
-                    battleManager.PointsManager(-points);
+                        StartCoroutine(enumerator());
+                        battleManager.PointsManager(-points);
+                        battleManager.LostHp();
                     }
                 }
 
             }
-            
+
         }
     }
-    private  bool IsMouseOverCircle()
+    private bool IsMouseOverCircle()
     {
         // Obtiene la posición del mouse en el mundo
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -95,12 +97,13 @@ public class Circle : MonoBehaviour
     }
 
 
-   
 
-    private IEnumerator enumerator() {
-     
-            yield return new WaitForSeconds(1f);
-             Destroy(gameObject);
+
+    private IEnumerator enumerator()
+    {
+
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
         coroutineStarted = false;
 
 

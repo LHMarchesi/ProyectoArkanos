@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
+    [SerializeField] private HealthSistem healthSistem;
     [SerializeField] private Spawner spawner;
     [SerializeField] private ScenesLoader scenesLoader;
     [SerializeField] private ProgessBar progessBar;
@@ -15,11 +16,11 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private GameObject winingCanvas;
     [SerializeField] private GameObject losingCanvas;
 
-    [SerializeField]private int winingPoints;
-    [SerializeField]private int losingPoints;
     [SerializeField] private float songTime;
+
     private int totalpoints;
     private float timer;
+    public int healtPoints { get; private set; }
 
     public TextMeshProUGUI pointsText;
     public TextMeshProUGUI pointsTextWinMenu;
@@ -28,6 +29,7 @@ public class BattleManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
+        healtPoints = 5;
 
         timer = 0;
         totalpoints = 0;
@@ -40,7 +42,7 @@ public class BattleManager : MonoBehaviour
 
     void Update()
     {
-        Lose(losingPoints);
+        Lose();
         Win();
 
         progessBar.UpdateProgess(timer, songTime);  // Barra de progeso
@@ -67,10 +69,10 @@ public class BattleManager : MonoBehaviour
         }
 
     }
-    private void Lose(int points) {
+    private void Lose() {
 
 
-        if (totalpoints < points ) //si los puntos totales son menor que los puntos, pierde y se activa el canvas 
+        if (healtPoints <= 0 ) //si la vida es menor o igual a 0, pierde y se activa el canvas 
         {
             Time.timeScale = 0;
             pointsTextLoseMenu.text = "Puntos totales : " + totalpoints.ToString();
@@ -82,8 +84,10 @@ public class BattleManager : MonoBehaviour
 
     }
 
-    
-
-   
+    public void LostHp()
+    {
+        healtPoints -= 1;
+        healthSistem.HpLost(healtPoints);
+    }
 
 }
