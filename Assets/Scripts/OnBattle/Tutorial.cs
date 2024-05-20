@@ -47,7 +47,7 @@ public class Tutorial : MonoBehaviour
             
 
             Invoke("ThirdDialogue", 1f);
-            Invoke("EndSecuence", 4f);
+            Invoke("EndSecuence", 3f);
           
         }
     }
