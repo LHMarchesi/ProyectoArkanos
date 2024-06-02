@@ -114,6 +114,8 @@ public class DialogueSecuence_lvl1 : MonoBehaviour
         {
             hasLoseDialogueStarted = true;
             LoseDialogue.StartDialogueSecuence();
+            StartCoroutine(DelayedAction(5f, () => LoseDialogue.EndDialogueSecuence()));
+            StartCoroutine(DelayedAction(5f, () => ScreensManager.Instance.ShowLoseScreen()));
         }
 
     }
@@ -123,6 +125,8 @@ public class DialogueSecuence_lvl1 : MonoBehaviour
         {
             hasWinDialogueStarted = true;
             WinDialogue.StartDialogueSecuence();
+            StartCoroutine(DelayedAction(5f, () => WinDialogue.EndDialogueSecuence()));
+            StartCoroutine(DelayedAction(5f, () => ScreensManager.Instance.ShowWinScreen()));
         }
     }
     private IEnumerator DelayedAction(float delay, Action action)
