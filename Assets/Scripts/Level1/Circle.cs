@@ -14,109 +14,117 @@ public class Circle : MonoBehaviour
     public bool destroy = false;
     [SerializeField] private string inputLetter;
     [SerializeField] private int points;
-    [SerializeField] private int penaltyPoints;
+    [SerializeField] private int missPoints;
     [SerializeField] private float deSpawnTime;
     [SerializeField] private Animator animator;
 
     private bool coroutineStarted = false;
+    private Transform indicatorCircle;
+    private Vector3 originalScale;
+    private float initialDeSpawnTime;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         battleManager = GameObject.Find("BattleManager").GetComponent<BattleManager>();
         animator = gameObject.GetComponent<Animator>();
+        indicatorCircle = transform.Find("IndicatorCircle");
+        originalScale = indicatorCircle.localScale;
+        initialDeSpawnTime = deSpawnTime;
     }
 
-    // Update is called once per frame
+ 
     void Update()
     {
         deSpawnTime -= Time.deltaTime;
 
-        DestroyCircle();
-    }
+        UpdateIndicatorSize();
 
-    private void DestroyCircle()
-    {
         if (deSpawnTime <= 0)
         {
-            if (!coroutineStarted)
-            {
-                coroutineStarted = true;
-                StartCoroutine(enumerator());
-
-                animator.SetBool("HitOut", true);
-                hitOut = true;
-                destroy = true;
-
-                battleManager.PointsManager(-penaltyPoints);
-                battleManager.LostHp();
-
-            }
-
+            HandleMiss();
         }
-
-        if (IsMouseOverCircle())
+        else if (IsMouseOverCircle() && Input.anyKeyDown)
         {
-            if (Input.anyKeyDown)
-            {
-                if (Input.inputString.ToUpper() == inputLetter.ToUpper())
-                {
-                    if (!coroutineStarted)
-                    {
-                        coroutineStarted = true;
-                        StartCoroutine(enumerator());
-
-                        hitIn = true;
-                        animator.SetBool("HitIn", true);
-                        destroy = true;
-
-                        battleManager.PointsManager(points);
-                    }
-                }
-                else
-                {
-                    if (!coroutineStarted)
-                    {
-                        coroutineStarted = true;
-                        StartCoroutine(enumerator());
-
-                        animator.SetBool("HitOut", true);
-                        hitOut = true;
-                        destroy = true;
-
-                        battleManager.PointsManager(-points);
-                        battleManager.LostHp();
-                    }
-                }
-
-            }
-
+            HandleInput();
         }
     }
+    private void UpdateIndicatorSize()
+    {
+        float scaleFactor = deSpawnTime / initialDeSpawnTime;
+        indicatorCircle.localScale = originalScale * scaleFactor;
+    }
+
+    private void HandleInput()
+    {
+        if (!coroutineStarted)
+        {
+            coroutineStarted = true;
+            if (Input.inputString.ToUpper() == inputLetter.ToUpper())
+            {
+                indicatorCircle.gameObject.SetActive(false);
+                hitIn = true;
+                animator.SetBool("HitIn", true);
+                battleManager.PointsManager(CalculateScore());
+            }
+            else
+            {
+                indicatorCircle.gameObject.SetActive(false);
+                hitOut = true;
+                animator.SetBool("HitOut", true);
+                battleManager.PointsManager(-missPoints);
+                battleManager.LostHp();
+            }
+
+            destroy = true;
+            StartCoroutine(DestroyAfterAnimation());
+        }
+    }
+
+    private void HandleMiss()
+    {
+        if (!coroutineStarted)
+        {
+            indicatorCircle.gameObject.SetActive(false);
+            coroutineStarted = true;
+            StartCoroutine(DestroyAfterAnimation());
+            animator.SetBool("HitOut", true);
+            hitOut = true;
+            destroy = true;
+            battleManager.PointsManager(-missPoints);
+            battleManager.LostHp();
+        }
+    }
+    private int CalculateScore()
+    {
+        float indicatorRadius = indicatorCircle.GetComponent<CircleCollider2D>().radius * indicatorCircle.localScale.x;
+        float circleRadius = GetComponent<CircleCollider2D>().radius;
+        float precision = Mathf.Abs(indicatorRadius - circleRadius) / circleRadius;
+
+        if (precision >= 0.2f) // Example threshold for optimal press
+        {
+            return points;
+        }
+        else
+        {
+            return points / 2;
+        }
+    }
+
     private bool IsMouseOverCircle()
     {
-        // Obtiene la posición del mouse en el mundo
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = transform.position.z; // Ajusta la coordenada z para que coincida con la del círculo
-
-        // Calcula la distancia entre la posición del círculo y la posición del mouse
+        mousePosition.z = transform.position.z; 
         float distanceToCircle = Vector3.Distance(transform.position, mousePosition);
-
-        // Si la distancia es menor que el radio del círculo, el mouse está dentro del círculo
-
         return distanceToCircle < GetComponent<CircleCollider2D>().radius;
     }
 
-
-
-
-    private IEnumerator enumerator()
+    private IEnumerator DestroyAfterAnimation()
     {
-
+        indicatorCircle.localScale = new Vector3(0, 0, 0);
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
         coroutineStarted = false;
-
-
     }
+
 }
