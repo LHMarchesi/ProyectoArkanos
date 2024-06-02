@@ -15,7 +15,7 @@ public class Spawner : MonoBehaviour
         canSpawn = true;
     }
 
-    public void StopSpawning(bool canSpawn) // Detiene spawn de enemigos
+    public void Spawning(bool canSpawn) // Detiene spawn de enemigos
     {
         this.canSpawn = canSpawn;
         
