@@ -14,6 +14,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private ScenesLoader scenesLoader;
     [SerializeField] private ProgessBar progessBar;
     [SerializeField] private float songTime;
+    [SerializeField] private bool levelEnded = false;
 
     public static event Action OnLose;
     public static event Action OnWin;
@@ -37,7 +38,10 @@ public class BattleManager : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
+        if (!levelEnded)
+        {
+            timer += Time.deltaTime;
+        }
 
         Win();
         Lose();
@@ -56,6 +60,7 @@ public class BattleManager : MonoBehaviour
     {
         if (timer > songTime) //Cuando el timer, supera el tiempo de la cancion, se invoca el evento OnWin
         {
+            levelEnded = true;         
             OnWin?.Invoke();
             spawner.Spawning(false);
         }
@@ -65,6 +70,7 @@ public class BattleManager : MonoBehaviour
     {
         if (healtPoints <= 0) //si la vida es menor o igual a 0, pierde y se invoca al evento Onlose
         {
+            levelEnded = true;
             OnLose?.Invoke();
             spawner.Spawning(false);
         }

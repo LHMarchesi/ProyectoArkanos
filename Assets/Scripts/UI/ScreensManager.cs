@@ -46,15 +46,15 @@ public class ScreensManager : MonoBehaviour
 
     public void ShowLoseScreen()
     {
-        Time.timeScale = 0;
+       // Time.timeScale = 0;
         pointsTextLoseMenu.text = "Puntos totales : " + BattleManager.totalpoints.ToString();
         losingCanvas.SetActive(true);
     }
 
     public void ShowWinScreen()
     {
+       // Time.timeScale = 0;
         pointsTextWinMenu.text = "Puntos totales : " + BattleManager.totalpoints.ToString();
-        Time.timeScale = 0;
         winingCanvas.SetActive(true);
     }
     private void TogglePause()
