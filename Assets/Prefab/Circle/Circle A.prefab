@@ -460,8 +460,7 @@ MonoBehaviour:
   hitIn: 0
   destroy: 0
   inputLetter: a
-  points: 20
-  missPoints: 30
+  points: 10
   deSpawnTime: 1.5
   animator: {fileID: 7373393870978200298}
 --- !u!95 &7373393870978200298

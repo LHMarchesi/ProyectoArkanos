@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+using System;
+>>>>>>> Devv
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,6 +18,10 @@ public class ScreensManager : MonoBehaviour
     public static bool isPaused;
 
     public TextMeshProUGUI pointsTextWinMenu;
+<<<<<<< HEAD
+=======
+    public TextMeshProUGUI pointsRecordText;
+>>>>>>> Devv
     public TextMeshProUGUI pointsTextLoseMenu;
 
     private void Awake()
@@ -32,7 +40,10 @@ public class ScreensManager : MonoBehaviour
         winingCanvas.SetActive(false);
         losingCanvas.SetActive(false);
         PauseCanvas.SetActive(false);
+<<<<<<< HEAD
 
+=======
+>>>>>>> Devv
     }
 
     // Update is called once per frame
@@ -46,15 +57,30 @@ public class ScreensManager : MonoBehaviour
 
     public void ShowLoseScreen()
     {
+<<<<<<< HEAD
        // Time.timeScale = 0;
+=======
+>>>>>>> Devv
         pointsTextLoseMenu.text = "Puntos totales : " + BattleManager.totalpoints.ToString();
         losingCanvas.SetActive(true);
     }
 
     public void ShowWinScreen()
     {
+<<<<<<< HEAD
        // Time.timeScale = 0;
         pointsTextWinMenu.text = "Puntos totales : " + BattleManager.totalpoints.ToString();
+=======
+        int recordPoints = PlayerPrefs.GetInt("RecordPoints", 0);
+        if (BattleManager.totalpoints > recordPoints)  // Guardar mejor puntaje
+        {
+            PlayerPrefs.SetInt("RecordPoints", BattleManager.totalpoints);
+            recordPoints = BattleManager.totalpoints;
+        }
+
+        pointsRecordText.text = "Best Record: " + recordPoints.ToString();
+        pointsTextWinMenu.text = "Puntos totales: " + BattleManager.totalpoints.ToString();
+>>>>>>> Devv
         winingCanvas.SetActive(true);
     }
     private void TogglePause()
@@ -67,7 +93,11 @@ public class ScreensManager : MonoBehaviour
             PauseCanvas.SetActive(true);
             isPaused = true;
         }
+<<<<<<< HEAD
         else if(Time.timeScale == 0)
+=======
+        else if (Time.timeScale == 0)
+>>>>>>> Devv
         {
             Time.timeScale = previusTimeScale;
             AudioListener.pause = false;
