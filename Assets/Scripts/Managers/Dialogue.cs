@@ -13,7 +13,7 @@ public class Dialogue : MonoBehaviour
     public bool didDialogueEnd { get; private set; } = false;
 
     private int lineIndex;
-    private float chTime;
+    private float chTime = 0.01f;
 
     public void StartDialogueSecuence()
     {
@@ -24,16 +24,28 @@ public class Dialogue : MonoBehaviour
         else if (dialogueText.text == dialogueLines[lineIndex]) // si el texto termino de mostrarse completo
         {
             NextDialogue();
+            Debug.Log("NextDialogue");
         }
-
         else // saltear texto
         {
             StopAllCoroutines();
             dialogueText.text = dialogueLines[lineIndex];
         }
     }
+    private void NextDialogue() // Secuencia de mostrado de dialogo, y desactiva dialogos al finalizar
+    {
+        lineIndex++;
+        if (lineIndex < dialogueLines.Length)
+        {
+            StartCoroutine(ShowLine());
+        }
+        else
+        {
+            EndDialogueSecuence();
+        }
+    }
 
-    public void EndDialogueSecuence()
+    public void EndDialogueSecuence()  // Finaliza secuencia de dialogo
     {
         didDialogueEnd = true;
         didDialogueStart = false;
@@ -50,20 +62,6 @@ public class Dialogue : MonoBehaviour
         StartCoroutine(ShowLine());
     }
 
-    private void NextDialogue() // Secuencia de mostrado de lineas, y desactiva dialogos 
-    {
-        lineIndex++;
-        if (lineIndex < dialogueLines.Length)
-        {
-            StartCoroutine(ShowLine());
-        }
-        else
-        {
-            EndDialogueSecuence();
-        }
-
-    }
-
     private IEnumerator ShowLine() // muestra letra por letra lo que haya en las lineas de dialogo
     {
         dialogueText.text = string.Empty;
@@ -74,4 +72,5 @@ public class Dialogue : MonoBehaviour
             yield return new WaitForSecondsRealtime(chTime);
         }
     }
+
 }
