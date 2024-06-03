@@ -12,26 +12,22 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private HealthSistem healthSistem;
     [SerializeField] private Spawner spawner;
     [SerializeField] private ScenesLoader scenesLoader;
-    [SerializeField] private ProgessBar progessBar;
+    [SerializeField] private UIManager UIManager;
     [SerializeField] private float songTime;
     [SerializeField] private bool levelEnded = false;
 
     public static event Action OnLose;
     public static event Action OnWin;
 
-    private float timer;
-    public static int totalpoints { get; private set; }
-    public int healtPoints { get; private set; }
-
-    public TextMeshProUGUI pointsText;
+    private float timer = 0;
+    public static int totalpoints { get; private set; } = 0;
+    public int healtPoints { get; private set; } = 5;
+    public int multiplicator { get; private set; } = 1;
+    private int maxmMultiplicator = 4;
 
     void Start()
     {
         Time.timeScale = 1;
-        healtPoints = 5;
-
-        timer = 0;
-        totalpoints = 0;
 
         PointsManager(totalpoints);
     }
@@ -46,14 +42,17 @@ public class BattleManager : MonoBehaviour
         Win();
         Lose();
 
-        progessBar.UpdateProgess(timer, songTime);  // Barra de progeso
+        UIManager.UpdateProgessBar(timer, songTime);  // Barra de progeso
+        UIManager.UpdateMultiplicator(multiplicator);  // Multiplicador
+        UIManager.UpdatePoints(totalpoints);  // Points
+
         spawner.EnemySpawner(timer);  // Instancia de enemigos
     }
 
     public void PointsManager(int points)  // maneja el puntaje y lo muestra en texto
     {
         totalpoints += points;
-        pointsText.text = totalpoints.ToString();
+       
     }
 
     private void Win()
@@ -78,7 +77,23 @@ public class BattleManager : MonoBehaviour
 
     public void LostHp()
     {
+        totalpoints /= 2;
         healtPoints -= 1;
         healthSistem.HpLost(healtPoints);
     }
+
+    public void LostMultiplicator()
+    {
+        
+        multiplicator = 0;
+    }
+
+    public void GainMultiplicator()
+    {
+        if (multiplicator < maxmMultiplicator )
+        {
+            multiplicator += 1;
+        }
+    }
+
 }

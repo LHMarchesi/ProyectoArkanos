@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BackgroundMove : MonoBehaviour
     {
-    [SerializeField] private RawImage Background;
+        [SerializeField] private RawImage Background;
         [SerializeField] private float x;
         [SerializeField] private float y;
 
