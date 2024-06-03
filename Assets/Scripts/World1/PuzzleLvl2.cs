@@ -30,6 +30,7 @@ public class PuzzleLvl2 : MonoBehaviour
             if (!triggerScript.IsTrigered())
             {
                 allTrigered = false;
+                door.SetActive(true);
                 break;
             }
         }
