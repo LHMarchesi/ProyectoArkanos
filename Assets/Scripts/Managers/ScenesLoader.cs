@@ -7,7 +7,16 @@ using UnityEngine.SceneManagement;
 
 public class ScenesLoader : MonoBehaviour
 {
-   
+    public static ScenesLoader instance;
+
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
     private Animator transitionAnimator;
     [SerializeField] private float transitionTime = 1;
 
@@ -49,7 +58,7 @@ public class ScenesLoader : MonoBehaviour
         SceneManager.LoadScene(sceneIndex);
     }
 
-    private IEnumerator SceneLoadByName(string sceneName)
+    public IEnumerator SceneLoadByName(string sceneName)
     {
         transitionAnimator.SetTrigger("StartTransition");
         yield return new WaitForSecondsRealtime(transitionTime);
