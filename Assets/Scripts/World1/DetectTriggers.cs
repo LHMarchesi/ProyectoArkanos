@@ -7,7 +7,6 @@ public class DetectTriggers : MonoBehaviour
     private bool isTrigger;
     [SerializeField] private GameObject item;
     [SerializeField] private Color defaultColor;
-    [SerializeField] private Color newColor;
 
     private void Start()
     {
@@ -19,8 +18,6 @@ public class DetectTriggers : MonoBehaviour
         if (collision.gameObject == item)
         {
             isTrigger = true;
-            item.GetComponent<SpriteRenderer>().color = newColor;
-            gameObject.GetComponent<SpriteRenderer>().color = newColor;
 
         }
     }
