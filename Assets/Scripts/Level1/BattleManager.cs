@@ -22,6 +22,7 @@ public class BattleManager : MonoBehaviour
     private float timer = 0;
     public static int totalpoints { get; private set; } = 0;
     public int healtPoints { get; private set; } = 5;
+    public int pointsRecord { get; private set; }
     public int multiplicator { get; private set; } = 1;
     private int maxmMultiplicator = 4;
 
@@ -52,14 +53,14 @@ public class BattleManager : MonoBehaviour
     public void PointsManager(int points)  // maneja el puntaje y lo muestra en texto
     {
         totalpoints += points;
-       
+
     }
 
     private void Win()
     {
         if (timer > songTime) //Cuando el timer, supera el tiempo de la cancion, se invoca el evento OnWin
         {
-            levelEnded = true;         
+            levelEnded = true;
             OnWin?.Invoke();
             spawner.Spawning(false);
         }
@@ -69,6 +70,7 @@ public class BattleManager : MonoBehaviour
     {
         if (healtPoints <= 0) //si la vida es menor o igual a 0, pierde y se invoca al evento Onlose
         {
+            
             levelEnded = true;
             OnLose?.Invoke();
             spawner.Spawning(false);
@@ -84,16 +86,15 @@ public class BattleManager : MonoBehaviour
 
     public void LostMultiplicator()
     {
-        
+
         multiplicator = 0;
     }
 
     public void GainMultiplicator()
     {
-        if (multiplicator < maxmMultiplicator )
+        if (multiplicator < maxmMultiplicator)
         {
             multiplicator += 1;
         }
     }
-
 }

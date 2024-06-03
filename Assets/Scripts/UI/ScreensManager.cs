@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,6 +15,7 @@ public class ScreensManager : MonoBehaviour
     public static bool isPaused;
 
     public TextMeshProUGUI pointsTextWinMenu;
+    public TextMeshProUGUI pointsRecordText;
     public TextMeshProUGUI pointsTextLoseMenu;
 
     private void Awake()
@@ -32,7 +34,6 @@ public class ScreensManager : MonoBehaviour
         winingCanvas.SetActive(false);
         losingCanvas.SetActive(false);
         PauseCanvas.SetActive(false);
-
     }
 
     // Update is called once per frame
@@ -46,15 +47,21 @@ public class ScreensManager : MonoBehaviour
 
     public void ShowLoseScreen()
     {
-       // Time.timeScale = 0;
         pointsTextLoseMenu.text = "Puntos totales : " + BattleManager.totalpoints.ToString();
         losingCanvas.SetActive(true);
     }
 
     public void ShowWinScreen()
     {
-       // Time.timeScale = 0;
-        pointsTextWinMenu.text = "Puntos totales : " + BattleManager.totalpoints.ToString();
+        int recordPoints = PlayerPrefs.GetInt("RecordPoints", 0);
+        if (BattleManager.totalpoints > recordPoints)  // Guardar mejor puntaje
+        {
+            PlayerPrefs.SetInt("RecordPoints", BattleManager.totalpoints);
+            recordPoints = BattleManager.totalpoints;
+        }
+
+        pointsRecordText.text = "Best Record: " + recordPoints.ToString();
+        pointsTextWinMenu.text = "Puntos totales: " + BattleManager.totalpoints.ToString();
         winingCanvas.SetActive(true);
     }
     private void TogglePause()
@@ -67,7 +74,7 @@ public class ScreensManager : MonoBehaviour
             PauseCanvas.SetActive(true);
             isPaused = true;
         }
-        else if(Time.timeScale == 0)
+        else if (Time.timeScale == 0)
         {
             Time.timeScale = previusTimeScale;
             AudioListener.pause = false;
