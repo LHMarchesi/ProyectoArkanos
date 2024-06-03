@@ -13,8 +13,7 @@ public class Circle : MonoBehaviour
     public bool hitIn = false;
     public bool destroy = false;
     [SerializeField] private string inputLetter;
-    [SerializeField] private int  precisionPoints = 10;  // ?
-    [SerializeField] private int inprecisionPoints = 5;
+    [SerializeField] private int points = 10;
     [SerializeField] private float deSpawnTime;
     [SerializeField] private Animator animator;
 
@@ -72,7 +71,6 @@ public class Circle : MonoBehaviour
                 indicatorCircle.gameObject.SetActive(false);
                 hitOut = true;
                 animator.SetBool("HitOut", true);
-                battleManager.PointsManager(-CalculateScore());
                 battleManager.LostHp();
             }
 
@@ -91,7 +89,6 @@ public class Circle : MonoBehaviour
             animator.SetBool("HitOut", true);
             hitOut = true;
             destroy = true;
-            battleManager.PointsManager(-CalculateScore());
             battleManager.LostHp();
         }
     }
@@ -104,12 +101,12 @@ public class Circle : MonoBehaviour
         if (precision >= 0.2f) 
         {
             battleManager.GainMultiplicator();
-            return precisionPoints * battleManager.multiplicator;
+            return points * battleManager.multiplicator;
         }
         else
         {
             battleManager.LostMultiplicator();
-            return inprecisionPoints;
+            return points;
         }
     }
 

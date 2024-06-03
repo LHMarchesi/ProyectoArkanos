@@ -3697,7 +3697,7 @@ GameObject:
   - component: {fileID: 1368501352}
   - component: {fileID: 1368501351}
   m_Layer: 5
-  m_Name: Multiplicator
+  m_Name: txt_Multiplicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

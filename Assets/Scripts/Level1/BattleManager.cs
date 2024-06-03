@@ -75,7 +75,7 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public void LostHp()
+    public void LostHp() // pierde una vida quita la mitad de puntos
     {
         totalpoints /= 2;
         healtPoints -= 1;
