@@ -61,5 +61,21 @@ public class ScenesLoader : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    public IEnumerator LoadSceneAsync(string sceneName)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        Scene newScene = SceneManager.GetSceneByName(sceneName);
+        if (newScene.IsValid())
+        {
+            SceneManager.SetActiveScene(newScene);
+        }
+    }
+
 
 }

@@ -7,6 +7,9 @@ public class PuzzleLvl2 : MonoBehaviour
     private DetectTriggers[] detectTriggers;
     [SerializeField] private GameObject[] buttons;
     [SerializeField] private GameObject door;
+    [SerializeField] private Animator animatorC1;
+    [SerializeField] private Animator animatorC2;
+    [SerializeField] private Animator animatorC3;
 
     void Start()
     {
@@ -35,7 +38,12 @@ public class PuzzleLvl2 : MonoBehaviour
             }
         }
         if (allTrigered)
+        {
             door.SetActive(false);
+            animatorC1.SetBool("IsConected", true);
+            animatorC2.SetBool("IsConected", true);
+            animatorC3.SetBool("IsConected", true);
+        }
         
 
         
