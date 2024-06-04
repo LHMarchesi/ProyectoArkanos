@@ -7,10 +7,7 @@ public class DetectTriggers : MonoBehaviour
     private bool isTrigger;
     [SerializeField] private GameObject item;
     [SerializeField] private Color defaultColor;
-<<<<<<< HEAD
     [SerializeField] private Animator animator;
-=======
->>>>>>> Devv
 
     private void Start()
     {
@@ -22,11 +19,8 @@ public class DetectTriggers : MonoBehaviour
         if (collision.gameObject == item)
         {
             isTrigger = true;
-<<<<<<< HEAD
             animator.SetBool("IsConected", true);
-=======
 
->>>>>>> Devv
         }
     }
 

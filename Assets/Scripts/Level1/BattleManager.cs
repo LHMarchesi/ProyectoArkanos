@@ -20,15 +20,19 @@ public class BattleManager : MonoBehaviour
     public static event Action OnWin;
 
     private float timer = 0;
-    public static int totalpoints { get; private set; } = 0;
-    public int healtPoints { get; private set; } = 5;
+    public static int totalpoints { get; private set; }
+    public int healtPoints { get; private set; } 
     public int pointsRecord { get; private set; }
-    public int multiplicator { get; private set; } = 1;
+    public int multiplicator { get; private set; }
     private int maxmMultiplicator = 4;
 
     void Start()
     {
         Time.timeScale = 1;
+
+        healtPoints = 5;
+        multiplicator = 1;
+        totalpoints = 0;
 
         PointsManager(totalpoints);
     }

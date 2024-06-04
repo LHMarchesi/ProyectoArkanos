@@ -8,8 +8,6 @@ using UnityEngine.SceneManagement;
 public class ScenesLoader : MonoBehaviour
 {
     public static ScenesLoader instance;
-
-
     private void Awake()
     {
         if (instance == null)
@@ -23,26 +21,24 @@ public class ScenesLoader : MonoBehaviour
 
     private void Start()
     {
-       
         transitionAnimator = GetComponentInChildren<Animator>();
-    }
-    public void SceneLoader(string sceneName)
-    {
-        StartCoroutine(SceneLoadByName(sceneName));
     }
 
     public void RestartScene()
     {
         int activeScene = SceneManager.GetActiveScene().buildIndex;
-        StartCoroutine(SceneLoad(activeScene));
+        StartCoroutine(SceneLoadByIndex(activeScene));
+    } 
+    public void LoadScene(string Scene)
+    {
+        StartCoroutine(SceneLoadByName(Scene));
     }
 
 
     public void LoadNextScene()
     {
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        StartCoroutine(SceneLoad(nextSceneIndex));
-        
+        StartCoroutine(SceneLoadByIndex(nextSceneIndex));
     }
 
     public void Quit()
@@ -51,11 +47,11 @@ public class ScenesLoader : MonoBehaviour
         Debug.Log("Quit");
     }
 
-    private IEnumerator SceneLoad(int sceneIndex)
+    private IEnumerator SceneLoadByIndex(int index)
     {
         transitionAnimator.SetTrigger("StartTransition");
         yield return new WaitForSecondsRealtime(transitionTime);
-        SceneManager.LoadScene(sceneIndex);
+        SceneManager.LoadScene(index);
     }
 
     public IEnumerator SceneLoadByName(string sceneName)

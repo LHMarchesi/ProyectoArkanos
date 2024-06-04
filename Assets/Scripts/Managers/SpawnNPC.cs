@@ -5,28 +5,23 @@ using UnityEngine;
 public class SpawnNPC : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private Animator animator;
-    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private GameObject Npc;
+    private Animator animator;
 
     void Start()
     {
-        
+        animator = GetComponentInChildren<Animator>();
+        Npc.SetActive(false);
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        spriteRenderer.enabled = true;
-
         if (collision.gameObject.CompareTag("Player"))
         {
+            Npc.SetActive(true);
             animator.SetBool("PlayerSpawn", true);
         }
-
-
     }
+
 }

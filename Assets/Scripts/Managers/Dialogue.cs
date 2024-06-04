@@ -24,7 +24,6 @@ public class Dialogue : MonoBehaviour
         else if (dialogueText.text == dialogueLines[lineIndex]) // si el texto termino de mostrarse completo
         {
             NextDialogue();
-            Debug.Log("NextDialogue");
         }
         else // saltear texto
         {

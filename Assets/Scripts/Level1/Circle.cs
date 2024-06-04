@@ -28,6 +28,7 @@ public class Circle : MonoBehaviour
         battleManager = GameObject.Find("BattleManager").GetComponent<BattleManager>();
         animator = gameObject.GetComponent<Animator>();
         indicatorCircle = transform.Find("IndicatorCircle");
+
         originalScale = indicatorCircle.localScale;
         initialDeSpawnTime = deSpawnTime;
     }
