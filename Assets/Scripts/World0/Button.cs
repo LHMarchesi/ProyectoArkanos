@@ -9,7 +9,7 @@ public class Button : MonoBehaviour
    
     private SpriteRenderer spriteRenderer;
     [SerializeField] private bool buttonPress;
-    [SerializeField] private Sprite spritePress;
+    [SerializeField] private Animator animator;
 
     void Start()
     {   
@@ -21,7 +21,7 @@ public class Button : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && !IsButtonPress())
         {
-            spriteRenderer.sprite = spritePress;
+            animator.SetBool("IsConected", true);
             buttonPress = true;
         }
 
