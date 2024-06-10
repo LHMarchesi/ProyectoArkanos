@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject pauseMenu;
+    private float previusTimeScale = 1;
+    [SerializeField] private GameObject PauseCanvas;
     [SerializeField] private static bool isPaused;
     [SerializeField] Slider musicSlider;
     [SerializeField] Slider sfxSlider;
@@ -15,35 +16,41 @@ public class PauseMenu : MonoBehaviour
     {
         SetVolumeMusic();
         SetVolumeSFX();
-        pauseMenu.SetActive(false);
+        PauseCanvas.SetActive(false);
         isPaused = false;
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused)
-            {
-                
-                Resume();
-            }else   
-            {
-                Pause();
-            }
+            TogglePause();
         }
     }
-        
 
-    private void Pause()
+    private void TogglePause()
     {
-        Time.timeScale = 0;
-        pauseMenu.SetActive(true);
-        isPaused = true;
+        if (Time.timeScale > 0)
+        {
+            previusTimeScale = Time.timeScale;
+            Time.timeScale = 0;
+            AudioListener.pause = true;
+            PauseCanvas.SetActive(true);
+            isPaused = true;
+        }
+        else if (Time.timeScale == 0)
+        {
+            Time.timeScale = previusTimeScale;
+            AudioListener.pause = false;
+            PauseCanvas.SetActive(false);
+            isPaused = false;
+        }
     }
-    private void Resume()
+   
+    public void Resume()
     {
-        Time.timeScale = 1;
-        pauseMenu.SetActive(false);
+        Time.timeScale = previusTimeScale;
+        AudioListener.pause = false;
+        PauseCanvas.SetActive(false);
         isPaused = false;
     }
 
