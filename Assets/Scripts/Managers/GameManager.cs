@@ -16,11 +16,4 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void IsEnemy(GameObject gameObject)  // Interaccion con enemigos
-    {
-        if (gameObject.CompareTag("Enemy"))
-        {
-            ScenesLoader.instance.LoadNextScene();
-        }
-    }
 }
