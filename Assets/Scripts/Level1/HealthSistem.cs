@@ -5,10 +5,13 @@ using UnityEngine;
 public class HealthSistem : MonoBehaviour
 {
     [SerializeField] private GameObject[] health;
-    
+
     public void HpLost(int index)
     {
-        health[index].gameObject.SetActive(false);
+        if (index >= 0)
+        {
+            health[index].gameObject.SetActive(false);
+        }
     }
 
     public void HpGain(int index)
