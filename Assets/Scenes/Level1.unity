@@ -2766,7 +2766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSistem: {fileID: 1910772736}
-  spawner: {fileID: 1910772733}
+  levelMapping: {fileID: 0}
   scenesLoader: {fileID: 1507263910}
   UIManager: {fileID: 1708227825}
   songTime: 87
@@ -5214,9 +5214,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1910772734}
-  - component: {fileID: 1910772733}
   - component: {fileID: 1910772735}
   - component: {fileID: 1910772736}
+  - component: {fileID: 1910772737}
   m_Layer: 0
   m_Name: Scripter
   m_TagString: Untagged
@@ -5224,22 +5224,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1910772733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1910772732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b51a2728a666a44be82d70af389106, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Circles:
-  - {fileID: 8616780227826436317, guid: 7701bd3daa399fd4495a5f44c2dfca4b, type: 3}
-  - {fileID: 7056362098250663299, guid: 9a220978b8ffe754e8e65480bad6950f, type: 3}
-  - {fileID: 8616780227826436317, guid: 5e28b32a474ef274d98886e0e8c05fe1, type: 3}
 --- !u!4 &1910772734
 Transform:
   m_ObjectHideFlags: 0
@@ -5301,6 +5285,27 @@ MonoBehaviour:
   - {fileID: 2081327328}
   - {fileID: 133795216}
   - {fileID: 6155193}
+--- !u!114 &1910772737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910772732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7814bf134cc7a9468e02d1eff137531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Circles:
+  - {fileID: 8616780227826436317, guid: 7701bd3daa399fd4495a5f44c2dfca4b, type: 3}
+  - {fileID: 7056362098250663299, guid: 9a220978b8ffe754e8e65480bad6950f, type: 3}
+  - {fileID: 8616780227826436317, guid: 5e28b32a474ef274d98886e0e8c05fe1, type: 3}
+  spawnTimes:
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!1 &1958010688
 GameObject:
   m_ObjectHideFlags: 0
