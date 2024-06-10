@@ -10,7 +10,7 @@ using UnityEngine;
 public class BattleManager : MonoBehaviour
 {
     [SerializeField] private HealthSistem healthSistem;
-    [SerializeField] private Spawner spawner;
+    [SerializeField] private LevelMapping levelMapping;
     [SerializeField] private ScenesLoader scenesLoader;
     [SerializeField] private UIManager UIManager;
     [SerializeField] private float songTime;
@@ -28,6 +28,8 @@ public class BattleManager : MonoBehaviour
 
     void Start()
     {
+        OnWin += ScreensManager.Instance.ShowWinScreen;
+        OnLose += ScreensManager.Instance.ShowLoseScreen;
         Time.timeScale = 1;
 
         healtPoints = 5;
@@ -51,7 +53,7 @@ public class BattleManager : MonoBehaviour
         UIManager.UpdateMultiplicator(multiplicator);  // Multiplicador
         UIManager.UpdatePoints(totalpoints);  // Points
 
-        spawner.EnemySpawner(timer);  // Instancia de enemigos
+        levelMapping.EnemySpawner(timer);  // Instancia de enemigos
     }
 
     public void PointsManager(int points)  // maneja el puntaje y lo muestra en texto
@@ -66,7 +68,7 @@ public class BattleManager : MonoBehaviour
         {
             levelEnded = true;
             OnWin?.Invoke();
-            spawner.Spawning(false);
+            levelMapping.Spawning(false);
         }
     }
 
@@ -77,7 +79,7 @@ public class BattleManager : MonoBehaviour
             
             levelEnded = true;
             OnLose?.Invoke();
-            spawner.Spawning(false);
+            levelMapping.Spawning(false);
         }
     }
 
