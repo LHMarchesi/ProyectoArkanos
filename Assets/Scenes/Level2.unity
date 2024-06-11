@@ -1375,11 +1375,11 @@ Transform:
   m_GameObject: {fileID: 775971571}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.6063666, y: -9.434966, z: 9.235699}
+  m_LocalPosition: {x: 1.2358004, y: -4.479467, z: 8.80799}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1910772734}
+  m_Father: {fileID: 1242790337}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &775971573
 MonoBehaviour:
@@ -1627,11 +1627,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 30581934068185254, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 30581934068185254, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199968556034248591, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1910772738}
+    - target: {fileID: 1199968556034248591, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetVolumeMusic
       objectReference: {fileID: 0}
     - target: {fileID: 1300957975680596332, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1648,7 +1656,7 @@ PrefabInstance:
     - target: {fileID: 1300957975680596332, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1242790340}
+      objectReference: {fileID: 1910772738}
     - target: {fileID: 1300957975680596332, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -1692,7 +1700,7 @@ PrefabInstance:
     - target: {fileID: 1779492340177164954, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1242790340}
+      objectReference: {fileID: 1910772738}
     - target: {fileID: 1779492340177164954, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -1725,25 +1733,33 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4929726569613795971, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1910772738}
+    - target: {fileID: 4929726569613795971, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetVolumeSFX
+      objectReference: {fileID: 0}
     - target: {fileID: 5122358017941232047, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5122358017941232047, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5650742586480914164, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5650742586480914164, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5650742586480914164, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7059495216129125119, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_Pivot.x
@@ -1827,24 +1843,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7474213458488656518, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7474213458488656518, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7474213458488656518, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7827852240249654102, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_Name
       value: PauseCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7827852240249654102, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9018264467372331866, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1242790340}
+      objectReference: {fileID: 1910772738}
     - target: {fileID: 9018264467372331866, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Resume
@@ -2086,7 +2106,6 @@ GameObject:
   - component: {fileID: 1242790338}
   - component: {fileID: 1242790341}
   - component: {fileID: 1242790339}
-  - component: {fileID: 1242790340}
   m_Layer: 0
   m_Name: BattleManager
   m_TagString: Untagged
@@ -2106,7 +2125,10 @@ Transform:
   m_LocalPosition: {x: -0.8071648, y: -0.15236221, z: 0.4277089}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1368857703}
+  - {fileID: 775971572}
+  - {fileID: 2103240371}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1242790338
@@ -2144,21 +2166,6 @@ MonoBehaviour:
   pointsTextWinMenu: {fileID: 1757772649}
   pointsRecordText: {fileID: 672578165}
   pointsTextLoseMenu: {fileID: 1298833196}
---- !u!114 &1242790340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242790334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 533b3f70c60346d43883877e6fe2ef16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PauseCanvas: {fileID: 981686541}
-  musicSlider: {fileID: 981686543}
-  sfxSlider: {fileID: 981686542}
 --- !u!114 &1242790341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2171,6 +2178,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac398d01ddc89a4a86d77e633793eab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useStartDialogue: 1
+  useWinDialogue: 1
+  useLoseDialogue: 1
   startDialogue: {fileID: 1368857702}
   winDialogue: {fileID: 775971573}
   loseDialogue: {fileID: 2103240372}
@@ -3059,11 +3069,11 @@ Transform:
   m_GameObject: {fileID: 1368857701}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.6063666, y: -9.434966, z: 9.235699}
+  m_LocalPosition: {x: 1.2358004, y: -4.479467, z: 8.80799}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1910772734}
+  m_Father: {fileID: 1242790337}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1373372187
 PrefabInstance:
@@ -4287,6 +4297,7 @@ GameObject:
   - component: {fileID: 1910772734}
   - component: {fileID: 1910772736}
   - component: {fileID: 1910772737}
+  - component: {fileID: 1910772738}
   m_Layer: 0
   m_Name: Scripter
   m_TagString: Untagged
@@ -4306,10 +4317,7 @@ Transform:
   m_LocalPosition: {x: 5.035002, y: 4.803137, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1368857703}
-  - {fileID: 775971572}
-  - {fileID: 2103240371}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1910772736
@@ -4364,6 +4372,21 @@ MonoBehaviour:
   - 14.93214
   - 15.88804
   - 16.86398
+--- !u!114 &1910772738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910772732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533b3f70c60346d43883877e6fe2ef16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PauseCanvas: {fileID: 981686541}
+  musicSlider: {fileID: 981686543}
+  sfxSlider: {fileID: 981686542}
 --- !u!1 &1958010688
 GameObject:
   m_ObjectHideFlags: 0
@@ -4973,11 +4996,11 @@ Transform:
   m_GameObject: {fileID: 2103240370}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.6063666, y: -9.434966, z: 9.235699}
+  m_LocalPosition: {x: 1.2358004, y: -4.479467, z: 8.80799}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1910772734}
+  m_Father: {fileID: 1242790337}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2103240372
 MonoBehaviour:
@@ -5000,14 +5023,14 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 908743382}
-  - {fileID: 519420032}
   - {fileID: 619394802}
-  - {fileID: 1242790337}
-  - {fileID: 1708227820}
   - {fileID: 2075181771}
   - {fileID: 861338145}
   - {fileID: 1373372187}
   - {fileID: 1389099572}
   - {fileID: 2028715832}
-  - {fileID: 1910772734}
   - {fileID: 981686540}
+  - {fileID: 1242790337}
+  - {fileID: 519420032}
+  - {fileID: 1708227820}
+  - {fileID: 1910772734}

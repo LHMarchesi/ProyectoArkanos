@@ -4634,7 +4634,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910772732}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 002bac1a28abdb24ea4da04cbfcf610e, type: 3}
   m_Name: 
@@ -4657,6 +4657,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac398d01ddc89a4a86d77e633793eab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useStartDialogue: 0
+  useWinDialogue: 1
+  useLoseDialogue: 1
   startDialogue: {fileID: 0}
   winDialogue: {fileID: 775971573}
   loseDialogue: {fileID: 2103240372}
@@ -5466,15 +5469,15 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 908743382}
-  - {fileID: 519420032}
   - {fileID: 619394802}
-  - {fileID: 1242790337}
-  - {fileID: 1828393733368066725}
   - {fileID: 2075181771}
   - {fileID: 861338145}
   - {fileID: 1373372187}
   - {fileID: 1389099572}
   - {fileID: 2028715832}
+  - {fileID: 1828393733368066725}
+  - {fileID: 519420032}
+  - {fileID: 1242790337}
   - {fileID: 1708227820}
   - {fileID: 1910772734}
   - {fileID: 1450357038}

@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class LevelDialogueSecuence : MonoBehaviour
 {
-
+    [SerializeField] private bool useStartDialogue = true;
+    [SerializeField] private bool useWinDialogue = true;
+    [SerializeField] private bool useLoseDialogue = true;
 
     [SerializeField] private Dialogue startDialogue;
     [SerializeField] private Dialogue winDialogue;
@@ -26,7 +28,7 @@ public class LevelDialogueSecuence : MonoBehaviour
 
     private void StartSequence()
     {
-        if (!hasStartDialogueStarted)
+        if (useStartDialogue  && !hasStartDialogueStarted)
         {
             hasStartDialogueStarted = true;
             StartCoroutine(startDialogue.ShowDialogue(startDialogue,3f, () => startDialogue.EndDialogueSecuence()));
@@ -35,7 +37,7 @@ public class LevelDialogueSecuence : MonoBehaviour
     }
     private void LoseSequence()
     {
-        if (!hasLoseDialogueStarted)
+        if (useLoseDialogue && !hasLoseDialogueStarted)
         {
             hasLoseDialogueStarted = true;
             StartCoroutine(loseDialogue.ShowDialogue(loseDialogue, 3f, () =>  ScreensManager.Instance.ShowLoseScreen()));
@@ -44,7 +46,7 @@ public class LevelDialogueSecuence : MonoBehaviour
     }
     private void WinSequence()
     {
-        if (!hasWinDialogueStarted)
+        if (useWinDialogue && !hasWinDialogueStarted)
         {
             hasWinDialogueStarted = true;
             StartCoroutine(winDialogue.ShowDialogue(winDialogue, 3f, () => ScreensManager.Instance.ShowWinScreen()));

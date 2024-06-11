@@ -6,14 +6,16 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    private float previusTimeScale = 1;
     [SerializeField] private GameObject PauseCanvas;
-    [SerializeField] private static bool isPaused;
     [SerializeField] Slider musicSlider;
     [SerializeField] Slider sfxSlider;
 
+    private float previusTimeScale = 1;
+    private bool isPaused;
+
     private void Start()
     {
+        
         SetVolumeMusic();
         SetVolumeSFX();
         PauseCanvas.SetActive(false);
