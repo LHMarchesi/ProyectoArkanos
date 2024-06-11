@@ -7447,11 +7447,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.85423183, y: 0.4169265}
   m_EdgeRadius: 0
---- !u!1 &1249925144 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2785343593395656593, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
-  m_PrefabInstance: {fileID: 1706667077}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1331053986
 GameObject:
   m_ObjectHideFlags: 0
@@ -8063,6 +8058,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 90f224cbd996eca46b7305dfe66a4759, type: 2}
+    - target: {fileID: 5162687661916666696, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
+      propertyPath: goToScene
+      value: Level3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5162687661916666696, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
+      propertyPath: changeScene
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5577615320667162177, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
       propertyPath: isEnemy
       value: 1
@@ -8081,15 +8084,15 @@ PrefabInstance:
       objectReference: {fileID: 2096762872}
     - target: {fileID: 5577615320667162177, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
       propertyPath: dialogueLines.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5577615320667162177, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
       propertyPath: dialogueLines.Array.data[0]
-      value: 'Mago Desconocido:'
+      value: Texto ejemplo
       objectReference: {fileID: 0}
     - target: {fileID: 5577615320667162177, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
       propertyPath: dialogueLines.Array.data[1]
-      value: 'Mago Desconocido:'
+      value: Texto ejemplo 2
       objectReference: {fileID: 0}
     - target: {fileID: 5577615320667162177, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
       propertyPath: dialogueLines.Array.data[2]
@@ -8584,6 +8587,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: b894330ed2a447441ba68e35ee23131a, type: 2}
+    - target: {fileID: 5162687661916666696, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
+      propertyPath: goToScene
+      value: Level1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5162687661916666696, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
+      propertyPath: changeScene
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5577615320667162177, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
       propertyPath: isEnemy
       value: 1
@@ -8602,15 +8613,15 @@ PrefabInstance:
       objectReference: {fileID: 2096762872}
     - target: {fileID: 5577615320667162177, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
       propertyPath: dialogueLines.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5577615320667162177, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
       propertyPath: dialogueLines.Array.data[0]
-      value: 'Mago Desconocido:'
+      value: TextoEjemplo
       objectReference: {fileID: 0}
     - target: {fileID: 5577615320667162177, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
       propertyPath: dialogueLines.Array.data[1]
-      value: 'Mago Desconocido:'
+      value: TextoEjemplo
       objectReference: {fileID: 0}
     - target: {fileID: 5577615320667162177, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
       propertyPath: dialogueLines.Array.data[2]
@@ -8623,10 +8634,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1601065362514128141, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1931048822}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
 --- !u!1 &1719413424
 GameObject:
@@ -86012,38 +86020,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1feebdd2edb37a448c6041af92ab0de, type: 3}
---- !u!1 &1931048821 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1601065362514128141, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
-  m_PrefabInstance: {fileID: 1706667077}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1931048822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1931048821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f0cdfc8d314b0f4e82c2dea8223ce9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  changeScene: 0
-  goToScene: 
-  dialogueMark: {fileID: 1249925144}
-  dialogue: {fileID: 1931048825}
---- !u!114 &1931048825 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5577615320667162177, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
-  m_PrefabInstance: {fileID: 1706667077}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1931048821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d65d1510c7f602489ccce740160d0b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1931048826 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4582171973792205483, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
