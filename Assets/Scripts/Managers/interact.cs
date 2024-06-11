@@ -7,8 +7,8 @@ public class interact : MonoBehaviour
 {
     private Player player;
     private bool isPlayerOnRange;
-    [SerializeField] private bool isBattle;
-    [SerializeField] private string Level;
+    [SerializeField] private bool changeScene;
+    [SerializeField] private string goToScene;
     [SerializeField] private GameObject dialogueMark;
     [SerializeField] private Dialogue dialogue;
 
@@ -16,6 +16,7 @@ public class interact : MonoBehaviour
 
     void Start()
     {
+        dialogueMark.SetActive(false);
         player = GameObject.Find("Player").GetComponent<Player>();
     }
 
@@ -31,9 +32,9 @@ public class interact : MonoBehaviour
                 if (dialogue.didDialogueEnd)
                 {
                     dialogue.EndDialogueSecuence();
-                    if (isBattle)
+                    if (changeScene)
                     {
-                        ScenesLoader.instance.LoadScene(Level);
+                        ScenesLoader.instance.LoadScene(goToScene);
                     }
                 }
             }

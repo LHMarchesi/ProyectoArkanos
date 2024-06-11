@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2593753890149044253}
   - component: {fileID: 2593753890149044255}
   m_Layer: 0
-  m_Name: NpcGuia
+  m_Name: SpawnNpc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,6 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2593753890149044252}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.82, y: 6.39, z: 0.030443665}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,7 +33,6 @@ Transform:
   m_Children:
   - {fileID: 2047440504169158105}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2593753890149044253
 BoxCollider2D:
@@ -44,6 +44,25 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -72,12 +91,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd110bf10265e9d4e9385f5d809f7ad0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Npc: {fileID: 3875062832320705151}
+  animator: {fileID: 7044687175278445368}
+  Gandalf: {fileID: 662279363193900954}
 --- !u!1001 &2593753889461067634
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2593753890149044254}
     m_Modifications:
     - target: {fileID: 1601065362514128141, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
@@ -173,10 +194,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
---- !u!1 &385438569434400995 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2785343593395656593, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
+--- !u!212 &662279363193900954 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3084472038143021288, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
   m_PrefabInstance: {fileID: 2593753889461067634}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2047440504169158105 stripped
@@ -184,33 +208,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4582171973792205483, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
   m_PrefabInstance: {fileID: 2593753889461067634}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3875062832320705151 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1601065362514128141, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
+--- !u!95 &7044687175278445368 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4773002803056843850, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
   m_PrefabInstance: {fileID: 2593753889461067634}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2593753890865524443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3875062832320705151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f0cdfc8d314b0f4e82c2dea8223ce9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueMark: {fileID: 385438569434400995}
-  dialogue: {fileID: 7969531852026927411}
---- !u!114 &7969531852026927411 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5577615320667162177, guid: 41ec57e0b7cc4e94e96c916b99daa21e, type: 3}
-  m_PrefabInstance: {fileID: 2593753889461067634}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3875062832320705151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d65d1510c7f602489ccce740160d0b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
