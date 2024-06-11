@@ -28,8 +28,6 @@ public class BattleManager : MonoBehaviour
 
     void Start()
     {
-        OnWin += ScreensManager.Instance.ShowWinScreen;
-        OnLose += ScreensManager.Instance.ShowLoseScreen;
         Time.timeScale = 1;
 
         healtPoints = 5;
@@ -66,8 +64,8 @@ public class BattleManager : MonoBehaviour
     {
         if (timer > songTime) //Cuando el timer, supera el tiempo de la cancion, se invoca el evento OnWin
         {
-            levelEnded = true;
             OnWin?.Invoke();
+            levelEnded = true;
             levelMapping.Spawning(false);
         }
     }
@@ -76,9 +74,8 @@ public class BattleManager : MonoBehaviour
     {
         if (healtPoints <= 0) //si la vida es menor o igual a 0, pierde y se invoca al evento Onlose
         {
-            
-            levelEnded = true;
             OnLose?.Invoke();
+            levelEnded = true;
             levelMapping.Spawning(false);
         }
     }
@@ -102,5 +99,11 @@ public class BattleManager : MonoBehaviour
         {
             multiplicator += 1;
         }
+    }
+
+    private void OnDestroy()
+    {
+        OnLose -= ScreensManager.Instance.ShowLoseScreen;
+        OnWin -= ScreensManager.Instance.ShowWinScreen;
     }
 }

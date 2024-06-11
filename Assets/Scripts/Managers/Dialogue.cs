@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class Dialogue : MonoBehaviour
 {
@@ -70,6 +71,14 @@ public class Dialogue : MonoBehaviour
             dialogueText.text += ch;
             yield return new WaitForSecondsRealtime(chTime);
         }
+    }
+
+    public IEnumerator ShowDialogue(Dialogue dialogue, float duration,Action onComplete)
+    {
+        dialogue.StartDialogueSecuence();
+        yield return new WaitForSecondsRealtime(duration); // Espera la duración del diálogo
+        dialogue.EndDialogueSecuence();
+        onComplete?.Invoke(); // Llama al callback después de que el diálogo ha terminado
     }
 
 }

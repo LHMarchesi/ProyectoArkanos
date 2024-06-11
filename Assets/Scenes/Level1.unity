@@ -3603,7 +3603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8616780227826436314, guid: 7701bd3daa399fd4495a5f44c2dfca4b, type: 3}
       propertyPath: deSpawnTime
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8616780227826436317, guid: 7701bd3daa399fd4495a5f44c2dfca4b, type: 3}
       propertyPath: m_Name
@@ -4433,10 +4433,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1910772734}
-  - component: {fileID: 1910772735}
   - component: {fileID: 1910772736}
   - component: {fileID: 1910772737}
   - component: {fileID: 1910772738}
+  - component: {fileID: 1910772739}
+  - component: {fileID: 1910772740}
   m_Layer: 0
   m_Name: Scripter
   m_TagString: Untagged
@@ -4465,28 +4466,6 @@ Transform:
   - {fileID: 2103240371}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1910772735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1910772732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ac398d01ddc89a4a86d77e633793eab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  circlePrefab: {fileID: 2009751212}
-  circlePrefab2: {fileID: 136810500}
-  firstdialogue: {fileID: 1368857702}
-  secondDialogue: {fileID: 1822658151}
-  thirdDialogue: {fileID: 49482576}
-  fourthDialogue: {fileID: 1298188158}
-  WinDialogue: {fileID: 775971573}
-  LoseDialogue: {fileID: 2103240372}
-  hasLoseDialogueStarted: 0
-  hasWinDialogueStarted: 0
 --- !u!114 &1910772736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4648,6 +4627,39 @@ MonoBehaviour:
   PauseCanvas: {fileID: 722929060}
   musicSlider: {fileID: 1033531473}
   sfxSlider: {fileID: 335828738}
+--- !u!114 &1910772739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910772732}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 002bac1a28abdb24ea4da04cbfcf610e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  circlePrefab: {fileID: 2009751212}
+  circlePrefab2: {fileID: 136810500}
+  firstDialogue: {fileID: 1368857702}
+  secondDialogue: {fileID: 1822658151}
+  thirdDialogue: {fileID: 49482576}
+  fourthDialogue: {fileID: 1298188158}
+--- !u!114 &1910772740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910772732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ac398d01ddc89a4a86d77e633793eab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: {fileID: 0}
+  winDialogue: {fileID: 775971573}
+  loseDialogue: {fileID: 2103240372}
 --- !u!1 &1958010688
 GameObject:
   m_ObjectHideFlags: 0

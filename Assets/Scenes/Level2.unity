@@ -198,54 +198,6 @@ RectTransform:
   m_AnchoredPosition: {x: 314, y: -46}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
---- !u!1 &49482574
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 49482575}
-  - component: {fileID: 49482576}
-  m_Layer: 0
-  m_Name: ' Dialogue3'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &49482575
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 49482574}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.6063666, y: -9.434966, z: 9.235699}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1910772734}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &49482576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 49482574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d65d1510c7f602489ccce740160d0b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialoguePanel: {fileID: 288968245}
-  dialogueText: {fileID: 1027902225}
-  dialogueLines:
-  - Nunca me venceras si eres asi de lento JAJAJA
 --- !u!1 &133795216
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,8 +1396,7 @@ MonoBehaviour:
   dialoguePanel: {fileID: 288968245}
   dialogueText: {fileID: 1027902225}
   dialogueLines:
-  - No puedo creer que un mago como tu me haya derrotado, supongo que tu abuelo te
-    entreno bien
+  - Texto Ejemplo
 --- !u!1 &796090109
 GameObject:
   m_ObjectHideFlags: 0
@@ -2133,6 +2084,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1242790337}
   - component: {fileID: 1242790338}
+  - component: {fileID: 1242790341}
   - component: {fileID: 1242790339}
   - component: {fileID: 1242790340}
   m_Layer: 0
@@ -2207,6 +2159,21 @@ MonoBehaviour:
   PauseCanvas: {fileID: 981686541}
   musicSlider: {fileID: 981686543}
   sfxSlider: {fileID: 981686542}
+--- !u!114 &1242790341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242790334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ac398d01ddc89a4a86d77e633793eab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: {fileID: 1368857702}
+  winDialogue: {fileID: 775971573}
+  loseDialogue: {fileID: 2103240372}
 --- !u!1 &1286439181
 GameObject:
   m_ObjectHideFlags: 0
@@ -2512,54 +2479,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1295971692}
   m_CullTransparentMesh: 1
---- !u!1 &1298188156
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1298188157}
-  - component: {fileID: 1298188158}
-  m_Layer: 0
-  m_Name: ' Dialogue4'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1298188157
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1298188156}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.6063666, y: -9.434966, z: 9.235699}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1910772734}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1298188158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1298188156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d65d1510c7f602489ccce740160d0b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialoguePanel: {fileID: 288968245}
-  dialogueText: {fileID: 1027902225}
-  dialogueLines:
-  - ...
 --- !u!1 &1298833194
 GameObject:
   m_ObjectHideFlags: 0
@@ -2996,7 +2915,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 948, y: 23.000015}
+  m_AnchoredPosition: {x: 948, y: 23}
   m_SizeDelta: {x: 387.68, y: 96.92}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1368501351
@@ -3107,7 +3026,7 @@ GameObject:
   - component: {fileID: 1368857703}
   - component: {fileID: 1368857702}
   m_Layer: 0
-  m_Name: ' Dialogue1'
+  m_Name: StartDialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3128,7 +3047,9 @@ MonoBehaviour:
   dialoguePanel: {fileID: 288968245}
   dialogueText: {fileID: 1027902225}
   dialogueLines:
-  - Pon el raton encima y presiona la tecla correspondiente
+  - 'TextoEjemplo
+
+'
 --- !u!4 &1368857703
 Transform:
   m_ObjectHideFlags: 0
@@ -4280,54 +4201,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768290719}
   m_CullTransparentMesh: 1
---- !u!1 &1822658150
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1822658152}
-  - component: {fileID: 1822658151}
-  m_Layer: 0
-  m_Name: ' Dialogue2'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1822658151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822658150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d65d1510c7f602489ccce740160d0b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialoguePanel: {fileID: 288968245}
-  dialogueText: {fileID: 1027902225}
-  dialogueLines:
-  - Muy bien! Ahora mas rapido!
---- !u!4 &1822658152
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822658150}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.6063666, y: -9.434966, z: 9.235699}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1910772734}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1900629823
 GameObject:
   m_ObjectHideFlags: 0
@@ -4435,9 +4308,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1368857703}
-  - {fileID: 1822658152}
-  - {fileID: 49482575}
-  - {fileID: 1298188157}
   - {fileID: 775971572}
   - {fileID: 2103240371}
   m_Father: {fileID: 0}
@@ -5124,7 +4994,7 @@ MonoBehaviour:
   dialoguePanel: {fileID: 288968245}
   dialogueText: {fileID: 1027902225}
   dialogueLines:
-  - Sabia que no eras rival para mi, lo lamento por tu abuelo
+  - Texto Ejemplo
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
