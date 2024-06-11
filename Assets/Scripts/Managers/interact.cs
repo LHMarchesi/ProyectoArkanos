@@ -8,7 +8,7 @@ public class interact : MonoBehaviour
     private Player player;
     private bool isPlayerOnRange;
     [SerializeField] private bool isBattle;
-
+    [SerializeField] private string Level;
     [SerializeField] private GameObject dialogueMark;
     [SerializeField] private Dialogue dialogue;
 
@@ -33,7 +33,7 @@ public class interact : MonoBehaviour
                     dialogue.EndDialogueSecuence();
                     if (isBattle)
                     {
-                        ScenesLoader.instance.LoadNextScene();
+                        ScenesLoader.instance.LoadScene(Level);
                     }
                 }
             }
