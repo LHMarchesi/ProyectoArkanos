@@ -6,10 +6,12 @@ public class LevelMapping : MonoBehaviour
 {
     [SerializeField] private GameObject[] Circles;
     [SerializeField] private float[] spawnTimes; // Array de tiempos de spawn
-    private float errorMargin = 0.1f;
-    private float timeToResume = 0.3f; 
 
     private bool canSpawn;
+    private float errorMargin = 0.1f;
+    private float timeToResume = 0.3f; 
+    private float minDistanceBetweenCircles = 1.5f; 
+
 
     void Start()
     {
@@ -25,15 +27,43 @@ public class LevelMapping : MonoBehaviour
     {
         int randomValue = Random.Range(0, Circles.Length);
 
-        float randomX = Random.Range(-8, 3);
-        float randomY = Random.Range(-4, 4);
+        Vector2 spawnPos;
+        int attempts = 0;
+        bool validPosition = false;
 
-        Vector2 spawnPos = new Vector2(randomX, randomY);
+        do
+        {
+            float randomX = Random.Range(-8, 3);
+            float randomY = Random.Range(-4, 4);
+            spawnPos = new Vector2(randomX, randomY);  // Toma posicion random
 
-        Instantiate(Circles[randomValue], spawnPos, Quaternion.identity);
+            validPosition = true;
+            foreach (GameObject circle in GameObject.FindGameObjectsWithTag("Circle")) // Circulos en escena
+            {
+                if (Vector2.Distance(spawnPos, circle.transform.position) < minDistanceBetweenCircles)
+                {
+                    validPosition = false;
+                    break;
+                }
+            }
+
+            attempts++;
+            if (attempts > 1000) // Evitar bucle infinito
+            {
+                Debug.LogWarning("Could not find a valid position for a new circle.");
+                break;
+            }
+
+        } while (!validPosition);
+
+        if (validPosition) // Spawneo en posicion valida
+        {
+            GameObject newCircle = Instantiate(Circles[randomValue], spawnPos, Quaternion.identity);
+            newCircle.tag = "Circle"; 
+        }
     }
 
-    public void EnemySpawner(float timer)  // Spawneo
+    public void EnemySpawner(float timer) // Mapeo
     {
         if (canSpawn)
         {
@@ -50,8 +80,8 @@ public class LevelMapping : MonoBehaviour
         }
     }
 
-    void ResumeSpawning()
+    void ResumeSpawning() // Reanuda la generación de enemigos
     {
-        canSpawn = true; // Reanuda la generación de enemigos
+        canSpawn = true; 
     }
 }
