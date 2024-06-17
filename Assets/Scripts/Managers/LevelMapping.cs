@@ -6,41 +6,58 @@ public class LevelMapping : MonoBehaviour
 {
     [SerializeField] private GameObject[] Circles;
     [SerializeField] private float[] spawnTimes; // Array de tiempos de spawn
+   
 
     private bool canSpawn;
     private float errorMargin = 0.1f;
-    private float timeToResume = 0.3f; 
-    private float minDistanceBetweenCircles = 1.5f; 
-
+    private float timeToResume = 0.3f;
+    float minDistanceBetweenCircles = 1.5f;
+    float deSpawnTime;
 
     void Start()
     {
         canSpawn = true;
     }
 
-    public void Spawning(bool canSpawn) // Detiene spawn de enemigos
+    public void Spawning(bool canSpawn) // Detiene spawn de Circulos
     {
         this.canSpawn = canSpawn;
     }
-
-    private void AddEnemy() // Instancia los enemigos
+   
+    public void CircleSpawnhandleer(float timer) // Mapeo
     {
-        int randomValue = Random.Range(0, Circles.Length);
+        if (canSpawn)
+        {
+            foreach (float spawnTime in spawnTimes)
+            {
+                if (Mathf.Abs(timer - (spawnTime - deSpawnTime)) <= errorMargin)
+                {
+                    AddCircle();
+                    canSpawn = false;
+                    Invoke("ResumeSpawning", timeToResume);
+                    break;
+                }
+            }
+        }
+    }
 
-        Vector2 spawnPos;
+    private void AddCircle() // Añade los Circulos en una poscion valida
+    {
         int attempts = 0;
+        int randomValue = Random.Range(0, Circles.Length);
         bool validPosition = false;
+        Vector2 spawnPos;
 
         do
         {
             float randomX = Random.Range(-8, 3);
             float randomY = Random.Range(-4, 4);
             spawnPos = new Vector2(randomX, randomY);  // Toma posicion random
-
             validPosition = true;
-            foreach (GameObject circle in GameObject.FindGameObjectsWithTag("Circle")) // Circulos en escena
+
+            foreach (GameObject circle in GameObject.FindGameObjectsWithTag("Circle")) // Por cada circulo en escena
             {
-                if (Vector2.Distance(spawnPos, circle.transform.position) < minDistanceBetweenCircles)
+                if (Vector2.Distance(spawnPos, circle.transform.position) < minDistanceBetweenCircles) // Si no esta encima de otro circulo 
                 {
                     validPosition = false;
                     break;
@@ -59,29 +76,19 @@ public class LevelMapping : MonoBehaviour
         if (validPosition) // Spawneo en posicion valida
         {
             GameObject newCircle = Instantiate(Circles[randomValue], spawnPos, Quaternion.identity);
-            newCircle.tag = "Circle"; 
+            GetDespawnTime(newCircle);
+            newCircle.tag = "Circle";
         }
     }
 
-    public void EnemySpawner(float timer) // Mapeo
+    private void GetDespawnTime(GameObject newCircle)
     {
-        if (canSpawn)
-        {
-            foreach (float spawnTime in spawnTimes)
-            {
-                if (Mathf.Abs(timer - (spawnTime - 1.5f )) <= errorMargin)
-                {
-                    AddEnemy();
-                    canSpawn = false;
-                    Invoke("ResumeSpawning", timeToResume);
-                    break; 
-                }
-            }
-        }
+        Circle circleScript = newCircle.GetComponent<Circle>();
+        deSpawnTime = circleScript.DeSpawnTime;
     }
 
-    void ResumeSpawning() // Reanuda la generación de enemigos
+    void ResumeSpawning() 
     {
-        canSpawn = true; 
+        canSpawn = true;
     }
 }

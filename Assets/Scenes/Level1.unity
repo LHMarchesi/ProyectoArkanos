@@ -1826,6 +1826,10 @@ PrefabInstance:
       propertyPath: deSpawnTime
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 7056362098250663300, guid: 9a220978b8ffe754e8e65480bad6950f, type: 3}
+      propertyPath: initialDeSpawnTime
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7056362098250663303, guid: 9a220978b8ffe754e8e65480bad6950f, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -2029,6 +2033,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthSistem: {fileID: 1910772736}
   levelMapping: {fileID: 1910772737}
+  backgroundMove: {fileID: 1708227824}
   scenesLoader: {fileID: 1507263910}
   UIManager: {fileID: 1708227825}
   songTime: 87
@@ -3412,6 +3417,10 @@ PrefabInstance:
       propertyPath: deSpawnTime
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8616780227826436314, guid: 7701bd3daa399fd4495a5f44c2dfca4b, type: 3}
+      propertyPath: initialDeSpawnTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8616780227826436317, guid: 7701bd3daa399fd4495a5f44c2dfca4b, type: 3}
       propertyPath: m_Name
       value: Circle A
@@ -3881,9 +3890,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6379a7a7a4a251c43894e03a63e50b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Background: {fileID: 1154235602}
-  x: 0.8
-  y: 0
+  background: {fileID: 1154235602}
+  speed: {x: 0.5, y: 0}
+  timer: 0
+  changeBackgroundInTime: []
+  newSpeed: []
 --- !u!114 &1708227825
 MonoBehaviour:
   m_ObjectHideFlags: 0

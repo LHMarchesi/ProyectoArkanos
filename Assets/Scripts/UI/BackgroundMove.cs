@@ -2,23 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class BackgroundMove : MonoBehaviour
+{
+    [SerializeField] private RawImage background;
+    [SerializeField] private Vector2 speed;
+    [SerializeField] private float timer;
+    [SerializeField] private float[] changeBackgroundInTime; // Array de tiempo en que se cambia 
+    [SerializeField] private Vector2[] newSpeed; // Array de velocidades 
+
+    private int nextSpeedIndex;
+
+
+    private void Update()
     {
-        [SerializeField] private RawImage Background;
-        [SerializeField] private float x;
-        [SerializeField] private float y;
+        timer = BattleManager.Instance.timer;
+        // Actualizar la posición UV del fondo en función de la velocidad y el tiempo
+        background.uvRect = new Rect(background.uvRect.position + speed * Time.deltaTime, background.uvRect.size);
+    }
 
-
-        private void Update()
+    public void BackgroundSpeedHandleer(float timer)
+    {
+        if (nextSpeedIndex < changeBackgroundInTime.Length && timer >= changeBackgroundInTime[nextSpeedIndex])
         {
-            Background.uvRect = new Rect(Background.uvRect.position + new Vector2(x, y) * Time.deltaTime, Background.uvRect.size);
-        }
-
-        public void ChangeBackgroundSpeed(float x, float y)
-        {
-            x = this.x;
-            y = this.y;
+            ChangeSpeed(newSpeed[nextSpeedIndex]);
+            nextSpeedIndex++;
         }
     }
+
+    private void ChangeSpeed(Vector2 newSpeed)
+    {
+        // Actualizar la velocidad del fondo
+        speed = newSpeed;
+    }
+}
 

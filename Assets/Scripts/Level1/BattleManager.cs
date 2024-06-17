@@ -9,8 +9,19 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
+    public static BattleManager Instance { get; private set; }
+    private void Awake()
+    {
+
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
+
     [SerializeField] private HealthSistem healthSistem;
     [SerializeField] private LevelMapping levelMapping;
+    [SerializeField] private BackgroundMove backgroundMove;
     [SerializeField] private ScenesLoader scenesLoader;
     [SerializeField] private UIManager UIManager;
     [SerializeField] private float songTime;
@@ -19,11 +30,12 @@ public class BattleManager : MonoBehaviour
     public static event Action OnLose;
     public static event Action OnWin;
 
-    private float timer = 0;
     public static int totalpoints { get; private set; }
-    public int healtPoints { get; private set; } 
+    public int healtPoints { get; private set; }
     public int pointsRecord { get; private set; }
     public int multiplicator { get; private set; }
+    public float timer { get; private set; } = 0;
+
     private int maxmMultiplicator = 4;
 
     void Start()
@@ -51,7 +63,8 @@ public class BattleManager : MonoBehaviour
         UIManager.UpdateMultiplicator(multiplicator);  // Multiplicador
         UIManager.UpdatePoints(totalpoints);  // Points
 
-        levelMapping.EnemySpawner(timer);  // Instancia de enemigos
+        levelMapping.CircleSpawnhandleer(timer);  // Instancia de enemigos
+        backgroundMove.BackgroundSpeedHandleer(timer); // Movimiento del fondo
     }
 
     public void PointsManager(int points)  // maneja el puntaje y lo muestra en texto
