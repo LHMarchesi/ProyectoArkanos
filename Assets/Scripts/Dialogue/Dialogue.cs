@@ -50,10 +50,12 @@ public class Dialogue : MonoBehaviour
         didDialogueEnd = true;
         didDialogueStart = false;
         dialoguePanel.SetActive(false);
+        PlayerMove(true);
     }
 
     private void StartDialogue()  // Inicia la secuencia de dialogo
     {
+        PlayerMove(false);
         didDialogueStart = true;
         didDialogueEnd = false;
         dialoguePanel.SetActive(true);
@@ -81,4 +83,13 @@ public class Dialogue : MonoBehaviour
         onComplete?.Invoke(); // Llama al callback después de que el diálogo ha terminado
     }
 
+    private void PlayerMove(bool canMove)
+    {
+        Player player = FindObjectOfType<Player>();
+
+        if (player != null)
+        {
+            player.PlayerCanMove(canMove);
+        }
+    }
 }
