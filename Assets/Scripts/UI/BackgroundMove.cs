@@ -8,7 +8,6 @@ public class BackgroundMove : MonoBehaviour
 {
     [SerializeField] private RawImage background;
     [SerializeField] private Vector2 speed;
-    [SerializeField] private float timer;
     [SerializeField] private float[] changeBackgroundInTime; // Array de tiempo en que se cambia 
     [SerializeField] private Vector2[] newSpeed; // Array de velocidades 
 
@@ -17,7 +16,6 @@ public class BackgroundMove : MonoBehaviour
 
     private void Update()
     {
-        timer = BattleManager.Instance.timer;
         // Actualizar la posición UV del fondo en función de la velocidad y el tiempo
         background.uvRect = new Rect(background.uvRect.position + speed * Time.deltaTime, background.uvRect.size);
     }

@@ -4996,6 +4996,11 @@ PrefabInstance:
       propertyPath: dialoguePanel
       value: 
       objectReference: {fileID: 288968245}
+    - target: {fileID: 876015405507328749, guid: 3515869620f093149810a81ba01e7d24, type: 3}
+      propertyPath: dialogueLines.Array.data[0]
+      value: Pon el raton encima y presiona la tecla correspondiente cuando el indicador
+        desaparezca
+      objectReference: {fileID: 0}
     - target: {fileID: 949442884486924303, guid: 3515869620f093149810a81ba01e7d24, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.035002
@@ -5064,6 +5069,42 @@ PrefabInstance:
       propertyPath: dialoguePanel
       value: 
       objectReference: {fileID: 288968245}
+    - target: {fileID: 3019681939825223803, guid: 3515869620f093149810a81ba01e7d24, type: 3}
+      propertyPath: spawnTimes.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3019681939825223803, guid: 3515869620f093149810a81ba01e7d24, type: 3}
+      propertyPath: spawnTimes.Array.data[1]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3019681939825223803, guid: 3515869620f093149810a81ba01e7d24, type: 3}
+      propertyPath: spawnTimes.Array.data[2]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3019681939825223803, guid: 3515869620f093149810a81ba01e7d24, type: 3}
+      propertyPath: spawnTimes.Array.data[3]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3019681939825223803, guid: 3515869620f093149810a81ba01e7d24, type: 3}
+      propertyPath: spawnTimes.Array.data[4]
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3019681939825223803, guid: 3515869620f093149810a81ba01e7d24, type: 3}
+      propertyPath: spawnTimes.Array.data[5]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3019681939825223803, guid: 3515869620f093149810a81ba01e7d24, type: 3}
+      propertyPath: spawnTimes.Array.data[6]
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3019681939825223803, guid: 3515869620f093149810a81ba01e7d24, type: 3}
+      propertyPath: spawnTimes.Array.data[7]
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3019681939825223803, guid: 3515869620f093149810a81ba01e7d24, type: 3}
+      propertyPath: spawnTimes.Array.data[8]
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 3373164702104938538, guid: 3515869620f093149810a81ba01e7d24, type: 3}
       propertyPath: dialogueText
       value: 
