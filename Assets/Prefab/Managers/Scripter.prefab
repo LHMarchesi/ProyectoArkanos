@@ -191,7 +191,7 @@ MonoBehaviour:
   dialoguePanel: {fileID: 0}
   dialogueText: {fileID: 0}
   dialogueLines:
-  - Pon el raton encima y presiona la tecla correspondiente
+  - Pon el raton encima y presiona la tecla correspondiente cuando el indicador desaparezca
 --- !u!1 &4610140157425393816
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,20 +313,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7814bf134cc7a9468e02d1eff137531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelMap: {fileID: 0}
+  levelindex: 1
   Circles:
   - {fileID: 8616780227826436317, guid: 7701bd3daa399fd4495a5f44c2dfca4b, type: 3}
   - {fileID: 7056362098250663299, guid: 9a220978b8ffe754e8e65480bad6950f, type: 3}
   - {fileID: 8616780227826436317, guid: 5e28b32a474ef274d98886e0e8c05fe1, type: 3}
   spawnTimes:
-  - 15.99
-  - 16.63
-  - 17
-  - 17.97
-  - 18.16
-  - 19.07
-  - 19.4
-  - 19.8
-  - 20.03
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 12
+  - 13
+  - 14
   - 20.21
   - 20.51
   - 21.05
@@ -400,7 +402,6 @@ MonoBehaviour:
   - 78.33
   - 78.66
   - 79
-  canSpawn: 1
 --- !u!114 &1402146158322622961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,6 +450,9 @@ MonoBehaviour:
   useStartDialogue: 0
   useWinDialogue: 1
   useLoseDialogue: 1
+  startDialogueDuration: 0
+  winDialogueDuration: 3
+  loseDialogueDuration: 3
   startDialogue: {fileID: 0}
   winDialogue: {fileID: 2581826231463778245}
   loseDialogue: {fileID: 3373164702104938538}

@@ -64,7 +64,7 @@ public class BattleManager : MonoBehaviour
         UIManager.UpdateMultiplicator(multiplicator);  // Multiplicador
         UIManager.UpdatePoints(totalpoints);  // Points
 
-        spawnHandler.SetLevel(spawnHandler.levelindex); // Seteo de nivel
+        spawnHandler.SetLevel(); // Seteo de nivel
         spawnHandler.CircleSpawnhandleer(timer);    // Instancia de enemigos
     
         backgroundMove.BackgroundSpeedHandleer(timer); // Movimiento del fondo

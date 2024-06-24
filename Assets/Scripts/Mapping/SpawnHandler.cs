@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnHandler : MonoBehaviour
 {
     [SerializeField] private LevelMap levelMap;
-    [SerializeField] public int levelindex;
+    [SerializeField] public int LevelIndex;
    
     [SerializeField] private GameObject[] Circles;
     [SerializeField] private float[] spawnTimes; // Array de tiempos de spawn
@@ -17,9 +17,9 @@ public class SpawnHandler : MonoBehaviour
     float deSpawnTime;
 
 
-    public void SetLevel(int levelIndex)
+    public void SetLevel()
     {
-        this.levelindex = levelIndex;
+        int levelIndex = LevelIndex;
         switch (levelIndex)
         {
             case 1:
@@ -29,7 +29,7 @@ public class SpawnHandler : MonoBehaviour
                 spawnTimes = levelMap.MapLevel2;
                 break;
             case 3:
-                spawnTimes = levelMap.MapLevel3;
+                // spawnTimes = levelMap.MapLevel3;
                 break;
             default:
                 Debug.LogError("Invalid level index!");
