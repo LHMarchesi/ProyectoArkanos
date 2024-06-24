@@ -20,7 +20,7 @@ public class BattleManager : MonoBehaviour
     }
 
     [SerializeField] private HealthSistem healthSistem;
-    [SerializeField] private LevelMapping levelMapping;
+    [SerializeField] private SpawnHandler spawnHandler;
     [SerializeField] private BackgroundMove backgroundMove;
     [SerializeField] private ScenesLoader scenesLoader;
     [SerializeField] private UIManager UIManager;
@@ -64,7 +64,9 @@ public class BattleManager : MonoBehaviour
         UIManager.UpdateMultiplicator(multiplicator);  // Multiplicador
         UIManager.UpdatePoints(totalpoints);  // Points
 
-        levelMapping.CircleSpawnhandleer(timer);  // Instancia de enemigos
+        spawnHandler.SetLevel(spawnHandler.levelindex); // Seteo de nivel
+        spawnHandler.CircleSpawnhandleer(timer);    // Instancia de enemigos
+    
         backgroundMove.BackgroundSpeedHandleer(timer); // Movimiento del fondo
     }
 
@@ -80,7 +82,7 @@ public class BattleManager : MonoBehaviour
         {
             OnWin?.Invoke();
             levelEnded = true;
-            levelMapping.Spawning(false);
+            spawnHandler.Spawning(false);
         }
     }
 
@@ -90,7 +92,7 @@ public class BattleManager : MonoBehaviour
         {
             OnLose?.Invoke();
             levelEnded = true;
-            levelMapping.Spawning(false);
+            spawnHandler.Spawning(false);
         }
     }
 

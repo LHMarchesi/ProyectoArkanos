@@ -5,9 +5,13 @@ using UnityEngine;
 
 public class LevelDialogueSecuence : MonoBehaviour
 {
-    [SerializeField] private bool useStartDialogue = true;
-    [SerializeField] private bool useWinDialogue = true;
-    [SerializeField] private bool useLoseDialogue = true;
+    [SerializeField] private bool useStartDialogue;
+    [SerializeField] private bool useWinDialogue;
+    [SerializeField] private bool useLoseDialogue;
+
+    [SerializeField] private float startDialogueDuration;   
+    [SerializeField] private float winDialogueDuration = 3;   
+    [SerializeField] private float loseDialogueDuration = 3;   
 
     [SerializeField] private Dialogue startDialogue;
     [SerializeField] private Dialogue winDialogue;
@@ -31,7 +35,7 @@ public class LevelDialogueSecuence : MonoBehaviour
         if (useStartDialogue  && !hasStartDialogueStarted)
         {
             hasStartDialogueStarted = true;
-            StartCoroutine(startDialogue.ShowDialogue(startDialogue,3f, () => startDialogue.EndDialogueSecuence()));
+            StartCoroutine(startDialogue.ShowDialogue(startDialogue, startDialogueDuration, () => startDialogue.EndDialogueSecuence()));
 
         }
     }
@@ -40,7 +44,7 @@ public class LevelDialogueSecuence : MonoBehaviour
         if (useLoseDialogue && !hasLoseDialogueStarted)
         {
             hasLoseDialogueStarted = true;
-            StartCoroutine(loseDialogue.ShowDialogue(loseDialogue, 3f, () =>  ScreensManager.Instance.ShowLoseScreen()));
+            StartCoroutine(loseDialogue.ShowDialogue(loseDialogue, winDialogueDuration, () =>  ScreensManager.Instance.ShowLoseScreen()));
         }
 
     }
@@ -49,7 +53,7 @@ public class LevelDialogueSecuence : MonoBehaviour
         if (useWinDialogue && !hasWinDialogueStarted)
         {
             hasWinDialogueStarted = true;
-            StartCoroutine(winDialogue.ShowDialogue(winDialogue, 3f, () => ScreensManager.Instance.ShowWinScreen()));
+            StartCoroutine(winDialogue.ShowDialogue(winDialogue, loseDialogueDuration, () => ScreensManager.Instance.ShowWinScreen()));
 
         }
     }

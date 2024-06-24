@@ -2858,6 +2858,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8845912280849066202, guid: 3515869620f093149810a81ba01e7d24, type: 3}
+      propertyPath: startDialogue
+      value: 
+      objectReference: {fileID: 1368857702}
+    - target: {fileID: 8845912280849066202, guid: 3515869620f093149810a81ba01e7d24, type: 3}
       propertyPath: useWinDialogue
       value: 1
       objectReference: {fileID: 0}
@@ -2867,7 +2871,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8845912280849066202, guid: 3515869620f093149810a81ba01e7d24, type: 3}
       propertyPath: useStartDialogue
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8845912280849066202, guid: 3515869620f093149810a81ba01e7d24, type: 3}
+      propertyPath: winDialogueDuration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8845912280849066202, guid: 3515869620f093149810a81ba01e7d24, type: 3}
+      propertyPath: loseDialogueDuration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8845912280849066202, guid: 3515869620f093149810a81ba01e7d24, type: 3}
+      propertyPath: startDialogueDuration
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6952156700076641259, guid: 3515869620f093149810a81ba01e7d24, type: 3}
@@ -3176,6 +3192,9 @@ MonoBehaviour:
   dialogueText: {fileID: 1027902225}
   dialogueLines:
   - 'TextoEjemplo
+
+'
+  - 'TextoEjemplo..
 
 '
 --- !u!4 &1368857703
@@ -4104,7 +4123,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 1154235602}
   speed: {x: 0.2, y: 0}
-  timer: 48.32296
   changeBackgroundInTime:
   - 10
   - 15
