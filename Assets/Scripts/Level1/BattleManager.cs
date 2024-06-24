@@ -41,6 +41,7 @@ public class BattleManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
+      
 
         healtPoints = 5;
         multiplicator = 1;

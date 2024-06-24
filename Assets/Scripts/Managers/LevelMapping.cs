@@ -6,18 +6,12 @@ public class LevelMapping : MonoBehaviour
 {
     [SerializeField] private GameObject[] Circles;
     [SerializeField] private float[] spawnTimes; // Array de tiempos de spawn
-   
 
-    private bool canSpawn;
+    private bool canSpawn = true;
     private float errorMargin = 0.1f;
     private float timeToResume = 0.3f;
     float minDistanceBetweenCircles = 1.5f;
     float deSpawnTime;
-
-    void Start()
-    {
-        canSpawn = true;
-    }
 
     public void Spawning(bool canSpawn) // Detiene spawn de Circulos
     {
