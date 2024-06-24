@@ -34,6 +34,18 @@ public class LevelMap : MonoBehaviour
     72.00f, 72.85f, 73.30f, 74.00f, 75.00f, 75.37f, 76.02f, 77.00f, 78.00f, 78.33f,
     78.66f, 79.00f
    };
+    
+    public float[] MapLevel3 = new float[]
+   {
+        
+
+
+   };
+    
+    public float[] MapLevel4 = new float[]
+   {
+
+   };
 
 
 

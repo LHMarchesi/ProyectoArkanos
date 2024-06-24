@@ -8,7 +8,7 @@ public class SpawnHandler : MonoBehaviour
     [SerializeField] public int LevelIndex;
    
     [SerializeField] private GameObject[] Circles;
-    [SerializeField] private float[] spawnTimes; // Array de tiempos de spawn
+    private float[] spawnTimes; // Array de tiempos de spawn
 
     private bool canSpawn = true;
     private float errorMargin = 0.1f;
@@ -29,7 +29,10 @@ public class SpawnHandler : MonoBehaviour
                 spawnTimes = levelMap.MapLevel2;
                 break;
             case 3:
-                // spawnTimes = levelMap.MapLevel3;
+                spawnTimes = levelMap.MapLevel3;
+                break;
+            case 4:
+                spawnTimes = levelMap.MapLevel4;
                 break;
             default:
                 Debug.LogError("Invalid level index!");

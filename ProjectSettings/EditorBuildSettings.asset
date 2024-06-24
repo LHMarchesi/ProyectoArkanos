@@ -5,15 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/HIstory.unity
-    guid: 1296f513461c7c645ba38715abb0636b
-  - enabled: 0
-    path: Assets/Scenes/Bedroom_Tutorial.unity
-    guid: 6937aa53f03556f4fa128ef2440bff25
-  - enabled: 0
-    path: Assets/Scenes/Tutorial Level.unity
-    guid: 4f439cee4fb14bd429eccb2e10274bbc
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 9a5c5d68c3dacc84a9d9148d5d547dc6
@@ -35,9 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/World1.1.unity
     guid: b34b667cbe703ca4aa9789a4f8c67455
-  - enabled: 1
-    path: Assets/Scenes/World1.2.unity
-    guid: 18403b83a11a78244aec0ea56493b890
   - enabled: 1
     path: Assets/Scenes/Forest_Tutorial.unity
     guid: 426e019e2c8371e4d99b8568d844a07e
