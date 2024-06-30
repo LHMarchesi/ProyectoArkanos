@@ -5,6 +5,8 @@ using System.Xml.Schema;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
+using UnityEngine.SceneManagement;
 
 
 public class BattleManager : MonoBehaviour
@@ -41,7 +43,6 @@ public class BattleManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
-      
 
         healtPoints = 5;
         multiplicator = 1;
@@ -66,7 +67,7 @@ public class BattleManager : MonoBehaviour
 
         spawnHandler.SetLevel(); // Seteo de nivel
         spawnHandler.CircleSpawnhandleer(timer);    // Instancia de enemigos
-    
+
         backgroundMove.BackgroundSpeedHandleer(timer); // Movimiento del fondo
     }
 
