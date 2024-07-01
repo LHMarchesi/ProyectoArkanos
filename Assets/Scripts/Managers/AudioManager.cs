@@ -37,5 +37,4 @@ public class AudioManager : MonoBehaviour
             musicSource.Play();
         }
     }
-
 }

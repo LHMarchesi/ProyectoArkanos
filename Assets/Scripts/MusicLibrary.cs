@@ -40,9 +40,6 @@ public class MusicLibrary : MonoBehaviour
 
     private void ManageSongPerLevel(int index)
     {
-        
-        Debug.Log("Current Scene Index: " + index); // Debugging line
-
         switch (index)
         {
             case 0:

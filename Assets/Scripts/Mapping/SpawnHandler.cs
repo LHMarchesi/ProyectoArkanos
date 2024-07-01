@@ -73,8 +73,8 @@ public class SpawnHandler : MonoBehaviour
 
         do
         {
-            float randomX = Random.Range(-8, 3);
-            float randomY = Random.Range(-4, 4);
+            float randomX = Random.Range(-4, 4);
+            float randomY = Random.Range(-3, 3);
             spawnPos = new Vector2(randomX, randomY);  // Toma posicion random
             validPosition = true;
 

@@ -50,6 +50,8 @@ public class ScenesLoader : MonoBehaviour
     private IEnumerator SceneLoadByIndex(int index)
     {
         transitionAnimator.SetTrigger("StartTransition");
+        AudioListener.pause = false;
+        Time.timeScale = 1;
         yield return new WaitForSecondsRealtime(transitionTime);
         SceneManager.LoadScene(index);
     }
@@ -57,6 +59,8 @@ public class ScenesLoader : MonoBehaviour
     public IEnumerator SceneLoadByName(string sceneName)
     {
         transitionAnimator.SetTrigger("StartTransition");
+        AudioListener.pause = false;
+        Time.timeScale = 1;
         yield return new WaitForSecondsRealtime(transitionTime);
         SceneManager.LoadScene(sceneName);
     }
