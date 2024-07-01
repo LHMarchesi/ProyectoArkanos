@@ -1572,6 +1572,10 @@ PrefabInstance:
       propertyPath: levelindex
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3019681939825223803, guid: 3515869620f093149810a81ba01e7d24, type: 3}
+      propertyPath: Circles.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3373164702104938538, guid: 3515869620f093149810a81ba01e7d24, type: 3}
       propertyPath: dialogueText
       value: 
