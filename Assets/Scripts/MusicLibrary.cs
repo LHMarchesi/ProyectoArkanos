@@ -58,6 +58,7 @@ public class MusicLibrary : MonoBehaviour
                 AudioManager.instance.PlayMusic(level4Track);
                 break;
             default:
+                AudioManager.instance.PlayMusic(mainMenuTrack);
                 Debug.LogWarning("No music track assigned for this scene index.");
                 break;
         }

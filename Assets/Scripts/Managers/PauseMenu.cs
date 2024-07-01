@@ -7,9 +7,6 @@ using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject PauseCanvas;
-    [SerializeField] Slider musicSlider;
-    [SerializeField] Slider sfxSlider;
-
     private bool isPaused;
 
     private void Start()
@@ -50,4 +47,5 @@ public class PauseMenu : MonoBehaviour
         PauseCanvas.SetActive(false);
         isPaused = false;
     }
+
 }
