@@ -5794,6 +5794,14 @@ PrefabInstance:
       propertyPath: secondDialogue
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8845912280849066202, guid: 3515869620f093149810a81ba01e7d24, type: 3}
+      propertyPath: winDialogueDuration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8845912280849066202, guid: 3515869620f093149810a81ba01e7d24, type: 3}
+      propertyPath: loseDialogueDuration
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7157738987560663899, guid: 3515869620f093149810a81ba01e7d24, type: 3}
