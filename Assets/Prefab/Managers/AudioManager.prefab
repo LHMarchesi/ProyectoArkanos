@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSource: {fileID: 5196244380324097368}
+  musicSlider: {fileID: 0}
 --- !u!81 &8073810601800763051
 AudioListener:
   m_ObjectHideFlags: 0

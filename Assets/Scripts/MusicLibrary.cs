@@ -38,8 +38,10 @@ public class MusicLibrary : MonoBehaviour
         ManageSongPerLevel(scene.buildIndex);
     }
 
-    private void ManageSongPerLevel(int index)
+    public void ManageSongPerLevel(int index)
     {
+        AudioManager.instance.StopMusic();
+
         switch (index)
         {
             case 0:

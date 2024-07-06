@@ -2150,10 +2150,7 @@ PrefabInstance:
     - {fileID: 2999522199709787782, guid: 3515869620f093149810a81ba01e7d24, type: 3}
     - {fileID: 696793389918793240, guid: 3515869620f093149810a81ba01e7d24, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5517488181240265171, guid: 3515869620f093149810a81ba01e7d24, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 250024533}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3515869620f093149810a81ba01e7d24, type: 3}
 --- !u!114 &250024529 stripped
 MonoBehaviour:
@@ -2171,7 +2168,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3019681939825223803, guid: 3515869620f093149810a81ba01e7d24, type: 3}
   m_PrefabInstance: {fileID: 250024528}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250024532}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7814bf134cc7a9468e02d1eff137531, type: 3}
@@ -2182,30 +2179,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3774398492008173392, guid: 3515869620f093149810a81ba01e7d24, type: 3}
   m_PrefabInstance: {fileID: 250024528}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250024532}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8e3fdc1b236fc04d916502fbff6ea45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &250024532 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5517488181240265171, guid: 3515869620f093149810a81ba01e7d24, type: 3}
-  m_PrefabInstance: {fileID: 250024528}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &250024533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250024532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 821cad6493de34643970d741486f8d9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicSlider: {fileID: 468910532}
 --- !u!1 &288968245 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1316198918986057597, guid: cab8684385608af429448b73893e1a0b, type: 3}
@@ -2446,7 +2425,7 @@ PrefabInstance:
     - target: {fileID: 1199968556034248591, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 250024533}
+      objectReference: {fileID: 0}
     - target: {fileID: 1199968556034248591, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ChangeMusicVolume
@@ -4006,14 +3985,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1507263910}
         m_TargetAssemblyTypeName: ScenesLoader, Assembly-CSharp
-        m_MethodName: RestartScene
-        m_Mode: 1
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level1
+          m_StringArgument: Level3
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1295971695
@@ -5377,7 +5356,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1402146158322622961, guid: 3515869620f093149810a81ba01e7d24, type: 3}
   m_PrefabInstance: {fileID: 250024528}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250024532}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 533b3f70c60346d43883877e6fe2ef16, type: 3}

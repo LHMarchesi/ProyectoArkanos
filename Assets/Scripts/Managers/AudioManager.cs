@@ -33,10 +33,14 @@ public class AudioManager : MonoBehaviour
     {
         if (musicSource.clip != clip)
         {
-            musicSource.Stop();
             musicSource.clip = clip;
-            musicSource.Play();
         }
+        musicSource.time = 0;
+        musicSource.Play();
+    }
+    public void StopMusic()
+    {
+        musicSource.Stop();
     }
 
     public void ChangeMusicVolume(float volume)
