@@ -212,6 +212,11 @@ MonoBehaviour:
   speed: {x: 0.03, y: 0}
   changeBackgroundInTime: []
   newSpeed: []
+--- !u!4 &145077420 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5196244379697099935, guid: 689d3f34cc30b5c448dc4dca7b374142, type: 3}
+  m_PrefabInstance: {fileID: 1944449078}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &149212542
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,12 +1013,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824076869}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7094306, y: 0.73916554, z: 349.938}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.0946975, y: 0.8982407, z: 359.94452}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 145077420}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &824076871
 MonoBehaviour:
@@ -1029,7 +1034,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuTrack: {fileID: 8300000, guid: 12f55b7295b50cc41b0201fe7e505716, type: 3}
   level1Track: {fileID: 8300000, guid: 871d325879b0a4945be82b706adb5315, type: 3}
-  level2Track: {fileID: 8300000, guid: c220614aaae54154f951e34557dbf06f, type: 3}
+  level2Track: {fileID: 8300000, guid: f4e57a58e00a4e943b18fa2ebd4f61ee, type: 3}
   level3Track: {fileID: 8300000, guid: d3b756041dd979a4b8b80ad42dd3e541, type: 3}
   level4Track: {fileID: 8300000, guid: 9194d0a69b4c4e84383228f656d4c6b3, type: 3}
 --- !u!1 &856400684
@@ -2689,7 +2694,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5196244379697099935, guid: 689d3f34cc30b5c448dc4dca7b374142, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 824076870}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 689d3f34cc30b5c448dc4dca7b374142, type: 3}
 --- !u!1 &1965050357
@@ -3243,4 +3251,3 @@ SceneRoots:
   - {fileID: 259234335}
   - {fileID: 2113067758}
   - {fileID: 1944449078}
-  - {fileID: 824076870}

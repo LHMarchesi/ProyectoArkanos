@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -20,13 +21,17 @@ public class AudioManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             musicSource = GetComponentInChildren<AudioSource>();
-            VolumeHandleer();
         }
         else if (instance != this)
         {
             Destroy(gameObject);
             return;
         }
+    }
+
+    private void Update()
+    {
+        VolumeHandleer();
     }
 
     public void PlayMusic(AudioClip clip)
