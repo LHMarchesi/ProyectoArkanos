@@ -4,24 +4,23 @@ using UnityEngine;
 
 public class SpawnNPC : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField] private GameObject Npc;
-    private Animator animator;
+    [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer Gandalf;
 
-    void Start()
+    private void Start()
     {
-        animator = GetComponentInChildren<Animator>();
-        Npc.SetActive(false);
-
+        Gandalf.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Npc.SetActive(true);
-            animator.SetBool("PlayerSpawn", true);
+            animator.SetBool("PlayerColition", true);
+            Gandalf.enabled = true;
         }
     }
+
+    
 
 }

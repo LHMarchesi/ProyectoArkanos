@@ -7,40 +7,39 @@ using UnityEngine.UIElements;
 
 public class Circle : MonoBehaviour
 {
+    public float DeSpawnTime { get; private set; }
+    public int Points { get; private set; }
 
-    private BattleManager battleManager;
-    public bool hitOut = false;
-    public bool hitIn = false;
-    public bool destroy = false;
+    public float initialDeSpawnTime;
+    public int initialpoints;
     [SerializeField] private string inputLetter;
-    [SerializeField] private int points = 10;
-    [SerializeField] private float deSpawnTime;
     [SerializeField] private Animator animator;
 
     private bool coroutineStarted = false;
     private Transform indicatorCircle;
-    private Vector3 originalScale;
-    private float initialDeSpawnTime;
-
+    private Vector2 originalScale;
+    public bool hitOut = false;
+    public bool hitIn = false;
+    public bool destroy = false;
 
     void Start()
     {
-        battleManager = GameObject.Find("BattleManager").GetComponent<BattleManager>();
+        setDespawnTime(initialDeSpawnTime);
+        setPoints(initialpoints);
+
         animator = gameObject.GetComponent<Animator>();
         indicatorCircle = transform.Find("IndicatorCircle");
-
         originalScale = indicatorCircle.localScale;
-        initialDeSpawnTime = deSpawnTime;
     }
 
- 
+
     void Update()
     {
-        deSpawnTime -= Time.deltaTime;
+        DeSpawnTime -= Time.deltaTime;
 
         UpdateIndicatorSize();
 
-        if (deSpawnTime <= 0)
+        if (DeSpawnTime <= 0)
         {
             HandleMiss();
         }
@@ -51,7 +50,7 @@ public class Circle : MonoBehaviour
     }
     private void UpdateIndicatorSize()
     {
-        float scaleFactor = deSpawnTime / initialDeSpawnTime;
+        float scaleFactor = DeSpawnTime / initialDeSpawnTime;
         indicatorCircle.localScale = originalScale * scaleFactor;
     }
 
@@ -65,14 +64,14 @@ public class Circle : MonoBehaviour
                 indicatorCircle.gameObject.SetActive(false);
                 hitIn = true;
                 animator.SetBool("HitIn", true);
-                battleManager.PointsManager(CalculateScore());
+                BattleManager.Instance.PointsManager(CalculateScore());
             }
             else
             {
                 indicatorCircle.gameObject.SetActive(false);
                 hitOut = true;
                 animator.SetBool("HitOut", true);
-                battleManager.LostHp();
+                BattleManager.Instance.LostHp();
             }
 
             destroy = true;
@@ -90,7 +89,7 @@ public class Circle : MonoBehaviour
             animator.SetBool("HitOut", true);
             hitOut = true;
             destroy = true;
-            battleManager.LostHp();
+            BattleManager.Instance.LostHp();
         }
     }
     private int CalculateScore()
@@ -99,22 +98,22 @@ public class Circle : MonoBehaviour
         float circleRadius = GetComponent<CircleCollider2D>().radius;
         float precision = Mathf.Abs(indicatorRadius - circleRadius) / circleRadius;
 
-        if (precision >= 0.2f) 
+        if (precision >= 0.2f)
         {
-            battleManager.GainMultiplicator();
-            return points * battleManager.multiplicator;
+            BattleManager.Instance.GainMultiplicator();
+            return Points * BattleManager.Instance.multiplicator;
         }
         else
         {
-            battleManager.LostMultiplicator();
-            return points;
+            BattleManager.Instance.LostMultiplicator();
+            return Points;
         }
     }
 
     private bool IsMouseOverCircle()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = transform.position.z; 
+        mousePosition.z = transform.position.z;
         float distanceToCircle = Vector3.Distance(transform.position, mousePosition);
         return distanceToCircle < GetComponent<CircleCollider2D>().radius;
     }
@@ -125,6 +124,17 @@ public class Circle : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
         coroutineStarted = false;
+    }
+
+    public float setDespawnTime(float newtime)
+    {
+        DeSpawnTime = newtime;
+        return newtime;
+    }
+    public int setPoints(int newPoints)
+    {
+        Points = newPoints;
+        return newPoints;
     }
 
 }

@@ -7,7 +7,6 @@ public class DetectTriggers : MonoBehaviour
     private bool isTrigger;
     [SerializeField] private GameObject item;
     [SerializeField] private Color defaultColor;
-    [SerializeField] private Animator animator;
 
     private void Start()
     {
@@ -19,7 +18,6 @@ public class DetectTriggers : MonoBehaviour
         if (collision.gameObject == item)
         {
             isTrigger = true;
-            animator.SetBool("IsConected", true);
 
         }
     }
@@ -31,7 +29,6 @@ public class DetectTriggers : MonoBehaviour
             isTrigger = false;
             item.GetComponent<SpriteRenderer>().color = defaultColor;
             gameObject.GetComponent<SpriteRenderer>().color = defaultColor;
-            animator.SetBool("IsConected", false);
         }
     }
 

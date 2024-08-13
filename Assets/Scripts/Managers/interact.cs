@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class interact : MonoBehaviour
 {
     private Player player;
     private bool isPlayerOnRange;
-
+    [SerializeField] private bool changeScene;
+    [SerializeField] private string goToScene;
     [SerializeField] private GameObject dialogueMark;
     [SerializeField] private Dialogue dialogue;
 
@@ -15,6 +16,7 @@ public class interact : MonoBehaviour
 
     void Start()
     {
+        dialogueMark.SetActive(false);
         player = GameObject.Find("Player").GetComponent<Player>();
     }
 
@@ -25,34 +27,22 @@ public class interact : MonoBehaviour
         {
             if (!isDialogueActive)
             {
-                StartDialogue();
+                dialogue.StartDialogueSecuence();
 
                 if (dialogue.didDialogueEnd)
                 {
-                    EndDialogue();
-                    GameManager.Instance.IsEnemy(gameObject);
+                    dialogue.EndDialogueSecuence();
+                    if (changeScene)
+                    {
+                        ScenesLoader.instance.LoadScene(goToScene);
+                    }
                 }
             }
         }
     }
 
 
-    private void StartDialogue()
-    {
-        dialogue.StartDialogueSecuence();
-        player.PlayerCanMove(false);
-        dialogueMark.SetActive(false);
-
-    }
-
-    private void EndDialogue()
-    {
-        dialogue.EndDialogueSecuence();
-        player.PlayerCanMove(true);
-        isDialogueActive = false;
-        dialogueMark.SetActive(true);
-
-    }
+   
 
     private void OnTriggerEnter2D(Collider2D collision) // Triggers para saber si esta dentro del rango
     {

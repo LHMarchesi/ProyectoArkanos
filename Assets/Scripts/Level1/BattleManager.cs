@@ -5,12 +5,25 @@ using System.Xml.Schema;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
+using UnityEngine.SceneManagement;
 
 
 public class BattleManager : MonoBehaviour
 {
+    public static BattleManager Instance { get; private set; }
+    private void Awake()
+    {
+
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
+
     [SerializeField] private HealthSistem healthSistem;
-    [SerializeField] private Spawner spawner;
+    [SerializeField] private SpawnHandler spawnHandler;
+    [SerializeField] private BackgroundMove backgroundMove;
     [SerializeField] private ScenesLoader scenesLoader;
     [SerializeField] private UIManager UIManager;
     [SerializeField] private float songTime;
@@ -19,11 +32,12 @@ public class BattleManager : MonoBehaviour
     public static event Action OnLose;
     public static event Action OnWin;
 
-    private float timer = 0;
     public static int totalpoints { get; private set; }
-    public int healtPoints { get; private set; } 
+    public int healtPoints { get; private set; }
     public int pointsRecord { get; private set; }
     public int multiplicator { get; private set; }
+    public float timer { get; private set; } = 0;
+
     private int maxmMultiplicator = 4;
 
     void Start()
@@ -51,7 +65,10 @@ public class BattleManager : MonoBehaviour
         UIManager.UpdateMultiplicator(multiplicator);  // Multiplicador
         UIManager.UpdatePoints(totalpoints);  // Points
 
-        spawner.EnemySpawner(timer);  // Instancia de enemigos
+        spawnHandler.SetLevel(); // Seteo de nivel
+        spawnHandler.CircleSpawnhandleer(timer);    // Instancia de enemigos
+
+        backgroundMove.BackgroundSpeedHandleer(timer); // Movimiento del fondo
     }
 
     public void PointsManager(int points)  // maneja el puntaje y lo muestra en texto
@@ -64,9 +81,9 @@ public class BattleManager : MonoBehaviour
     {
         if (timer > songTime) //Cuando el timer, supera el tiempo de la cancion, se invoca el evento OnWin
         {
-            levelEnded = true;
             OnWin?.Invoke();
-            spawner.Spawning(false);
+            levelEnded = true;
+            spawnHandler.Spawning(false);
         }
     }
 
@@ -74,10 +91,9 @@ public class BattleManager : MonoBehaviour
     {
         if (healtPoints <= 0) //si la vida es menor o igual a 0, pierde y se invoca al evento Onlose
         {
-            
-            levelEnded = true;
             OnLose?.Invoke();
-            spawner.Spawning(false);
+            levelEnded = true;
+            spawnHandler.Spawning(false);
         }
     }
 
@@ -100,5 +116,11 @@ public class BattleManager : MonoBehaviour
         {
             multiplicator += 1;
         }
+    }
+
+    private void OnDestroy()
+    {
+        OnLose -= ScreensManager.Instance.ShowLoseScreen;
+        OnWin -= ScreensManager.Instance.ShowWinScreen;
     }
 }

@@ -8,37 +8,39 @@ using UnityEngine.SceneManagement;
 public class ScenesLoader : MonoBehaviour
 {
     public static ScenesLoader instance;
+    private Animator transitionAnimator;
+    private MusicLibrary musicLibrary;
+    [SerializeField] private float transitionTime = 1;
+
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            transitionAnimator = GetComponentInChildren<Animator>();
+            musicLibrary = FindObjectOfType<MusicLibrary>();
+
+            if (musicLibrary == null)
+            {
+                Debug.LogError("No se encontró MusicLibrary en la escena.");
+            }
+
         }
     }
-    private Animator transitionAnimator;
-    [SerializeField] private float transitionTime = 1;
 
-
-    private void Start()
-    {
-        transitionAnimator = GetComponentInChildren<Animator>();
-    }
-
-    public void RestartScene()
-    {
-        int activeScene = SceneManager.GetActiveScene().buildIndex;
-        StartCoroutine(SceneLoadByIndex(activeScene));
-    } 
     public void LoadScene(string Scene)
     {
         StartCoroutine(SceneLoadByName(Scene));
     }
 
-
-    public void LoadNextScene()
+    public IEnumerator SceneLoadByName(string sceneName)
     {
-        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        StartCoroutine(SceneLoadByIndex(nextSceneIndex));
+        transitionAnimator.SetTrigger("StartTransition");
+        Time.timeScale = 1;
+        yield return new WaitForSecondsRealtime(transitionTime);
+        SceneManager.LoadScene(sceneName);
+        AudioListener.pause = false;
+      
     }
 
     public void Quit()
@@ -46,20 +48,4 @@ public class ScenesLoader : MonoBehaviour
         Application.Quit();
         Debug.Log("Quit");
     }
-
-    private IEnumerator SceneLoadByIndex(int index)
-    {
-        transitionAnimator.SetTrigger("StartTransition");
-        yield return new WaitForSecondsRealtime(transitionTime);
-        SceneManager.LoadScene(index);
-    }
-
-    public IEnumerator SceneLoadByName(string sceneName)
-    {
-        transitionAnimator.SetTrigger("StartTransition");
-        yield return new WaitForSecondsRealtime(transitionTime);
-        SceneManager.LoadScene(sceneName);
-    }
-
-
 }
