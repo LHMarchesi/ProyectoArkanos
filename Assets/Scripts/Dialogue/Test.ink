@@ -1,12 +1,12 @@
 EXTERNAL Name(charName)
 EXTERNAL CharacterIcon(charName)
 
-{Name("Sad Face")}
-{CharacterIcon("Sad")}
+{Name("Arkanos")}
+{CharacterIcon("Player")}
 This is a sad demo
 but it works
 
-{Name("Happy Face")}
-{CharacterIcon("Happy")}
+{Name("???")}
+{CharacterIcon("Enemy_1")}
 This is a demo
 Im so happy 
