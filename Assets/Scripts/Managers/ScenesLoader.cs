@@ -33,7 +33,7 @@ public class ScenesLoader : MonoBehaviour
         StartCoroutine(SceneLoadByName(Scene));
     }
 
-    public IEnumerator SceneLoadByName(string sceneName)
+    private IEnumerator SceneLoadByName(string sceneName)
     {
         transitionAnimator.SetTrigger("StartTransition");
         Time.timeScale = 1;

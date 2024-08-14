@@ -3,10 +3,12 @@ EXTERNAL CharacterIcon(charName)
 
 {Name("Arkanos")}
 {CharacterIcon("Player")}
-This is a sad demo
-but it works
+Este es el nivvel 0
+...
+texto
 
 {Name("???")}
 {CharacterIcon("Enemy_1")}
-This is a demo
-Im so happy 
+Este es el nivvel 0
+...
+texto
