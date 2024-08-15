@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Playables;
+
 
 public enum StoryStates
 {
@@ -15,13 +17,30 @@ public enum StoryStates
 public class StoryManager : MonoBehaviour
 {
 
+    private StoryStates previousState;
     [SerializeField] private ScriptReader scriptReader;
+    [SerializeField] private PlayableDirector director;
     public StoryStates currentState;
+    public PlayableAsset currentScene;
     public TextAsset currentLeveltxt;
     public Image currentBackgroundImg;
-    public Image currentEnemyImg;
 
-    public void Update()
+    void Start()
+    {
+        previousState = currentState;
+        LoadCurrentStory();
+    }
+
+    void Update()
+    {
+        if (currentState != previousState)
+        {
+            LoadCurrentStory();
+            previousState = currentState;
+        }
+    }
+
+    private void LoadCurrentStory()
     {
         switch (currentState)
         {
@@ -43,15 +62,15 @@ public class StoryManager : MonoBehaviour
             default:
                 break;
         }
-    }
+        scriptReader.LoadStory(currentLeveltxt);
+        director.Play(currentScene);
 
+    }
     private void ChangeStoryTo(string levelName)
     {
         currentLeveltxt = Resources.Load<TextAsset>("GuionNiveles/" + levelName + "_texto");
-        scriptReader._InkJsonFile = currentLeveltxt;
-
-        currentEnemyImg.sprite = Resources.Load<Sprite>("EnemysOnStorie/" + levelName);
         currentBackgroundImg.sprite = Resources.Load<Sprite>("Backround/" + levelName);
+        currentScene= Resources.Load<PlayableAsset>("TimeLines/" + levelName + "_Timeline");
     }
 
 }

@@ -8,20 +8,13 @@ using TMPro;
 public class ScriptReader : MonoBehaviour
 {
 
-    [SerializeField]
-    public TextAsset _InkJsonFile;
-    
     private Story _StoryScript;
 
     public TMP_Text dialogueBox;
     public TMP_Text nameTag;
 
     public Image characterIcon;
-
-    void Start()
-    {
-        LoadStory();
-    }
+    public Image currentEnemyExpression;
 
     void Update()
     {
@@ -31,12 +24,12 @@ public class ScriptReader : MonoBehaviour
         }
     }
 
-    void LoadStory()
+    public void LoadStory(TextAsset _InkJsonFile)
     {
         _StoryScript = new Story(_InkJsonFile.text);
-
         _StoryScript.BindExternalFunction("Name", (string charName) => ChangeName(charName));
         _StoryScript.BindExternalFunction("CharacterIcon", (string charName) => ChangeCharacterIcon(charName));
+        _StoryScript.BindExternalFunction("CharacterExpression", (string expressionName) => ChangeCharacterExpression(expressionName));
 
         DisplayNextLine();
 
@@ -65,8 +58,12 @@ public class ScriptReader : MonoBehaviour
 
     public void ChangeCharacterIcon(string charName)
     {
-        //var characterIconSprite = Resources.Load("CharacterIcons/" + charName) as Sprite;
         characterIcon.sprite = Resources.Load<Sprite>("CharacterIcons/" + charName);
+    }  
+    
+    public void ChangeCharacterExpression(string expressionName)
+    {
+        currentEnemyExpression.sprite = Resources.Load<Sprite>("EnemysExpression/" + expressionName);
     }
 
 

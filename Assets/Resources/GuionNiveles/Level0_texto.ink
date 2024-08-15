@@ -1,14 +1,22 @@
-EXTERNAL Name(charName)
-EXTERNAL CharacterIcon(charName)
+EXTERNAL Name(charName)  // Cambia nombre 
+EXTERNAL CharacterIcon(charName) // Cambia Icono
+EXTERNAL CharacterExpression(expressionName) //Cambia imagen de enemigo
+
+{CharacterExpression("Level0_idle")}
+
 
 {Name("Arkanos")}
 {CharacterIcon("Player")}
-Este es el nivvel 0
-...
-texto
+Soy arkanos 
+un aprendiz de mago
+
 
 {Name("???")}
+{CharacterIcon("Enemy_0")}
+
+Yo soy el enemigo del nievel 0
+
+
 {CharacterIcon("Enemy_1")}
-Este es el nivvel 0
-...
-texto
+{CharacterExpression("Level1_idle")}
+Yo soy el enemigo del nivel 1
