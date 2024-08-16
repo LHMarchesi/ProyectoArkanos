@@ -7,8 +7,8 @@ using UnityEngine.Playables;
 
 public enum StoryStates
 {
-    LevelTutorial,
-    Level1,
+    ArkanosGrandpa,
+    ArkanosGandalf,
     Level2,
     Level3,
     Level4,
@@ -44,11 +44,11 @@ public class StoryManager : MonoBehaviour
     {
         switch (currentState)
         {
-            case StoryStates.LevelTutorial:
-                ChangeStoryTo("Level0");
+            case StoryStates.ArkanosGrandpa:
+                ChangeStoryTo("ArkanosGrandpa");
                 break;
-            case StoryStates.Level1:
-                ChangeStoryTo("Level1");
+            case StoryStates.ArkanosGandalf:
+                ChangeStoryTo("ArkanosGandalf");
                 break;
             case StoryStates.Level2:
                 ChangeStoryTo("Level2");
