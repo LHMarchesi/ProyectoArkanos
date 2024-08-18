@@ -2,20 +2,18 @@ EXTERNAL Name(charName)
 EXTERNAL CharacterIcon(charName)
 EXTERNAL CharacterExpression(expressionName)
 
-{Name("???")}
-{CharacterIcon("Gandalf")}
-
 "Cuando Arkanos se adentra en el bosque, aparece "Gandalf"(Viejo amigo de su abuelo)"
-{Name("Gandalf")}
 "Arkanos Conversa con Gandalf sobre la situacion"
 
 {Name("Gandalf")}
 {CharacterIcon("Gandalf")}
+{CharacterExpression("Gandalf_idle")}
 -Arkanos, ¿Hacia dónte diriges?
 
 {Name("Arkanos")}
 {CharacterIcon("Player")}
 -Emprenderé un viaje en busca del grimorio de los deseos.
+
 
 {Name("Gandalf")}
 {CharacterIcon("Gandalf")}
