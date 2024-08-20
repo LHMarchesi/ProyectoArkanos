@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Xml.Schema;
 using TMPro;
 using Unity.VisualScripting;
@@ -12,14 +13,9 @@ using UnityEngine.SceneManagement;
 public class BattleManager : MonoBehaviour
 {
     public static BattleManager Instance { get; private set; }
-    private void Awake()
-    {
+   
 
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-    }
+    private ProgessionTracker progessionTracker;
 
     [SerializeField] private HealthSistem healthSistem;
     [SerializeField] private SpawnHandler spawnHandler;
@@ -40,6 +36,15 @@ public class BattleManager : MonoBehaviour
 
     private int maxmMultiplicator = 4;
 
+     private void Awake()
+    {
+        progessionTracker = FindObjectOfType<ProgessionTracker>();
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
+
     void Start()
     {
         Time.timeScale = 1;
@@ -56,19 +61,20 @@ public class BattleManager : MonoBehaviour
         if (!levelEnded)
         {
             timer += Time.deltaTime;
+
+            // Solo llama a Win si el nivel no ha terminado
+            Win();
+            Lose();
+
+            UIManager.UpdateProgessBar(timer, songTime);  // Barra de progreso
+            UIManager.UpdateMultiplicator(multiplicator);  // Multiplicador
+            UIManager.UpdatePoints(totalpoints);  // Puntos
+
+            spawnHandler.SetLevel(); // Seteo de nivel
+            spawnHandler.CircleSpawnhandleer(timer);    // Instancia de enemigos
+
+            backgroundMove.BackgroundSpeedHandleer(timer); // Movimiento del fondo
         }
-
-        Win();
-        Lose();
-
-        UIManager.UpdateProgessBar(timer, songTime);  // Barra de progeso
-        UIManager.UpdateMultiplicator(multiplicator);  // Multiplicador
-        UIManager.UpdatePoints(totalpoints);  // Points
-
-        spawnHandler.SetLevel(); // Seteo de nivel
-        spawnHandler.CircleSpawnhandleer(timer);    // Instancia de enemigos
-
-        backgroundMove.BackgroundSpeedHandleer(timer); // Movimiento del fondo
     }
 
     public void PointsManager(int points)  // maneja el puntaje y lo muestra en texto
@@ -77,22 +83,24 @@ public class BattleManager : MonoBehaviour
 
     }
 
-    private void Win()
+    public void Win()
     {
-        if (timer > songTime) //Cuando el timer, supera el tiempo de la cancion, se invoca el evento OnWin
+        
+        if (timer > songTime && !levelEnded) //Cuando el timer, supera el tiempo de la cancion, se invoca el evento OnWin
         {
-            OnWin?.Invoke();
             levelEnded = true;
+            OnWin?.Invoke();
             spawnHandler.Spawning(false);
+            progessionTracker.IncreaseLevelIndex();
         }
     }
 
     private void Lose()
     {
-        if (healtPoints <= 0) //si la vida es menor o igual a 0, pierde y se invoca al evento Onlose
+        if (healtPoints <= 0 && !levelEnded) //si la vida es menor o igual a 0, pierde y se invoca al evento Onlose
         {
-            OnLose?.Invoke();
             levelEnded = true;
+            OnLose?.Invoke();
             spawnHandler.Spawning(false);
         }
     }
@@ -122,5 +130,11 @@ public class BattleManager : MonoBehaviour
     {
         OnLose -= ScreensManager.Instance.ShowLoseScreen;
         OnWin -= ScreensManager.Instance.ShowWinScreen;
+    }
+
+    private void OnEnable()
+    {
+        OnLose += ScreensManager.Instance.ShowLoseScreen;
+        OnWin += ScreensManager.Instance.ShowWinScreen;
     }
 }

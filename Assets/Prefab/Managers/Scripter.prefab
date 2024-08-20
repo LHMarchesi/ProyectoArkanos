@@ -253,8 +253,6 @@ GameObject:
   - component: {fileID: 3774398492008173392}
   - component: {fileID: 3019681939825223803}
   - component: {fileID: 1402146158322622961}
-  - component: {fileID: 6952156700076641259}
-  - component: {fileID: 8845912280849066202}
   m_Layer: 0
   m_Name: Scripter
   m_TagString: Untagged
@@ -314,94 +312,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelMap: {fileID: 0}
-  levelindex: 1
+  LevelIndex: 0
   Circles:
   - {fileID: 8616780227826436317, guid: 7701bd3daa399fd4495a5f44c2dfca4b, type: 3}
   - {fileID: 7056362098250663299, guid: 9a220978b8ffe754e8e65480bad6950f, type: 3}
   - {fileID: 8616780227826436317, guid: 5e28b32a474ef274d98886e0e8c05fe1, type: 3}
-  spawnTimes:
-  - 5
-  - 6
-  - 7
-  - 8
-  - 9
-  - 10
-  - 12
-  - 13
-  - 14
-  - 20.21
-  - 20.51
-  - 21.05
-  - 22
-  - 22.9
-  - 24.1
-  - 24.83
-  - 25
-  - 26
-  - 27.69
-  - 28.8
-  - 29.49
-  - 30
-  - 30.94
-  - 31.95
-  - 32.75
-  - 32.95
-  - 33.6
-  - 34.64
-  - 35.6
-  - 36
-  - 37
-  - 37.95
-  - 39
-  - 39.96
-  - 48
-  - 49
-  - 49.45
-  - 50
-  - 51
-  - 52
-  - 52.81
-  - 53.5
-  - 54
-  - 55
-  - 56
-  - 57
-  - 58
-  - 58.3
-  - 59
-  - 60
-  - 61
-  - 61.5
-  - 62
-  - 62.5
-  - 63
-  - 64.17
-  - 64.47
-  - 64.69
-  - 65
-  - 65.4
-  - 65.68
-  - 66
-  - 66.7
-  - 68
-  - 69
-  - 69.6
-  - 70.2
-  - 70.69
-  - 71.37
-  - 71.68
-  - 72
-  - 72.85
-  - 73.3
-  - 74
-  - 75
-  - 75.37
-  - 76.02
-  - 77
-  - 78
-  - 78.33
-  - 78.66
-  - 79
 --- !u!114 &1402146158322622961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,47 +330,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseCanvas: {fileID: 0}
-  musicSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
---- !u!114 &6952156700076641259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5517488181240265171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 002bac1a28abdb24ea4da04cbfcf610e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  circlePrefab: {fileID: 0}
-  circlePrefab2: {fileID: 0}
-  firstDialogue: {fileID: 876015405507328749}
-  secondDialogue: {fileID: 2094181823746500881}
-  thirdDialogue: {fileID: 5081543311128033143}
-  fourthDialogue: {fileID: 3552980273746891629}
---- !u!114 &8845912280849066202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5517488181240265171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ac398d01ddc89a4a86d77e633793eab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useStartDialogue: 0
-  useWinDialogue: 1
-  useLoseDialogue: 1
-  startDialogueDuration: 0
-  winDialogueDuration: 3
-  loseDialogueDuration: 3
-  startDialogue: {fileID: 0}
-  winDialogue: {fileID: 2581826231463778245}
-  loseDialogue: {fileID: 3373164702104938538}
 --- !u!1 &7157738987560663899
 GameObject:
   m_ObjectHideFlags: 0
