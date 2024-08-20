@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Playables;
+using System;
+using System.Diagnostics;
 
 
 public enum StoryStates
@@ -16,28 +18,85 @@ public enum StoryStates
 
 public class StoryManager : MonoBehaviour
 {
-
-    private StoryStates previousState;
+    private ProgessionTracker progessionTracker;
+  
+    [SerializeField] private PlayableAsset currentScene;
+    [SerializeField] private TextAsset currentLeveltxt;
+    [SerializeField] private Image currentBackgroundImg;
     [SerializeField] private ScriptReader scriptReader;
     [SerializeField] private PlayableDirector director;
-    public StoryStates currentState;
-    public PlayableAsset currentScene;
-    public TextAsset currentLeveltxt;
-    public Image currentBackgroundImg;
+    [SerializeField] private StoryStates currentState;
+    private int currentLevelIndex;
 
-    void Start()
+    private void Awake()
     {
-        previousState = currentState;
-        LoadCurrentStory();
+        progessionTracker = FindObjectOfType<ProgessionTracker>();
     }
 
-    void Update()
+
+    private void Start()
     {
-        if (currentState != previousState)
+        currentLevelIndex = progessionTracker.LevelIndex;
+        UpdateStoryState();
+    }
+
+    private void Update()
+    {
+        if (currentLevelIndex != progessionTracker.LevelIndex)
         {
-            LoadCurrentStory();
-            previousState = currentState;
+            UpdateStoryState();
+            currentLevelIndex = progessionTracker.LevelIndex;
         }
+    }
+      
+
+    public void LoadNextState(string stateName = null)
+    {
+        if (!string.IsNullOrEmpty(stateName))
+        {
+            // Intenta convertir el nombre del estado en un valor del enum
+            if (Enum.TryParse(stateName, out StoryStates newState))
+            {
+                currentState = newState;
+            }
+        }
+        else
+        {
+            // Si no se pasa un nombre de estado, se avanza al siguiente estado
+            if (currentState < StoryStates.Level4) // Verifica que no sobrepase el último estado
+            {
+                currentState++;
+            }
+        }
+    }
+
+    private void UpdateStoryState()
+    {
+        progessionTracker.LoadLevelIndex();
+
+        switch (progessionTracker.LevelIndex)
+        {
+            case 0:
+                currentState = StoryStates.ArkanosGrandpa;
+                break;
+            case 1:
+                currentState = StoryStates.ArkanosGandalf;
+                break;
+            case 2:
+                currentState = StoryStates.Level2;
+                break;
+            case 3:
+                currentState = StoryStates.Level3;
+                break;
+            case 4:
+                currentState = StoryStates.Level4;
+                break;
+            default:
+                currentState = StoryStates.ArkanosGrandpa;
+                break;
+        }
+
+        LoadCurrentStory();
     }
 
     private void LoadCurrentStory()
@@ -64,13 +123,25 @@ public class StoryManager : MonoBehaviour
         }
         scriptReader.LoadStory(currentLeveltxt);
         director.Play(currentScene);
-
+        StartCoroutine(WaitForTimelineToEnd());
     }
+
+   
+
     private void ChangeStoryTo(string levelName)
     {
         currentLeveltxt = Resources.Load<TextAsset>("GuionNiveles/" + levelName + "_texto");
         currentBackgroundImg.sprite = Resources.Load<Sprite>("Backround/" + levelName);
-        currentScene= Resources.Load<PlayableAsset>("TimeLines/" + levelName + "_Timeline");
+        currentScene = Resources.Load<PlayableAsset>("TimeLines/" + levelName + "_Timeline");
     }
 
+    public IEnumerator WaitForTimelineToEnd()
+    {
+        while (director.time < director.duration)
+        {
+            scriptReader.canPressSpace = false;
+            yield return null;
+        }
+        scriptReader.canPressSpace = true;
+    }
 }

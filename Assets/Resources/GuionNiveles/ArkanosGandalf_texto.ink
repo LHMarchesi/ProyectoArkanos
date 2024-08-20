@@ -1,6 +1,7 @@
 EXTERNAL Name(charName)
 EXTERNAL CharacterIcon(charName)
 EXTERNAL CharacterExpression(expressionName)
+EXTERNAL ToLevel(levelName)
 
 "Cuando Arkanos se adentra en el bosque, aparece "Gandalf"(Viejo amigo de su abuelo)"
 "Arkanos Conversa con Gandalf sobre la situacion"
@@ -44,3 +45,5 @@ Esos portales están conectados por magia. Serás libre de viajar entre mundos. 
 -Lo haré.
 
 "Arkanos emprende su viaje hacia la Cueva de las Pesadillas..."
+{ToLevel("Level1")}
+

@@ -9,8 +9,10 @@ using System;
 
 public class ScriptReader : MonoBehaviour
 {
+    private ProgessionTracker progessionTracker;
     private bool isTextDisplaying = true;
-    private float chTime = 0.05f;
+    public bool canPressSpace = false;
+    private float chTime = 0.035f;
 
     private Story _StoryScript;
     public TMP_Text dialogueBox;
@@ -18,6 +20,11 @@ public class ScriptReader : MonoBehaviour
 
     public Image characterIcon;
     public Image currentEnemyExpression;
+
+    private void Awake()
+    {
+        progessionTracker = FindObjectOfType<ProgessionTracker>();
+    }
 
     void Update()
     {
@@ -30,13 +37,13 @@ public class ScriptReader : MonoBehaviour
 
     public IEnumerator DisplayNextLine()
     {
-        if (_StoryScript.canContinue) // Verifica si hay contenido
+        if (_StoryScript.canContinue)//&&  )
         {
             dialogueBox.text = string.Empty;
             string text = _StoryScript.Continue(); // Obtiene la siguiente línea
             text = text?.Trim(); // Elimina espacios en blanco
 
-            isTextDisplaying = true; // Indicamos que el texto se está mostrando
+            isTextDisplaying = true;
 
             foreach (char ch in text)
             {
@@ -52,21 +59,24 @@ public class ScriptReader : MonoBehaviour
         }
         else
         {
-            Console.WriteLine("fin de dialogo");
+            progessionTracker.IncreaseLevelIndex();
         }
     }
 
     public void OnSpacePressed()
     {
-        if (isTextDisplaying)
+        if (canPressSpace)
         {
-            // Si el texto se está mostrando, setea isTextDisplaying a false para saltear al final
-            isTextDisplaying = false;
-        }
-        else
-        {
-            // Si no se está mostrando, comienza a mostrar el siguiente texto
-            StartCoroutine(DisplayNextLine());
+            if (isTextDisplaying)
+            {
+                // Si el texto se está mostrando, setea isTextDisplaying a false para saltear al final
+                isTextDisplaying = false;
+            }
+            else
+            {
+                // Si no se está mostrando, comienza a mostrar el siguiente texto
+                StartCoroutine(DisplayNextLine());
+            }
         }
     }
 
@@ -81,6 +91,7 @@ public class ScriptReader : MonoBehaviour
         _StoryScript.BindExternalFunction("Name", (string charName) => ChangeName(charName));
         _StoryScript.BindExternalFunction("CharacterIcon", (string charName) => ChangeCharacterIcon(charName));
         _StoryScript.BindExternalFunction("CharacterExpression", (string expressionName) => ChangeCharacterExpression(expressionName));
+        _StoryScript.BindExternalFunction("ToLevel", (string levelName) => ChangeToLevel(levelName));
 
         StartCoroutine(DisplayNextLine());
 
@@ -105,5 +116,9 @@ public class ScriptReader : MonoBehaviour
         currentEnemyExpression.gameObject.SetActive(true);
     }
 
+    public void ChangeToLevel(string levelName)
+    {
+        ScenesLoader.instance.LoadScene(levelName);
+    }
 
 }
