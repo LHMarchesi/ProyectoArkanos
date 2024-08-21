@@ -11,6 +11,7 @@ public enum StoryStates
 {
     ArkanosGrandpa,
     ArkanosGandalf,
+    Level1,
     Level2,
     Level3,
     Level4,
@@ -33,7 +34,6 @@ public class StoryManager : MonoBehaviour
         progessionTracker = FindObjectOfType<ProgessionTracker>();
     }
 
-
     private void Start()
     {
         currentLevelIndex = progessionTracker.LevelIndex;
@@ -42,14 +42,13 @@ public class StoryManager : MonoBehaviour
 
     private void Update()
     {
-        if (currentLevelIndex != progessionTracker.LevelIndex)
+        if (currentLevelIndex != progessionTracker.LevelIndex) //Si cambia de estado
         {
             UpdateStoryState();
             currentLevelIndex = progessionTracker.LevelIndex;
         }
     }
       
-
     public void LoadNextState(string stateName = null)
     {
         if (!string.IsNullOrEmpty(stateName))
@@ -70,7 +69,7 @@ public class StoryManager : MonoBehaviour
         }
     }
 
-    private void UpdateStoryState()
+    private void UpdateStoryState() //Cambia estado segun el index
     {
         progessionTracker.LoadLevelIndex();
 
@@ -82,13 +81,16 @@ public class StoryManager : MonoBehaviour
             case 1:
                 currentState = StoryStates.ArkanosGandalf;
                 break;
-            case 2:
+            case 3:
+                currentState = StoryStates.Level1;
+                break;
+            case 5:
                 currentState = StoryStates.Level2;
                 break;
-            case 3:
+            case 7:
                 currentState = StoryStates.Level3;
                 break;
-            case 4:
+            case 9:
                 currentState = StoryStates.Level4;
                 break;
             default:
@@ -109,6 +111,9 @@ public class StoryManager : MonoBehaviour
             case StoryStates.ArkanosGandalf:
                 ChangeStoryTo("ArkanosGandalf");
                 break;
+            case StoryStates.Level1:
+                ChangeStoryTo("Level1");
+                break;
             case StoryStates.Level2:
                 ChangeStoryTo("Level2");
                 break;
@@ -126,9 +131,7 @@ public class StoryManager : MonoBehaviour
         StartCoroutine(WaitForTimelineToEnd());
     }
 
-   
-
-    private void ChangeStoryTo(string levelName)
+    private void ChangeStoryTo(string levelName) //Cambio de resources
     {
         currentLeveltxt = Resources.Load<TextAsset>("GuionNiveles/" + levelName + "_texto");
         currentBackgroundImg.sprite = Resources.Load<Sprite>("Backround/" + levelName);

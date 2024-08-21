@@ -5,8 +5,10 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - mainMenuTrack: {fileID: 8300000, guid: 12f55b7295b50cc41b0201fe7e505716, type: 3}
+  - novelTrack: {instanceID: 0}
+  - level0Track: {fileID: 8300000, guid: 9194d0a69b4c4e84383228f656d4c6b3, type: 3}
   - level1Track: {fileID: 8300000, guid: 871d325879b0a4945be82b706adb5315, type: 3}
-  - level2Track: {fileID: 8300000, guid: c220614aaae54154f951e34557dbf06f, type: 3}
+  - level2Track: {instanceID: 0}
   - level3Track: {instanceID: 0}
   - level4Track: {instanceID: 0}
   executionOrder: 0

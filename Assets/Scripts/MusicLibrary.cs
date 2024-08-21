@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class MusicLibrary : MonoBehaviour
 {
     [SerializeField] private AudioClip mainMenuTrack;
+    [SerializeField] private AudioClip novelTrack;
+    [SerializeField] private AudioClip level0Track;
     [SerializeField] private AudioClip level1Track;
     [SerializeField] private AudioClip level2Track;
     [SerializeField] private AudioClip level3Track;
@@ -48,19 +50,22 @@ public class MusicLibrary : MonoBehaviour
                 AudioManager.instance.PlayMusic(mainMenuTrack);
                 break;
             case 1:
-                AudioManager.instance.PlayMusic(level1Track);
+                AudioManager.instance.PlayMusic(level0Track);
                 break;
             case 2:
-                AudioManager.instance.PlayMusic(level2Track);
+                AudioManager.instance.PlayMusic(level1Track);
                 break;
             case 3:
-                AudioManager.instance.PlayMusic(level3Track);
+                AudioManager.instance.PlayMusic(level2Track);
                 break; 
             case 4:
+                AudioManager.instance.PlayMusic(level3Track);
+                break;
+            case 5:
                 AudioManager.instance.PlayMusic(level4Track);
                 break;
             default:
-                AudioManager.instance.PlayMusic(mainMenuTrack);
+                AudioManager.instance.PlayMusic(novelTrack);
                 Debug.LogWarning("No music track assigned for this scene index.");
                 break;
         }
