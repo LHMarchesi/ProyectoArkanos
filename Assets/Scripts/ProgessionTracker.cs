@@ -8,15 +8,15 @@ public class ProgessionTracker : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        levelIndex = LoadLevelIndex();
     }
 
-    [SerializeField] private int levelIndex;
-    public int LevelIndex => levelIndex;// LevelIndex para rastrear el nivel
-
+    [SerializeField] private int levelIndex;// LevelIndex para rastrear el nivel
+    
     public void IncreaseLevelIndex()
     {
         levelIndex++;
-        SaveLevelIndex(LevelIndex);
+        SaveLevelIndex(levelIndex);
     }
 
     public int LoadLevelIndex()
@@ -28,13 +28,18 @@ public class ProgessionTracker : MonoBehaviour
     {
         PlayerPrefs.SetInt("LevelIndex", levelIndex);
         PlayerPrefs.Save();
-        Console.WriteLine("Nivel guardado " + levelIndex);
     }
 
-    public void UpdateLevelIndex(int newIndex)
+    public void RestartIndex()
     {
-        PlayerPrefs.SetInt("LevelIndex", newIndex);
+        levelIndex = 0;
+        PlayerPrefs.SetInt("LevelIndex", levelIndex);
         PlayerPrefs.Save();
-        LoadLevelIndex();
+    }
+
+    public void ContinueFromIndex()
+    {
+        PlayerPrefs.SetInt("LevelIndex", levelIndex);
+        PlayerPrefs.Save();
     }
 }

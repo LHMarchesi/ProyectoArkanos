@@ -8,7 +8,6 @@ public class MusicLibrary : MonoBehaviour
 {
     [SerializeField] private AudioClip mainMenuTrack;
     [SerializeField] private AudioClip novelTrack;
-    [SerializeField] private AudioClip level0Track;
     [SerializeField] private AudioClip level1Track;
     [SerializeField] private AudioClip level2Track;
     [SerializeField] private AudioClip level3Track;
@@ -48,24 +47,31 @@ public class MusicLibrary : MonoBehaviour
         {
             case 0:
                 AudioManager.instance.PlayMusic(mainMenuTrack);
+                AudioManager.instance.musicSource.loop = true;
                 break;
             case 1:
-                AudioManager.instance.PlayMusic(level0Track);
+                AudioManager.instance.PlayMusic(novelTrack);
+                AudioManager.instance.musicSource.loop = false;
                 break;
             case 2:
                 AudioManager.instance.PlayMusic(level1Track);
+                AudioManager.instance.musicSource.loop = false;
                 break;
             case 3:
                 AudioManager.instance.PlayMusic(level2Track);
+                AudioManager.instance.musicSource.loop = false;
                 break; 
             case 4:
-                AudioManager.instance.PlayMusic(level3Track);
+                AudioManager.instance.PlayMusic(level3Track); 
+                AudioManager.instance.musicSource.loop = false;
                 break;
             case 5:
                 AudioManager.instance.PlayMusic(level4Track);
+                AudioManager.instance.musicSource.loop = false;
                 break;
             default:
-                AudioManager.instance.PlayMusic(novelTrack);
+                AudioManager.instance.PlayMusic(mainMenuTrack);
+                AudioManager.instance.musicSource.loop = true;
                 Debug.LogWarning("No music track assigned for this scene index.");
                 break;
         }

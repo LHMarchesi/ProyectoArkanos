@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Playables;
 using System;
 using System.Diagnostics;
+using UnityEngine.SceneManagement;
 
 
 public enum StoryStates
@@ -20,7 +21,7 @@ public enum StoryStates
 public class StoryManager : MonoBehaviour
 {
     private ProgessionTracker progessionTracker;
-  
+
     [SerializeField] private PlayableAsset currentScene;
     [SerializeField] private TextAsset currentLeveltxt;
     [SerializeField] private Image currentBackgroundImg;
@@ -32,23 +33,23 @@ public class StoryManager : MonoBehaviour
     private void Awake()
     {
         progessionTracker = FindObjectOfType<ProgessionTracker>();
+        currentLevelIndex = progessionTracker.LoadLevelIndex();
     }
 
     private void Start()
     {
-        currentLevelIndex = progessionTracker.LevelIndex;
         UpdateStoryState();
     }
 
     private void Update()
     {
-        if (currentLevelIndex != progessionTracker.LevelIndex) //Si cambia de estado
+        if (currentLevelIndex != progessionTracker.LoadLevelIndex()) //Si cambia de estado
         {
             UpdateStoryState();
-            currentLevelIndex = progessionTracker.LevelIndex;
+            currentLevelIndex = progessionTracker.LoadLevelIndex();
         }
     }
-      
+
     public void LoadNextState(string stateName = null)
     {
         if (!string.IsNullOrEmpty(stateName))
@@ -71,9 +72,7 @@ public class StoryManager : MonoBehaviour
 
     private void UpdateStoryState() //Cambia estado segun el index
     {
-        progessionTracker.LoadLevelIndex();
-
-        switch (progessionTracker.LevelIndex)
+        switch (currentLevelIndex)
         {
             case 0:
                 currentState = StoryStates.ArkanosGrandpa;
@@ -84,14 +83,26 @@ public class StoryManager : MonoBehaviour
             case 2:
                 currentState = StoryStates.Level1;
                 break;
+            case 3:
+                SceneManager.LoadScene("Level1");
+                break;
             case 4:
                 currentState = StoryStates.Level2;
+                break;
+            case 5:
+                SceneManager.LoadScene("Level2");
                 break;
             case 6:
                 currentState = StoryStates.Level3;
                 break;
+            case 7:
+                SceneManager.LoadScene("Level3");
+                break;
             case 8:
                 currentState = StoryStates.Level4;
+                break;
+            case 9:
+                SceneManager.LoadScene("Level4");
                 break;
             default:
                 currentState = StoryStates.ArkanosGrandpa;
