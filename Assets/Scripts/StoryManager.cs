@@ -81,16 +81,16 @@ public class StoryManager : MonoBehaviour
             case 1:
                 currentState = StoryStates.ArkanosGandalf;
                 break;
-            case 3:
+            case 2:
                 currentState = StoryStates.Level1;
                 break;
-            case 5:
+            case 4:
                 currentState = StoryStates.Level2;
                 break;
-            case 7:
+            case 6:
                 currentState = StoryStates.Level3;
                 break;
-            case 9:
+            case 8:
                 currentState = StoryStates.Level4;
                 break;
             default:

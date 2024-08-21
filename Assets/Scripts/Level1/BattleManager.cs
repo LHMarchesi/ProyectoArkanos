@@ -25,9 +25,6 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private float songTime;
     [SerializeField] private bool levelEnded = false;
 
-    public static event Action OnLose;
-    public static event Action OnWin;
-
     public static int totalpoints { get; private set; }
     public int healtPoints { get; private set; }
     public int pointsRecord { get; private set; }
@@ -89,9 +86,10 @@ public class BattleManager : MonoBehaviour
         if (timer > songTime && !levelEnded) //Cuando el timer, supera el tiempo de la cancion, se invoca el evento OnWin
         {
             levelEnded = true;
-            OnWin?.Invoke();
             spawnHandler.Spawning(false);
             progessionTracker.IncreaseLevelIndex();
+            ScreensManager.Instance.ShowWinScreen();
+            
         }
     }
 
@@ -100,7 +98,7 @@ public class BattleManager : MonoBehaviour
         if (healtPoints <= 0 && !levelEnded) //si la vida es menor o igual a 0, pierde y se invoca al evento Onlose
         {
             levelEnded = true;
-            OnLose?.Invoke();
+            ScreensManager.Instance.ShowLoseScreen();
             spawnHandler.Spawning(false);
         }
     }
@@ -124,17 +122,5 @@ public class BattleManager : MonoBehaviour
         {
             multiplicator += 1;
         }
-    }
-
-    private void OnDestroy()
-    {
-        OnLose -= ScreensManager.Instance.ShowLoseScreen;
-        OnWin -= ScreensManager.Instance.ShowWinScreen;
-    }
-
-    private void OnEnable()
-    {
-        OnLose += ScreensManager.Instance.ShowLoseScreen;
-        OnWin += ScreensManager.Instance.ShowWinScreen;
     }
 }

@@ -25,9 +25,6 @@ public class LevelDialogueSecuence : MonoBehaviour
     void Start()
     {
         StartSequence();
-
-        BattleManager.OnLose += LoseSequence;
-        BattleManager.OnWin += WinSequence;
     }
 
     private void StartSequence()
@@ -56,11 +53,5 @@ public class LevelDialogueSecuence : MonoBehaviour
             StartCoroutine(winDialogue.ShowDialogue(winDialogue, loseDialogueDuration, () => ScreensManager.Instance.ShowWinScreen()));
 
         }
-    }
-    
-    private void OnDestroy()
-    {
-        BattleManager.OnLose -= LoseSequence;
-        BattleManager.OnWin -= WinSequence;
     }
 }

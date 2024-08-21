@@ -22,7 +22,7 @@ public class MusicLibrary : MonoBehaviour
             Destroy(this);
         }
 
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(gameObject);
     }
 
     private void OnEnable()
