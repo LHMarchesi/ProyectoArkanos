@@ -4,15 +4,14 @@ EXTERNAL CharacterExpression(expressionName) //Cambia imagen de enemigo
 EXTERNAL ToLevel(levelName) // Cambia a escena 
 
 
+{Name("Maugre")} {CharacterIcon("Enemy_3")}
+-Quien se atreve a impedir mis planes!?
+
 {Name("Arkanos")} {CharacterIcon("Player")}
+-No voy a dejar que desates el caos en el mundo!”
 
-Estas en el nivel
-3
-
-{Name("Enemy_3")} {CharacterIcon("Enemy_3")}
-
-Este es el enemigo del nivel 3
-ahora a la batalla
+{Name("Maugre")} {CharacterIcon("Enemy_3")}
+-¡Soy más poderoso que tú, intenta derrotarme HA HA HA HA!
 
 {ToLevel("Level3")}
 

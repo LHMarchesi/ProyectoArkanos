@@ -5,14 +5,20 @@ EXTERNAL ToLevel(levelName) // Cambia a escena
 
 
 {Name("Arkanos")} {CharacterIcon("Player")}
+-¿Quién eres? ¿Y qué haces en este templo?
 
-Estas en el nivel
-2
+{Name("Guardian del Templo")} {CharacterIcon("Enemy_1")}
+-Mi objetivo es proteger este templo de los tesoros que ocultan. 
+Ningún viajero se atreverá a apoderarse de las mayores riquezas de este templo.
 
-{Name("Enemy_1")} {CharacterIcon("Enemy_1")}
+{Name("Arkanos")} {CharacterIcon("Player")}
+-No quiero las riquezas de este templo, solo quiero usar el círculo mágico para viajar al siguiente mundo.
 
-Este es el enemigo del nivel 2
-ahora a la batalla
+{Name("Guardian del Templo")} {CharacterIcon("Enemy_1")}
+-Tendras que derrotarme...
+
+{Name("Arkanos")} {CharacterIcon("Player")}
+-Fuera de mi camino!!
 
 {ToLevel("Level2")}
 
