@@ -2,13 +2,21 @@ using UnityEngine;
 
 public class ProgessionTracker : MonoBehaviour
 {
+    static ProgessionTracker instance;
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject); 
+        }
         DontDestroyOnLoad(gameObject);
-        levelIndex = LoadLevelIndex();
     }
 
-    [SerializeField] private int levelIndex;// LevelIndex para rastrear el nivel
+    [SerializeField] public int levelIndex;// LevelIndex para rastrear el nivel
 
     public void IncreaseLevelIndex()
     {
@@ -18,7 +26,8 @@ public class ProgessionTracker : MonoBehaviour
 
     public int LoadLevelIndex()
     {
-        return PlayerPrefs.GetInt("LevelIndex", 0);
+        SaveLevelIndex(levelIndex);
+        return levelIndex;
     }
 
     public void SaveLevelIndex(int index)

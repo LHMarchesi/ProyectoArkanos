@@ -1171,7 +1171,7 @@ GameObject:
   - component: {fileID: 571421356}
   m_Layer: 0
   m_Name: ProgessTracker
-  m_TagString: Untagged
+  m_TagString: ProgessionTracker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1188,7 +1188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3e37e0d29360f4db265d015333fba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 0
+  levelIndex: 3
 --- !u!4 &571421357
 Transform:
   m_ObjectHideFlags: 0
@@ -1912,6 +1912,7 @@ GameObject:
   - component: {fileID: 1348936867}
   - component: {fileID: 1348936866}
   - component: {fileID: 1348936865}
+  - component: {fileID: 1348936869}
   m_Layer: 0
   m_Name: MenuCanvas
   m_TagString: Untagged
@@ -2012,6 +2013,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1348936869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348936864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b658037ebaee7af4dba5650b85418ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progessionTracker: {fileID: 0}
 --- !u!1 &1507112589
 GameObject:
   m_ObjectHideFlags: 0
@@ -2968,8 +2982,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 571421356}
-        m_TargetAssemblyTypeName: ProgessionTracker, Assembly-CSharp
+      - m_Target: {fileID: 1348936869}
+        m_TargetAssemblyTypeName: GetIndex, Assembly-CSharp
         m_MethodName: RestartIndex
         m_Mode: 1
         m_Arguments:

@@ -10,6 +10,7 @@ TagManager:
   - MusicLibrary
   - MusicSlider
   - SFXSlider
+  - ProgessionTracker
   layers:
   - Default
   - TransparentFX
