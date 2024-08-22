@@ -75,7 +75,7 @@ public class Circle : MonoBehaviour
             }
 
             destroy = true;
-            StartCoroutine(DestroyAfterAnimation());
+            StartCoroutine(HitInDestroyAfterAnimation());
         }
     }
 
@@ -85,7 +85,7 @@ public class Circle : MonoBehaviour
         {
             indicatorCircle.gameObject.SetActive(false);
             coroutineStarted = true;
-            StartCoroutine(DestroyAfterAnimation());
+            StartCoroutine(HitOutDestroyAfterAnimation());
             animator.SetBool("HitOut", true);
             hitOut = true;
             destroy = true;
@@ -118,10 +118,17 @@ public class Circle : MonoBehaviour
         return distanceToCircle < GetComponent<CircleCollider2D>().radius;
     }
 
-    private IEnumerator DestroyAfterAnimation()
+    private IEnumerator HitInDestroyAfterAnimation()
     {
         indicatorCircle.localScale = new Vector3(0, 0, 0);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.32f);
+        Destroy(gameObject);
+        coroutineStarted = false;
+    }
+    private IEnumerator HitOutDestroyAfterAnimation()
+    {
+        indicatorCircle.localScale = new Vector3(0, 0, 0);
+        yield return new WaitForSeconds(0.7f);
         Destroy(gameObject);
         coroutineStarted = false;
     }
