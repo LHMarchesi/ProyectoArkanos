@@ -72,7 +72,7 @@ public class StoryManager : MonoBehaviour
 
     private void UpdateStoryState() //Cambia estado segun el index
     {
-        switch (currentLevelIndex)
+        switch (progessionTracker.LoadLevelIndex())
         {
             case 0:
                 currentState = StoryStates.ArkanosGrandpa;

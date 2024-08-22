@@ -17,11 +17,7 @@ EXTERNAL CharacterExpression(expressionName) //Cambia imagen de enemigo
 -Gracias a ti, aprendí mucho a lo largo de los años, es por ello que debo compensártelo.
 
 {Name("Abuelo Arkanos")} {CharacterIcon("Arkanos Grandpa")}
-
 -...
-
 {Name("Arkanos")} {CharacterIcon("Player")}
-
 -Emprenderé un viaje, no te preocupes. No tardaré...
-
 "Arkanos se marcha."

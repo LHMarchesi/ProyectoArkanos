@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ProgessionTracker : MonoBehaviour
@@ -12,7 +9,7 @@ public class ProgessionTracker : MonoBehaviour
     }
 
     [SerializeField] private int levelIndex;// LevelIndex para rastrear el nivel
-    
+
     public void IncreaseLevelIndex()
     {
         levelIndex++;
@@ -24,22 +21,21 @@ public class ProgessionTracker : MonoBehaviour
         return PlayerPrefs.GetInt("LevelIndex", 0);
     }
 
-    public void SaveLevelIndex(int levelIndex)
+    public void SaveLevelIndex(int index)
     {
-        PlayerPrefs.SetInt("LevelIndex", levelIndex);
+        PlayerPrefs.SetInt("LevelIndex", index);
         PlayerPrefs.Save();
     }
 
     public void RestartIndex()
     {
         levelIndex = 0;
-        PlayerPrefs.SetInt("LevelIndex", levelIndex);
-        PlayerPrefs.Save();
+        SaveLevelIndex(levelIndex);
     }
 
     public void ContinueFromIndex()
     {
-        PlayerPrefs.SetInt("LevelIndex", levelIndex);
+        PlayerPrefs.SetInt("LevelIndex", LoadLevelIndex());
         PlayerPrefs.Save();
     }
 }
