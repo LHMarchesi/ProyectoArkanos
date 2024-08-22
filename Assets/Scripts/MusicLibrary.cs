@@ -12,16 +12,22 @@ public class MusicLibrary : MonoBehaviour
     [SerializeField] private AudioClip level2Track;
     [SerializeField] private AudioClip level3Track;
     [SerializeField] private AudioClip level4Track;
+
+    [SerializeField] public AudioClip currentSfxClip;
+
+    private static MusicLibrary instance;
+
     private void Awake()
     {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("MusicLibrary");
-
-        if (objs.Length > 1)
+        if (instance == null)
         {
-            Destroy(this);
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-
-        DontDestroyOnLoad(gameObject);
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnEnable()

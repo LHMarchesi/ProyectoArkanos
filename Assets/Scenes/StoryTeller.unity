@@ -226,6 +226,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: MusicSlider
       objectReference: {fileID: 0}
+    - target: {fileID: 2251606363479511244, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
+      propertyPath: m_TagString
+      value: SFXSlider
+      objectReference: {fileID: 0}
     - target: {fileID: 5122358017941232047, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -1322,11 +1326,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b1783db205f6d4eb42b55733b93918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canPressSpace: 0
   dialogueBox: {fileID: 1085596760}
   nameTag: {fileID: 1067762720}
   characterIcon: {fileID: 1959227578}
   currentEnemyExpression: {fileID: 389234095}
+  sfxWriting: {fileID: 8300000, guid: 57edcab7096e57943831d0af7f146d3e, type: 3}
+  canPressSpace: 0
 --- !u!1001 &1767428822
 PrefabInstance:
   m_ObjectHideFlags: 0

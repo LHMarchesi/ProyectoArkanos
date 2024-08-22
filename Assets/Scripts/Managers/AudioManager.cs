@@ -1,18 +1,19 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
+
+    [Header("Audio Sources")]
     public AudioSource musicSource;
+    public AudioSource sfxSource;
+
+    [Header("Volume Sliders")]
     public Slider musicSlider;
+    public Slider sfxSlider;
 
     private void Awake()
     {
@@ -20,18 +21,30 @@ public class AudioManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            musicSource = GetComponentInChildren<AudioSource>();
+
+            // Initialize AudioSources
+            musicSource = GetComponentsInChildren<AudioSource>()[0];
+            sfxSource = GetComponentsInChildren<AudioSource>()[1];
+
+            // Load saved volume levels
+            ManageVolume();
         }
         else if (instance != this)
         {
             Destroy(gameObject);
-            return;
         }
     }
 
+
     private void Update()
     {
-        VolumeHandleer();
+        VolumeHandler();
+        // Continuously update volume based on slider values
+        if (musicSlider != null)
+            musicSource.volume = musicSlider.value;
+
+        if (sfxSlider != null)
+            sfxSource.volume = sfxSlider.value;
     }
 
     public void PlayMusic(AudioClip clip)
@@ -39,42 +52,77 @@ public class AudioManager : MonoBehaviour
         if (musicSource.clip != clip)
         {
             musicSource.clip = clip;
+            musicSource.time = 0;
+            musicSource.Play();
         }
-        musicSource.time = 0;
-        musicSource.Play();
     }
+
     public void StopMusic()
     {
         musicSource.Stop();
     }
 
-    public void ChangeMusicVolume(float volume)
+    public void PlaySFX(AudioClip clip)
     {
-        AudioListener.volume = volume;
-        SaveMusicLevel();
+        sfxSource.clip = clip;
+        sfxSource.Play();
     }
 
-    private void VolumeHandleer()
+    public void ChangeMusicVolume(float volume)
     {
-        GameObject sliderObject = GameObject.FindGameObjectWithTag("MusicSlider");
-        if (sliderObject != null)
+        musicSource.volume = volume;
+        SaveMusicVolume();
+    }
+
+    public void ChangeSFXVolume(float volume)
+    {
+        sfxSource.volume = volume;
+        SaveSFXVolume();
+    }
+
+    private void VolumeHandler()
+    {
+        GameObject musicSliderObject = GameObject.FindGameObjectWithTag("MusicSlider");
+        GameObject sfxSliderObject = GameObject.FindGameObjectWithTag("SFXSlider");
+
+        if (musicSliderObject != null)
         {
-            musicSlider = sliderObject.GetComponent<Slider>();
+            musicSlider = musicSliderObject.GetComponent<Slider>();
 
             if (PlayerPrefs.HasKey("MusicVolume"))
             {
                 float savedVolume = PlayerPrefs.GetFloat("MusicVolume");
                 musicSlider.value = savedVolume;
-                AudioListener.volume = savedVolume;
+                musicSource.volume = savedVolume;
             }
             else
             {
                 PlayerPrefs.SetFloat("MusicVolume", .6f);
                 musicSlider.value = .6f;
-                AudioListener.volume = .6f;
+                musicSource.volume = .6f;
             }
 
             musicSlider.onValueChanged.AddListener(ChangeMusicVolume);
+        }
+
+        if (sfxSliderObject != null)
+        {
+            sfxSlider = sfxSliderObject.GetComponent<Slider>();
+
+            if (PlayerPrefs.HasKey("SFXVolume"))
+            {
+                float savedVolume = PlayerPrefs.GetFloat("SFXVolume");
+                sfxSlider.value = savedVolume;
+                sfxSource.volume = savedVolume;
+            }
+            else
+            {
+                PlayerPrefs.SetFloat("SFXVolume", .6f);
+                sfxSlider.value = .6f;
+                sfxSource.volume = .6f;
+            }
+
+            sfxSlider.onValueChanged.AddListener(ChangeSFXVolume);
         }
     }
 
@@ -82,15 +130,35 @@ public class AudioManager : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey("MusicVolume"))
         {
-            PlayerPrefs.SetFloat("MusicVolume", 1);
-            LoadMusicLevel();
+            PlayerPrefs.SetFloat("MusicVolume", 0.6f);
         }
-        else
+
+        if (!PlayerPrefs.HasKey("SFXVolume"))
         {
-            LoadMusicLevel();
+            PlayerPrefs.SetFloat("SFXVolume", 0.6f);
         }
+
+        LoadMusicVolume();
+        LoadSFXVolume();
     }
 
-    private void LoadMusicLevel() { AudioListener.volume = PlayerPrefs.GetFloat("MusicVolume"); }
-    private void SaveMusicLevel() { PlayerPrefs.SetFloat("MusicVolume", musicSlider.value); }
+    private void LoadMusicVolume()
+    {
+        musicSource.volume = PlayerPrefs.GetFloat("MusicVolume");
+    }
+
+    private void SaveMusicVolume()
+    {
+        PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
+    }
+
+    private void LoadSFXVolume()
+    {
+        sfxSource.volume = PlayerPrefs.GetFloat("SFXVolume");
+    }
+
+    private void SaveSFXVolume()
+    {
+        PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
+    }
 }

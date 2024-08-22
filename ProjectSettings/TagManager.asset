@@ -9,6 +9,7 @@ TagManager:
   - Circle
   - MusicLibrary
   - MusicSlider
+  - SFXSlider
   layers:
   - Default
   - TransparentFX

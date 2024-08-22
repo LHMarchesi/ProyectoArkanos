@@ -10,16 +10,17 @@ using System;
 public class ScriptReader : MonoBehaviour
 {
     private ProgessionTracker progessionTracker;
-    private bool isTextDisplaying = true;
-    public bool canPressSpace = false;
-    private float chTime = 0.035f;
-
     private Story _StoryScript;
+    private bool isTextDisplaying = true;
+    private float chTime = 0.035f;
+    private int charsToPlaySound = 3;
+
     public TMP_Text dialogueBox;
     public TMP_Text nameTag;
-
     public Image characterIcon;
     public Image currentEnemyExpression;
+    public AudioClip sfxWriting;
+    public bool canPressSpace = false;
 
     private void Awake()
     {
@@ -45,6 +46,7 @@ public class ScriptReader : MonoBehaviour
 
             isTextDisplaying = true;
 
+            int charIndex = 0;
             foreach (char ch in text)
             {
                 if (!isTextDisplaying) // Si se presiona espacio otra vez, muestra todo el texto
@@ -52,6 +54,12 @@ public class ScriptReader : MonoBehaviour
                     dialogueBox.text = text;
                     break;
                 }
+
+                if (charIndex % charsToPlaySound == 0)
+                {
+                    AudioManager.instance.PlaySFX(sfxWriting);
+                }
+                charIndex++;
                 dialogueBox.text += ch;
                 yield return new WaitForSecondsRealtime(chTime);
             }
