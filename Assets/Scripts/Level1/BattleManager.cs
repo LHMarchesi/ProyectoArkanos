@@ -87,7 +87,6 @@ public class BattleManager : MonoBehaviour
         {
             levelEnded = true;
             spawnHandler.Spawning(false);
-            progessionTracker.IncreaseLevelIndex();
             ScreensManager.Instance.ShowWinScreen();
             
         }

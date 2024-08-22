@@ -19,4 +19,9 @@ public class GetIndex : MonoBehaviour
     {
         progessionTracker.RestartIndex();
     }
+
+    public void IndexAddOne()
+    {
+        progessionTracker.IncreaseLevelIndex();
+    }
 }
