@@ -4,22 +4,13 @@ EXTERNAL CharacterExpression(expressionName) //Cambia imagen de enemigo
 EXTERNAL ToLevel(levelName) // Cambia a escena 
 EXTERNAL AddOneIndex() // Suma uno al index del ProgessTracker
 
-{CharacterExpression("Level1_idle")}
-{Name("Arkanos")} {CharacterIcon("Player")}
--¿Quién eres? ¿Y qué haces en este templo?
-
-{Name("Guardian del Templo")} {CharacterIcon("Enemy_1")}
--Mi objetivo es proteger este templo de los tesoros que ocultan. 
-Ningún viajero se atreverá a apoderarse de las mayores riquezas de este templo.
+{CharacterExpression("Level1")} {Name("Hechicero maligno")} {CharacterIcon("Enemy_1")}Eres valiente para llegar hasta aquí, no llegarás tan lejos...”
 
 {Name("Arkanos")} {CharacterIcon("Player")}
--No quiero las riquezas de este templo, solo quiero usar el círculo mágico para viajar al siguiente mundo.
+Te derrotaré!
 
-{Name("Guardian del Templo")} {CharacterIcon("Enemy_1")}
--Tendras que derrotarme...
+{Name("Hechicero maligno")} {CharacterIcon("Enemy_1")}
+No durarás nada en esta batalla…”
 
-{Name("Arkanos")} {CharacterIcon("Player")}
-
--Fuera de mi camino!!
 {AddOneIndex()}
 {ToLevel("Level1")}

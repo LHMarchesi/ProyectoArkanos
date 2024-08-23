@@ -137,7 +137,7 @@ public class StoryManager : MonoBehaviour
             default:
                 break;
         }
-        scriptReader.LoadStory(currentLeveltxt);
+
         director.Play(currentScene);
         StartCoroutine(WaitForTimelineToEnd());
     }
@@ -153,9 +153,13 @@ public class StoryManager : MonoBehaviour
     {
         while (director.time < director.duration)
         {
+            scriptReader.currentEnemyExpression.gameObject.SetActive(false);
+            scriptReader.dialogueBox.text = string.Empty;
             scriptReader.canPressSpace = false;
             yield return null;
         }
+        scriptReader.currentEnemyExpression.gameObject.SetActive(true);
+        scriptReader.LoadStory(currentLeveltxt);
         scriptReader.canPressSpace = true;
     }
 }

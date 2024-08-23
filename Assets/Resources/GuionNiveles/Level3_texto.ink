@@ -4,12 +4,7 @@ EXTERNAL CharacterExpression(expressionName) //Cambia imagen de enemigo
 EXTERNAL ToLevel(levelName) // Cambia a escena 
 EXTERNAL AddOneIndex() // Suma uno al index del ProgessTracker
 
-{CharacterExpression("Level3_idle")}
-
-{Name("Arkanos")} {CharacterIcon("Player")}
--Lich, he llegado hasta aquí para reclamar el Grimorio de los Deseos. 
-Mi abuelo está gravemente enfermo, y solo el poder de ese grimorio puede salvarlo. 
-No permitiré que tus oscuros designios sigan impidiéndolo.
+{CharacterExpression("Level3")}{Name("Arkanos")} {CharacterIcon("Player")}-Lich, he llegado hasta aquí para reclamar el Grimorio de los Deseos. Mi abuelo está gravemente enfermo, y solo el poder de ese grimorio puede salvarlo. No permitiré que tus oscuros designios sigan impidiéndolo.
 
 {Name("Lich")} {CharacterIcon("Enemy_3")}
 -¿Realmente crees que puedes despojarme de lo que he obtenido con tanto esfuerzo por un simple deseo personal?

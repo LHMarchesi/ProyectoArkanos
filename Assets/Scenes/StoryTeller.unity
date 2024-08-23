@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 389234094}
   - component: {fileID: 389234096}
   - component: {fileID: 389234095}
+  - component: {fileID: 389234097}
   m_Layer: 5
   m_Name: DefaultEnemyImage
   m_TagString: Untagged
@@ -180,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 535c366f53eef264dafdaef66ff1d06c, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -198,6 +199,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389234093}
   m_CullTransparentMesh: 1
+--- !u!95 &389234097
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389234093}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &514514028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -809,48 +831,38 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: 814320403800569694, guid: dcb47886bc6b3ef46a74528947de0e65, type: 2}
     value: {fileID: 761386411}
-  - key: {fileID: 8836154858730871700, guid: dcb47886bc6b3ef46a74528947de0e65, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 8169625163671275392, guid: dcb47886bc6b3ef46a74528947de0e65, type: 2}
-    value: {fileID: 0}
   - key: {fileID: 796697958768304452, guid: dcb47886bc6b3ef46a74528947de0e65, type: 2}
     value: {fileID: 1772249531}
   - key: {fileID: 814320403800569694, guid: c3657dae172933547b07268a9001805e, type: 2}
     value: {fileID: 761386411}
-  - key: {fileID: 8836154858730871700, guid: c3657dae172933547b07268a9001805e, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 8169625163671275392, guid: c3657dae172933547b07268a9001805e, type: 2}
-    value: {fileID: 0}
   - key: {fileID: 796697958768304452, guid: c3657dae172933547b07268a9001805e, type: 2}
     value: {fileID: 1772249531}
   - key: {fileID: 251996946806190048, guid: d969a6a1bf925594bba1deb54be53ab8, type: 2}
     value: {fileID: 761386411}
   - key: {fileID: -891135743529758705, guid: d969a6a1bf925594bba1deb54be53ab8, type: 2}
     value: {fileID: 1772249531}
-  - key: {fileID: -2436106823746760772, guid: d969a6a1bf925594bba1deb54be53ab8, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -1284989561914997890, guid: d969a6a1bf925594bba1deb54be53ab8, type: 2}
-    value: {fileID: 0}
   - key: {fileID: -4343565762960061157, guid: 17bf917d9aaa93249ac00b3af70a76e0, type: 2}
     value: {fileID: 761386411}
   - key: {fileID: -932513151906460346, guid: 17bf917d9aaa93249ac00b3af70a76e0, type: 2}
     value: {fileID: 1772249531}
-  - key: {fileID: 3186637493866518253, guid: 17bf917d9aaa93249ac00b3af70a76e0, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 1402327443176504390, guid: 17bf917d9aaa93249ac00b3af70a76e0, type: 2}
-    value: {fileID: 0}
   - key: {fileID: 1804319080644651600, guid: b083a07bf2e79a94fb27ab171427a5ed, type: 2}
     value: {fileID: 761386411}
   - key: {fileID: -2471827831543725425, guid: b083a07bf2e79a94fb27ab171427a5ed, type: 2}
     value: {fileID: 1772249531}
-  - key: {fileID: 867287000444307293, guid: b083a07bf2e79a94fb27ab171427a5ed, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -7055098151718598181, guid: b083a07bf2e79a94fb27ab171427a5ed, type: 2}
-    value: {fileID: 0}
   - key: {fileID: -6981538004996944148, guid: 2ea517f6b4d260648933e6605c1294fb, type: 2}
     value: {fileID: 761386411}
   - key: {fileID: 6284121062573403316, guid: 2ea517f6b4d260648933e6605c1294fb, type: 2}
     value: {fileID: 1772249531}
+  - key: {fileID: 3524469820235649314, guid: 2ea517f6b4d260648933e6605c1294fb, type: 2}
+    value: {fileID: 389234097}
+  - key: {fileID: 3372338905100648091, guid: d969a6a1bf925594bba1deb54be53ab8, type: 2}
+    value: {fileID: 389234097}
+  - key: {fileID: -8381921485782206373, guid: 17bf917d9aaa93249ac00b3af70a76e0, type: 2}
+    value: {fileID: 389234097}
+  - key: {fileID: 576039497757748552, guid: b083a07bf2e79a94fb27ab171427a5ed, type: 2}
+    value: {fileID: 389234097}
+  - key: {fileID: -7585340052618256379, guid: 2ea517f6b4d260648933e6605c1294fb, type: 2}
+    value: {fileID: 389234093}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &1067762718
@@ -1044,7 +1056,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Example
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e2a5d6ddf236e649a6c067bb19167b4, type: 2}
   m_sharedMaterial: {fileID: -1175658618159434615, guid: 2e2a5d6ddf236e649a6c067bb19167b4, type: 2}

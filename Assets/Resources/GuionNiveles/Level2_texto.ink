@@ -4,9 +4,9 @@ EXTERNAL CharacterExpression(expressionName) //Cambia imagen de enemigo
 EXTERNAL ToLevel(levelName) // Cambia a escena 
 EXTERNAL AddOneIndex() // Suma uno al index del ProgessTracker
 
-{CharacterExpression("Level2_idle")}
-{Name("Arkanos")} {CharacterIcon("Player")}
--¿Quién eres? ¿Y qué haces en este templo?
+{CharacterExpression("Level2")}{Name("Arkanos")} {CharacterIcon("Player")}-¿Quién eres? ¿Y qué haces en este templo?
+
+
 
 {Name("Enemy2")} {CharacterIcon("Enemy_2")}
 -Mi objetivo es proteger este templo de los tesoros que ocultan. 

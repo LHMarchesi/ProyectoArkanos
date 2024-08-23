@@ -3,12 +3,12 @@ EXTERNAL CharacterIcon(charName)
 EXTERNAL CharacterExpression(expressionName)
 EXTERNAL ToLevel(levelName)
 
-"Cuando Arkanos se adentra en el bosque, aparece "Gandalf"(Viejo amigo de su abuelo)"
-"Arkanos Conversa con Gandalf sobre la situacion"
+Cuando Arkanos se adentra en el bosque, aparece Gandalf (Viejo amigo de su abuelo) 
+Arkanos Conversa con Gandalf sobre la situacion
 
 {Name("Gandalf")}
 {CharacterIcon("Gandalf")}
-{CharacterExpression("Gandalf_idle")}
+{CharacterExpression("ArkanosGandalf")}
 -Arkanos, ¿Hacia dónte diriges?
 
 {Name("Arkanos")}

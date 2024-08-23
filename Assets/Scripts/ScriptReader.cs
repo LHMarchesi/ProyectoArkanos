@@ -121,7 +121,7 @@ public class ScriptReader : MonoBehaviour
 
     public void ChangeCharacterExpression(string expressionName)
     {
-        currentEnemyExpression.sprite = Resources.Load<Sprite>("EnemysExpression/" + expressionName);
+        currentEnemyExpression.sprite = Resources.Load<Sprite>("EnemysExpression/" + expressionName + "_Enemy");
         currentEnemyExpression.gameObject.SetActive(true);
     }
 

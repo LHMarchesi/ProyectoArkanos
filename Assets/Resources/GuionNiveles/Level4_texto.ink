@@ -4,8 +4,8 @@ EXTERNAL CharacterExpression(expressionName) //Cambia imagen de enemigo
 EXTERNAL ToLevel(levelName) // Cambia a escena 
 EXTERNAL AddOneIndex()
 
-{Name("Maugre")} {CharacterIcon("Enemy_4")}
--Quien se atreve a impedir mis planes!?
+{Name("Maugre")} {CharacterIcon("Enemy_4")}-Quien se atreve a impedir mis planes!?
+
 
 {Name("Arkanos")} {CharacterIcon("Player")}
 -No voy a dejar que desates el caos en el mundo!”
