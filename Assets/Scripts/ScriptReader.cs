@@ -13,7 +13,7 @@ public class ScriptReader : MonoBehaviour
     private Story _StoryScript;
     private bool isTextDisplaying = true;
     private float chTime = 0.035f;
-    private int charsToPlaySound = 3;
+    private int charsToPlaySound = 4;
 
     public TMP_Text dialogueBox;
     public TMP_Text nameTag;

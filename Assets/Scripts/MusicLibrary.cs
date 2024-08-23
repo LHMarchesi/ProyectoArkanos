@@ -15,7 +15,7 @@ public class MusicLibrary : MonoBehaviour
 
     [SerializeField] public AudioClip currentSfxClip;
 
-    private static MusicLibrary instance;
+    public static MusicLibrary instance;
 
     private void Awake()
     {
@@ -47,43 +47,40 @@ public class MusicLibrary : MonoBehaviour
 
     public void ManageSongPerLevel(int index)
     {
-        AudioManager.instance.StopMusic();
+        AudioClip newTrack = null;
+        bool shouldLoop = false;
 
         switch (index)
         {
             case 0:
-                AudioManager.instance.PlayMusic(mainMenuTrack);
-                AudioManager.instance.musicSource.loop = true;
+            case 6:
+                newTrack = mainMenuTrack;
+                shouldLoop = true;
                 break;
             case 1:
-                AudioManager.instance.PlayMusic(novelTrack);
-                AudioManager.instance.musicSource.loop = false;
+                newTrack = novelTrack;
                 break;
             case 2:
-                AudioManager.instance.PlayMusic(level1Track);
-                AudioManager.instance.musicSource.loop = false;
+                newTrack = level1Track;
                 break;
             case 3:
-                AudioManager.instance.PlayMusic(level2Track);
-                AudioManager.instance.musicSource.loop = false;
+                newTrack = level2Track;
                 break;
             case 4:
-                AudioManager.instance.PlayMusic(level3Track);
-                AudioManager.instance.musicSource.loop = false;
+                newTrack = level3Track;
                 break;
             case 5:
-                AudioManager.instance.PlayMusic(level4Track);
-                AudioManager.instance.musicSource.loop = false;
-                break;
-            case 6:
-                AudioManager.instance.PlayMusic(mainMenuTrack);
-                AudioManager.instance.musicSource.loop = true;
+                newTrack = level4Track;
                 break;
             default:
-                AudioManager.instance.PlayMusic(mainMenuTrack);
-                AudioManager.instance.musicSource.loop = true;
+                newTrack = mainMenuTrack;
+                shouldLoop = true;
                 Debug.LogWarning("No music track assigned for this scene index.");
                 break;
         }
+
+            AudioManager.instance.PlayMusic(newTrack);
+            AudioManager.instance.musicSource.loop = shouldLoop;
+
     }
 }

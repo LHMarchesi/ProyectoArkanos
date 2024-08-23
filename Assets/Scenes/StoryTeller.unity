@@ -240,18 +240,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1767428824}
-    - target: {fileID: 1300957975680596332, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 1549504867706123268, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
-      propertyPath: m_TagString
-      value: MusicSlider
-      objectReference: {fileID: 0}
-    - target: {fileID: 2251606363479511244, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
-      propertyPath: m_TagString
-      value: SFXSlider
-      objectReference: {fileID: 0}
     - target: {fileID: 5122358017941232047, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -375,7 +363,7 @@ PrefabInstance:
     - target: {fileID: 9018264467372331866, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2032076977}
     - target: {fileID: 9018264467372331866, guid: 2ec02d535ca017e4da863595399939fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Resume
@@ -1342,7 +1330,7 @@ MonoBehaviour:
   nameTag: {fileID: 1067762720}
   characterIcon: {fileID: 1959227578}
   currentEnemyExpression: {fileID: 389234095}
-  sfxWriting: {fileID: 8300000, guid: 57edcab7096e57943831d0af7f146d3e, type: 3}
+  sfxWriting: {fileID: 8300000, guid: 4c967b5a66b73984e9a29b227d50759d, type: 3}
   canPressSpace: 0
 --- !u!1001 &1767428822
 PrefabInstance:

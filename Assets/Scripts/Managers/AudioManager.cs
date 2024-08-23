@@ -49,12 +49,9 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(AudioClip clip)
     {
-        if (musicSource.clip != clip)
-        {
             musicSource.clip = clip;
             musicSource.time = 0;
             musicSource.Play();
-        }
     }
 
     public void StopMusic()
