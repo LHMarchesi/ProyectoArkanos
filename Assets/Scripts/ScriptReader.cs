@@ -100,6 +100,7 @@ public class ScriptReader : MonoBehaviour
         _StoryScript.BindExternalFunction("CharacterIcon", (string charName) => ChangeCharacterIcon(charName));
         _StoryScript.BindExternalFunction("CharacterExpression", (string expressionName) => ChangeCharacterExpression(expressionName));
         _StoryScript.BindExternalFunction("ToLevel", (string levelName) => ChangeToLevel(levelName));
+        _StoryScript.BindExternalFunction("AddOneIndex", () => AddOneIndex());
 
         StartCoroutine(DisplayNextLine());
 
@@ -127,6 +128,11 @@ public class ScriptReader : MonoBehaviour
     public void ChangeToLevel(string levelName)
     {
         ScenesLoader.instance.LoadScene(levelName);
+    }
+    
+    public void AddOneIndex()
+    {
+        progessionTracker.IncreaseLevelIndex();
     }
 
 }

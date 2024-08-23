@@ -2,6 +2,7 @@ EXTERNAL Name(charName)  // Cambia nombre
 EXTERNAL CharacterIcon(charName) // Cambia Icono
 EXTERNAL CharacterExpression(expressionName) //Cambia imagen de enemigo
 EXTERNAL ToLevel(levelName) // Cambia a escena 
+EXTERNAL AddOneIndex() // Suma uno al index del ProgessTracker
 
 {CharacterExpression("Level3_idle")}
 
@@ -34,5 +35,7 @@ Es un artefacto que debe ser usado para restaurar el equilibrio y para sanar, no
 -Ven, entonces, Arkanos. Demuestra tu poder. 
 Aquí, en mi dominio, las sombras se convierten en armas y la oscuridad es nuestra aliada. 
 ¿Estás preparado para enfrentar la verdadera esencia de la magia oscura?
+{AddOneIndex()}
+
 {ToLevel("Level3")}
 

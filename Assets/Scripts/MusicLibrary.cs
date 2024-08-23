@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -66,14 +66,18 @@ public class MusicLibrary : MonoBehaviour
             case 3:
                 AudioManager.instance.PlayMusic(level2Track);
                 AudioManager.instance.musicSource.loop = false;
-                break; 
+                break;
             case 4:
-                AudioManager.instance.PlayMusic(level3Track); 
+                AudioManager.instance.PlayMusic(level3Track);
                 AudioManager.instance.musicSource.loop = false;
                 break;
             case 5:
                 AudioManager.instance.PlayMusic(level4Track);
                 AudioManager.instance.musicSource.loop = false;
+                break;
+            case 6:
+                AudioManager.instance.PlayMusic(mainMenuTrack);
+                AudioManager.instance.musicSource.loop = true;
                 break;
             default:
                 AudioManager.instance.PlayMusic(mainMenuTrack);

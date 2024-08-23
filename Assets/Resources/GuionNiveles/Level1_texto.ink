@@ -2,6 +2,7 @@ EXTERNAL Name(charName)  // Cambia nombre
 EXTERNAL CharacterIcon(charName) // Cambia Icono
 EXTERNAL CharacterExpression(expressionName) //Cambia imagen de enemigo
 EXTERNAL ToLevel(levelName) // Cambia a escena 
+EXTERNAL AddOneIndex() // Suma uno al index del ProgessTracker
 
 {CharacterExpression("Level1_idle")}
 {Name("Arkanos")} {CharacterIcon("Player")}
@@ -20,4 +21,5 @@ Ningún viajero se atreverá a apoderarse de las mayores riquezas de este templo
 {Name("Arkanos")} {CharacterIcon("Player")}
 
 -Fuera de mi camino!!
+{AddOneIndex()}
 {ToLevel("Level1")}
