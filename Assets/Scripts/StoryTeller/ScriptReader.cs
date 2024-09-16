@@ -27,7 +27,7 @@ public class ScriptReader : MonoBehaviour
         progessionTracker = FindObjectOfType<ProgessionTracker>();
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -36,42 +36,35 @@ public class ScriptReader : MonoBehaviour
     }
 
 
-    public IEnumerator DisplayNextLine()
+    private IEnumerator DisplayNextLine()
     {
-        if (_StoryScript.canContinue)//&&  )
+        dialogueBox.text = string.Empty;
+        string text = _StoryScript.Continue(); // Obtiene la siguiente línea
+        text = text?.Trim(); // Elimina espacios en blanco
+
+        isTextDisplaying = true;
+
+        int charIndex = 0;
+        foreach (char ch in text)
         {
-            dialogueBox.text = string.Empty;
-            string text = _StoryScript.Continue(); // Obtiene la siguiente línea
-            text = text?.Trim(); // Elimina espacios en blanco
-
-            isTextDisplaying = true;
-
-            int charIndex = 0;
-            foreach (char ch in text)
+            if (!isTextDisplaying) // Si se presiona espacio otra vez, muestra todo el texto
             {
-                if (!isTextDisplaying) // Si se presiona espacio otra vez, muestra todo el texto
-                {
-                    dialogueBox.text = text;
-                    break;
-                }
-
-                if (charIndex % charsToPlaySound == 0)
-                {
-                    AudioManager.instance.PlaySFX(sfxWriting);
-                }
-                charIndex++;
-                dialogueBox.text += ch;
-                yield return new WaitForSecondsRealtime(chTime);
+                dialogueBox.text = text;
+                break;
             }
-            isTextDisplaying = false; // Termina de mostrar el texto
+
+            if (charIndex % charsToPlaySound == 0)
+            {
+                AudioManager.instance.PlaySFX(sfxWriting);
+            }
+            charIndex++;
+            dialogueBox.text += ch;
+            yield return new WaitForSecondsRealtime(chTime);
         }
-        else
-        {
-            progessionTracker.IncreaseLevelIndex();
-        }
+        isTextDisplaying = false; // Termina de mostrar el texto
     }
 
-    public void OnSpacePressed()
+    private void OnSpacePressed()
     {
         if (canPressSpace)
         {
@@ -129,7 +122,7 @@ public class ScriptReader : MonoBehaviour
     {
         ScenesLoader.instance.LoadScene(levelName);
     }
-    
+
     public void AddOneIndex()
     {
         progessionTracker.IncreaseLevelIndex();

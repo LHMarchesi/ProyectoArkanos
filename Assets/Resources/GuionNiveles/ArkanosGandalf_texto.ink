@@ -45,4 +45,4 @@ Esos portales están conectados por magia. Serás libre de viajar entre mundos. 
 -Lo haré.
 
 "Arkanos emprende su viaje hacia la Cueva de las Pesadillas..."
-
+{ToLevel("LevelTutorial")}

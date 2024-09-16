@@ -53,33 +53,33 @@ public class TutorialLevelSecuence : MonoBehaviour
     }
     private void StartSecuence()
     {
-        firstDialogue.StartDialogueSecuence();
+        //firstDialogue.StartDialogueSecuence();
         StartCoroutine(DelayedAction(2f, ()=> circlePrefab.SetActive(true)));
-        StartCoroutine(DelayedAction(4f, () => firstDialogue.EndDialogueSecuence()));
+       // StartCoroutine(DelayedAction(4f, () => firstDialogue.EndDialogue()));
     }
 
     private void StartSecondDialogue()
     {
         hasSecondDialogueStarted = true;
-        secondDialogue.StartDialogueSecuence();
+        //secondDialogue.StartDialogueSecuence();
 
         StartCoroutine(DelayedAction(1f, () => circlePrefab2.SetActive(true)));
-        StartCoroutine(DelayedAction(3f, () => secondDialogue.EndDialogueSecuence()));
+        //StartCoroutine(DelayedAction(3f, () => secondDialogue.EndDialogue()));
     }
 
     private void StartThirdDialogue()
     {
         hasThirdDialogueStarted = true;
-        thirdDialogue.StartDialogueSecuence();
+        //thirdDialogue.StartDialogueSecuence();
         
-        StartCoroutine(DelayedAction(4f, () => thirdDialogue.EndDialogueSecuence()));
+       // StartCoroutine(DelayedAction(4f, () => thirdDialogue.EndDialogue()));
     }
     private void StartFourthDialogue()
     {
         hasFourthDialogueStarted = true;
-        fourthDialogue.StartDialogueSecuence();
+        //fourthDialogue.StartDialogueSecuence();
         
-        StartCoroutine(DelayedAction(1f, () => fourthDialogue.EndDialogueSecuence()));
+        //StartCoroutine(DelayedAction(1f, () => fourthDialogue.EndDialogue()));
     }
 
 

@@ -15,47 +15,26 @@ public class Dialogue : MonoBehaviour
 
     private int lineIndex;
     private float chTime = 0.01f;
+    float autoAdvanceTime = 3f;
 
-    public void StartDialogueSecuence()
+    private void Update()
     {
         if (!didDialogueStart)
         {
             StartDialogue();
         }
-        else if (dialogueText.text == dialogueLines[lineIndex]) // si el texto termino de mostrarse completo
+        else if (dialogueText.text == dialogueLines[lineIndex]) // si el texto ha terminado de mostrarse
         {
             NextDialogue();
         }
-        else // saltear texto
+        else if (Input.GetKeyDown(KeyCode.Space))
         {
-            StopAllCoroutines();
             dialogueText.text = dialogueLines[lineIndex];
         }
     }
-    private void NextDialogue() // Secuencia de mostrado de dialogo, y desactiva dialogos al finalizar
-    {
-        lineIndex++;
-        if (lineIndex < dialogueLines.Length)
-        {
-            StartCoroutine(ShowLine());
-        }
-        else
-        {
-            EndDialogueSecuence();
-        }
-    }
 
-    public void EndDialogueSecuence()  // Finaliza secuencia de dialogo
+    public void StartDialogue()  // Inicia la secuencia de dialogo
     {
-        didDialogueEnd = true;
-        didDialogueStart = false;
-        dialoguePanel.SetActive(false);
-        PlayerMove(true);
-    }
-
-    private void StartDialogue()  // Inicia la secuencia de dialogo
-    {
-        PlayerMove(false);
         didDialogueStart = true;
         didDialogueEnd = false;
         dialoguePanel.SetActive(true);
@@ -63,7 +42,6 @@ public class Dialogue : MonoBehaviour
 
         StartCoroutine(ShowLine());
     }
-
     private IEnumerator ShowLine() // muestra letra por letra lo que haya en las lineas de dialogo
     {
         dialogueText.text = string.Empty;
@@ -73,23 +51,39 @@ public class Dialogue : MonoBehaviour
             dialogueText.text += ch;
             yield return new WaitForSecondsRealtime(chTime);
         }
+
+        StartCoroutine(AutoAdvanceAfterTime());
     }
 
-    public IEnumerator ShowDialogue(Dialogue dialogue, float duration,Action onComplete)
+    private IEnumerator AutoAdvanceAfterTime()
     {
-        dialogue.StartDialogueSecuence();
-        yield return new WaitForSecondsRealtime(duration); // Espera la duración del diálogo
-        dialogue.EndDialogueSecuence();
-        onComplete?.Invoke(); // Llama al callback después de que el diálogo ha terminado
-    }
+        yield return new WaitForSecondsRealtime(autoAdvanceTime);
 
-    private void PlayerMove(bool canMove)
-    {
-        Player player = FindObjectOfType<Player>();
-
-        if (player != null)
+        if (dialogueText.text == dialogueLines[lineIndex]) // Asegurarse de que el diálogo haya terminado de mostrarse
         {
-            player.PlayerCanMove(canMove);
+            NextDialogue();
         }
+    }
+
+    private void NextDialogue() // Secuencia de mostrado de dialogo, y desactiva dialogos al finalizar
+    {
+        lineIndex++;
+        Debug.Log("Next Dialogue Line Index: " + lineIndex);
+        if (lineIndex < dialogueLines.Length)
+        {
+            StartCoroutine(ShowLine());
+        }
+        else
+        {
+            EndDialogue();
+        }
+    }
+
+    private void EndDialogue()  // Finaliza secuencia de dialogo
+    {
+        didDialogueEnd = true;
+        didDialogueStart = false;
+        dialoguePanel.SetActive(false);
+        Debug.Log("End of Dialogue Sequence"); // Depuración
     }
 }

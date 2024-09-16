@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class LevelMap : MonoBehaviour
 {
+
+    public float[] MapLevelTutorial = new float[]
+{
+
+};
     public float[] MapLevel1 = new float[]
 {
       0.604207f, 1.51318f, 2.67496f, 3.33195f, 3.86195f, 4.99764f, 5.58965f, 6.20194f,

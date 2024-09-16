@@ -6,15 +6,12 @@ using UnityEngine;
 public class LevelDialogueSecuence : MonoBehaviour
 {
     [SerializeField] private bool useStartDialogue;
+    [SerializeField] private Dialogue onStartDialogue;
+
     [SerializeField] private bool useWinDialogue;
-    [SerializeField] private bool useLoseDialogue;
-
-    [SerializeField] private float startDialogueDuration;   
-    [SerializeField] private float winDialogueDuration = 3;   
-    [SerializeField] private float loseDialogueDuration = 3;   
-
-    [SerializeField] private Dialogue startDialogue;
     [SerializeField] private Dialogue winDialogue;
+
+    [SerializeField] private bool useLoseDialogue;
     [SerializeField] private Dialogue loseDialogue;
 
     private bool hasWinDialogueStarted;
@@ -32,8 +29,7 @@ public class LevelDialogueSecuence : MonoBehaviour
         if (useStartDialogue  && !hasStartDialogueStarted)
         {
             hasStartDialogueStarted = true;
-            StartCoroutine(startDialogue.ShowDialogue(startDialogue, startDialogueDuration, () => startDialogue.EndDialogueSecuence()));
-
+            onStartDialogue.StartDialogue();
         }
     }
     private void LoseSequence()
@@ -41,7 +37,7 @@ public class LevelDialogueSecuence : MonoBehaviour
         if (useLoseDialogue && !hasLoseDialogueStarted)
         {
             hasLoseDialogueStarted = true;
-            StartCoroutine(loseDialogue.ShowDialogue(loseDialogue, winDialogueDuration, () =>  ScreensManager.Instance.ShowLoseScreen()));
+            //StartCoroutine(loseDialogue.ShowDialogue(loseDialogue, winDialogueDuration, () =>  ScreensManager.Instance.ShowLoseScreen()));
         }
 
     }
@@ -50,7 +46,7 @@ public class LevelDialogueSecuence : MonoBehaviour
         if (useWinDialogue && !hasWinDialogueStarted)
         {
             hasWinDialogueStarted = true;
-            StartCoroutine(winDialogue.ShowDialogue(winDialogue, loseDialogueDuration, () => ScreensManager.Instance.ShowWinScreen()));
+          //  StartCoroutine(winDialogue.ShowDialogue(winDialogue, loseDialogueDuration, () => ScreensManager.Instance.ShowWinScreen()));
 
         }
     }

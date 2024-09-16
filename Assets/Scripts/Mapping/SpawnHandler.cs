@@ -22,6 +22,9 @@ public class SpawnHandler : MonoBehaviour
         int levelIndex = LevelIndex;
         switch (levelIndex)
         {
+            case 0:
+                spawnTimes = levelMap.MapLevelTutorial;
+                break;
             case 1:
                 spawnTimes = levelMap.MapLevel1;
                 break;
