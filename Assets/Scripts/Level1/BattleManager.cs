@@ -13,10 +13,10 @@ using UnityEngine.SceneManagement;
 public class BattleManager : MonoBehaviour
 {
     public static BattleManager Instance { get; private set; }
-   
+    public static event Action OnWin;
 
     private ProgessionTracker progessionTracker;
-
+    [SerializeField] private LevelDialogueSecuence levelDialogueSecuence;
     [SerializeField] private HealthSistem healthSistem;
     [SerializeField] private SpawnHandler spawnHandler;
     [SerializeField] private BackgroundMove backgroundMove;
@@ -33,7 +33,7 @@ public class BattleManager : MonoBehaviour
 
     private int maxmMultiplicator = 4;
 
-     private void Awake()
+    private void Awake()
     {
         progessionTracker = FindObjectOfType<ProgessionTracker>();
         if (Instance == null)
@@ -82,13 +82,25 @@ public class BattleManager : MonoBehaviour
 
     public void Win()
     {
-        
         if (timer > songTime && !levelEnded) //Cuando el timer, supera el tiempo de la cancion, se invoca el evento OnWin
         {
-            levelEnded = true;
-            spawnHandler.Spawning(false);
-            ScreensManager.Instance.ShowWinScreen();
-            
+            if (levelDialogueSecuence.useWinDialogue)
+            {
+                spawnHandler.Spawning(false);
+                levelDialogueSecuence.WinSequence();
+
+                if (levelDialogueSecuence.winDialogue.DidDialogueEnd)
+                {
+                    ScreensManager.Instance.ShowWinScreen();
+                    levelEnded = true;
+                }
+            }
+            else
+            {
+                levelEnded = true;
+                spawnHandler.Spawning(false);
+                ScreensManager.Instance.ShowWinScreen();
+            }
         }
     }
 
@@ -96,9 +108,23 @@ public class BattleManager : MonoBehaviour
     {
         if (healtPoints <= 0 && !levelEnded) //si la vida es menor o igual a 0, pierde y se invoca al evento Onlose
         {
-            levelEnded = true;
-            ScreensManager.Instance.ShowLoseScreen();
-            spawnHandler.Spawning(false);
+            if (levelDialogueSecuence.useLoseDialogue)
+            {
+                spawnHandler.Spawning(false);
+                levelDialogueSecuence.LoseSequence();
+
+                if (levelDialogueSecuence.loseDialogue.DidDialogueEnd)
+                {
+                    ScreensManager.Instance.ShowLoseScreen();
+                    levelEnded = true;
+                }
+            }
+            else
+            {
+                levelEnded = true;
+                spawnHandler.Spawning(false);
+                ScreensManager.Instance.ShowLoseScreen();
+            }
         }
     }
 

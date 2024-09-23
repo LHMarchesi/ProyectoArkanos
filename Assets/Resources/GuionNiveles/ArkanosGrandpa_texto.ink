@@ -1,7 +1,7 @@
 EXTERNAL Name(charName)  // Cambia nombre 
 EXTERNAL CharacterIcon(charName) // Cambia Icono
 EXTERNAL CharacterExpression(expressionName) //Cambia imagen de enemigo
-
+EXTERNAL AddOneIndex()
 
 {Name("Arkanos")} {CharacterIcon("Player")} -Abuelo...
 -Te prometo que traeré la cura para sanarte. Prometo salvarte...

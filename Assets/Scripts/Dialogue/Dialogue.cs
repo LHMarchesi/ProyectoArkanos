@@ -10,33 +10,37 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField, TextArea(4, 6)] private string[] dialogueLines;
 
-    public bool didDialogueStart { get; private set; } = false;
-    public bool didDialogueEnd { get; private set; } = false;
-
+    private bool didDialogueEnd;
+    private bool didDialogueStart;
     private int lineIndex;
     private float chTime = 0.01f;
-    float autoAdvanceTime = 3f;
+    float autoAdvanceTime = 5f;
+    private bool isShowingLine = false; 
+
+    public bool DidDialogueEnd { get => didDialogueEnd; set => didDialogueEnd = value; }
+    public bool DidDialogueStart { get => didDialogueStart; set => didDialogueStart = value; }
 
     private void Update()
     {
-        if (!didDialogueStart)
+        if (Input.GetKeyDown(KeyCode.Space) && !DidDialogueEnd)
         {
-            StartDialogue();
-        }
-        else if (dialogueText.text == dialogueLines[lineIndex]) // si el texto ha terminado de mostrarse
-        {
-            NextDialogue();
-        }
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            dialogueText.text = dialogueLines[lineIndex];
+            if (isShowingLine)
+            {
+                StopAllCoroutines(); 
+                dialogueText.text = dialogueLines[lineIndex]; // Muestra todo el texto
+                isShowingLine = false; 
+            }
+            else if (dialogueText.text == dialogueLines[lineIndex]) // Si ya se mostró todo el texto, pasa a la siguiente línea
+            {
+                NextDialogue();
+            }
         }
     }
 
     public void StartDialogue()  // Inicia la secuencia de dialogo
     {
-        didDialogueStart = true;
-        didDialogueEnd = false;
+        DidDialogueStart = true;
+        DidDialogueEnd = false;
         dialoguePanel.SetActive(true);
         lineIndex = 0;
 
@@ -53,6 +57,7 @@ public class Dialogue : MonoBehaviour
         }
 
         StartCoroutine(AutoAdvanceAfterTime());
+
     }
 
     private IEnumerator AutoAdvanceAfterTime()
@@ -68,7 +73,6 @@ public class Dialogue : MonoBehaviour
     private void NextDialogue() // Secuencia de mostrado de dialogo, y desactiva dialogos al finalizar
     {
         lineIndex++;
-        Debug.Log("Next Dialogue Line Index: " + lineIndex);
         if (lineIndex < dialogueLines.Length)
         {
             StartCoroutine(ShowLine());
@@ -81,9 +85,9 @@ public class Dialogue : MonoBehaviour
 
     private void EndDialogue()  // Finaliza secuencia de dialogo
     {
-        didDialogueEnd = true;
-        didDialogueStart = false;
+        StopAllCoroutines();
+        DidDialogueEnd = true;
+        DidDialogueStart = false;
         dialoguePanel.SetActive(false);
-        Debug.Log("End of Dialogue Sequence"); // Depuración
     }
 }

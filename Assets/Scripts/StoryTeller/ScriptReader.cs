@@ -38,30 +38,37 @@ public class ScriptReader : MonoBehaviour
 
     private IEnumerator DisplayNextLine()
     {
-        dialogueBox.text = string.Empty;
-        string text = _StoryScript.Continue(); // Obtiene la siguiente línea
-        text = text?.Trim(); // Elimina espacios en blanco
-
-        isTextDisplaying = true;
-
-        int charIndex = 0;
-        foreach (char ch in text)
+        if (_StoryScript.canContinue)
         {
-            if (!isTextDisplaying) // Si se presiona espacio otra vez, muestra todo el texto
-            {
-                dialogueBox.text = text;
-                break;
-            }
+            dialogueBox.text = string.Empty;
+            string text = _StoryScript.Continue(); // Obtiene la siguiente línea
+            text = text?.Trim(); // Elimina espacios en blanco
 
-            if (charIndex % charsToPlaySound == 0)
+            isTextDisplaying = true;
+
+            int charIndex = 0;
+            foreach (char ch in text)
             {
-                AudioManager.instance.PlaySFX(sfxWriting);
+                if (!isTextDisplaying) // Si se presiona espacio otra vez, muestra todo el texto
+                {
+                    dialogueBox.text = text;
+                    break;
+                }
+
+                if (charIndex % charsToPlaySound == 0)
+                {
+                    AudioManager.instance.PlaySFX(sfxWriting);
+                }
+                charIndex++;
+                dialogueBox.text += ch;
+                yield return new WaitForSecondsRealtime(chTime);
             }
-            charIndex++;
-            dialogueBox.text += ch;
-            yield return new WaitForSecondsRealtime(chTime);
+            isTextDisplaying = false; // Termina de mostrar el texto
         }
-        isTextDisplaying = false; // Termina de mostrar el texto
+        else
+        {
+            AddOneIndex();
+        }
     }
 
     private void OnSpacePressed()

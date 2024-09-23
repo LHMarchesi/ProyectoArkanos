@@ -8,16 +8,15 @@ public class LevelDialogueSecuence : MonoBehaviour
     [SerializeField] private bool useStartDialogue;
     [SerializeField] private Dialogue onStartDialogue;
 
-    [SerializeField] private bool useWinDialogue;
-    [SerializeField] private Dialogue winDialogue;
+    [SerializeField] public bool useWinDialogue;
+    [SerializeField] public Dialogue winDialogue;
 
-    [SerializeField] private bool useLoseDialogue;
-    [SerializeField] private Dialogue loseDialogue;
+    [SerializeField] public bool useLoseDialogue;
+    [SerializeField] public Dialogue loseDialogue;
 
     private bool hasWinDialogueStarted;
     private bool hasLoseDialogueStarted;
     private bool hasStartDialogueStarted;
-
 
     void Start()
     {
@@ -32,22 +31,21 @@ public class LevelDialogueSecuence : MonoBehaviour
             onStartDialogue.StartDialogue();
         }
     }
-    private void LoseSequence()
+    public void LoseSequence()
     {
         if (useLoseDialogue && !hasLoseDialogueStarted)
         {
             hasLoseDialogueStarted = true;
-            //StartCoroutine(loseDialogue.ShowDialogue(loseDialogue, winDialogueDuration, () =>  ScreensManager.Instance.ShowLoseScreen()));
+            loseDialogue.StartDialogue();
         }
 
     }
-    private void WinSequence()
+    public void WinSequence()
     {
         if (useWinDialogue && !hasWinDialogueStarted)
         {
             hasWinDialogueStarted = true;
-          //  StartCoroutine(winDialogue.ShowDialogue(winDialogue, loseDialogueDuration, () => ScreensManager.Instance.ShowWinScreen()));
-
+            winDialogue.StartDialogue();
         }
     }
 }

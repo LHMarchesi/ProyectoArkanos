@@ -81,27 +81,30 @@ public class StoryManager : MonoBehaviour
                 currentState = StoryStates.ArkanosGandalf;
                 break;
             case 2:
-                currentState = StoryStates.Level1;
+                SceneManager.LoadScene("LevelTutorial");
                 break;
             case 3:
-                SceneManager.LoadScene("Level1");
+                currentState = StoryStates.Level1;
                 break;
             case 4:
-                currentState = StoryStates.Level2;
+                SceneManager.LoadScene("Level1");
                 break;
             case 5:
-                SceneManager.LoadScene("Level2");
+                currentState = StoryStates.Level2;
                 break;
             case 6:
-                currentState = StoryStates.Level3;
+                SceneManager.LoadScene("Level2");
                 break;
             case 7:
-                SceneManager.LoadScene("Level3");
+                currentState = StoryStates.Level3;
                 break;
             case 8:
-                currentState = StoryStates.Level4;
+                SceneManager.LoadScene("Level3");
                 break;
             case 9:
+                currentState = StoryStates.Level4;
+                break;
+            case 10:
                 SceneManager.LoadScene("Level4");
                 break;
             default:
