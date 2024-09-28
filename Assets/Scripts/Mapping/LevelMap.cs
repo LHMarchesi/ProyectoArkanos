@@ -7,7 +7,7 @@ public class LevelMap : MonoBehaviour
 
     public float[] MapLevelTutorial = new float[]
 {
-
+     8.992804f, 10.03698f, 11.11067f, 12.16185f, 13.27655f, 14.37074f, 15.48493f, 16.54861f, 17.60581f, 18.62098f, 19.78768f
 };
     public float[] MapLevel1 = new float[]
 {
