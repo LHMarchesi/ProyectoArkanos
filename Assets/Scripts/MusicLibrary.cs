@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class MusicLibrary : MonoBehaviour
 {
     [SerializeField] private AudioClip mainMenuTrack;
-    [SerializeField] private AudioClip novelTrack;
     [SerializeField] private AudioClip tutorialLevel;
+    [SerializeField] private AudioClip novelTrack;
     [SerializeField] private AudioClip level1Track;
     [SerializeField] private AudioClip level2Track;
     [SerializeField] private AudioClip level3Track;
