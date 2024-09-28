@@ -63,16 +63,16 @@ public class MusicLibrary : MonoBehaviour
             case 2:
                 newTrack = tutorialLevel;
                 break;
-            case 3:
+            case 4:
                 newTrack = level1Track;
                 break;
-            case 4:
+            case 5:
                 newTrack = level2Track;
                 break;
-            case 5:
+            case 6:
                 newTrack = level3Track;
                 break;
-            case 6:
+            case 7:
                 newTrack = level4Track;
                 break;
             default:
