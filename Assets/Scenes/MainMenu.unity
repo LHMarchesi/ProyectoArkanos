@@ -1399,7 +1399,7 @@ GameObject:
   - component: {fileID: 824076870}
   - component: {fileID: 824076871}
   m_Layer: 0
-  m_Name: MusicLibraby
+  m_Name: MusicLibrary
   m_TagString: MusicLibrary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

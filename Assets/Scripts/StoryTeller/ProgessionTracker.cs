@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ProgessionTracker : MonoBehaviour
 {
     static ProgessionTracker instance;
+
     private void Awake()
     {
         if (instance == null)

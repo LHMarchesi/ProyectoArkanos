@@ -53,7 +53,6 @@ public class MusicLibrary : MonoBehaviour
         switch (index)
         {
             case 0:
-            case 6:
                 newTrack = mainMenuTrack;
                 shouldLoop = true;
                 break;
@@ -64,12 +63,15 @@ public class MusicLibrary : MonoBehaviour
                 newTrack = level1Track;
                 break;
             case 3:
-                newTrack = level2Track;
+                newTrack = level1Track;
                 break;
             case 4:
-                newTrack = level3Track;
+                newTrack = level2Track;
                 break;
             case 5:
+                newTrack = level3Track;
+                break;
+            case 6:
                 newTrack = level4Track;
                 break;
             default:
@@ -79,8 +81,8 @@ public class MusicLibrary : MonoBehaviour
                 break;
         }
 
-            AudioManager.instance.PlayMusic(newTrack);
-            AudioManager.instance.musicSource.loop = shouldLoop;
+        AudioManager.instance.PlayMusic(newTrack);
+        AudioManager.instance.musicSource.loop = shouldLoop;
 
     }
 }
