@@ -8,6 +8,7 @@ public class MusicLibrary : MonoBehaviour
 {
     [SerializeField] private AudioClip mainMenuTrack;
     [SerializeField] private AudioClip novelTrack;
+    [SerializeField] private AudioClip tutorialLevel;
     [SerializeField] private AudioClip level1Track;
     [SerializeField] private AudioClip level2Track;
     [SerializeField] private AudioClip level3Track;
@@ -60,7 +61,7 @@ public class MusicLibrary : MonoBehaviour
                 newTrack = novelTrack;
                 break;
             case 2:
-                newTrack = level1Track;
+                newTrack = tutorialLevel;
                 break;
             case 3:
                 newTrack = level1Track;
